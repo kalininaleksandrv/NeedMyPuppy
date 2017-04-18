@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Хочу щеночка!</string>
+    <string name="opt_name">Сначала о Вас</string>
+    <string name="startscreendecription">Выбор домашнего питомца - ответственный и волнующий момент! Давайте пройдем этот путь вместе и найдем единственного и неповторимого - только Вашего - щенка!</string>
+    <string name="startscreenbutton">НАЧАТЬ</string>
+    <string name="switch_about">Уже есть собака(и)?</string>
+    <string name="no">нет</string>
+    <string name="yes">да</string>
+    <string name="say_me_age">Ну ладно, давай посмотрим кто тут у нас...</string>
+    <string name="flags_description">отметь варианты которые считаешь правильными</string>
+    <string name="flag_opt1">выставки и соревнования</string>
+    <string name="flag_opt2">для компании</string>
+    <string name="flag_opt3">пробежки по утрам</string>
+    <string name="flag_opt4">охота, трекинг</string>
+    <string name="btn_opt1">Надоело!</string>
+    <string name="btn_opt2">Дальше</string>
+    <string name="resultText"></string>
+
+
+    <string-array name="opt_time">
+        <item>сколько времени готов тратить на собаку?</item>
+        <item>не более 1 часа в день</item>
+        <item>не более 2-3 часов в день</item>
+        <item>не более 4-5 часов в день</item>
+        <item>все свободное время</item>
+    </string-array>
+
+
+</resources>
