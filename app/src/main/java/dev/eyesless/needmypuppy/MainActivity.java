@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView chektext = (TextView) findViewById(R.id.opt_starttext);
                 newlogic.bucket_changer();
-                chektext.setText(newlogic.getBestchoise());
+                chektext.setText(newlogic.getReturnbreed());
             }
         });
 

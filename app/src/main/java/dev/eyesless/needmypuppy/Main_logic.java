@@ -10,6 +10,7 @@ public class Main_logic {
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
     private String bestchoise;
+    private String returnbreed;
 
     private boolean opt_switch_temp = false;
     private boolean show_flag_bool = false;
@@ -29,7 +30,7 @@ public class Main_logic {
         setBestchoise(getBestchoise().concat(String.valueOf(getExp_level())).concat(" + "));
         setBestchoise(getBestchoise().concat(String.valueOf(getTime_level())).concat(" + "));
 
-
+        // для тестирования корректного запоминания выбора спиннеров и т.п.
     }
     public String getBestchoise() {
 
@@ -39,6 +40,20 @@ public class Main_logic {
     public void setBestchoise(String bestchoise) {
         this.bestchoise = bestchoise;
     }
+
+
+        //для тестирования возврата пород
+
+    public String getReturnbreed () {
+
+        return returnbreed;
+    }
+    public void setReturnbreed(String returnbreed) {
+        this.returnbreed = returnbreed;
+    }
+
+
+
     public int getBucket_activ() {
         return bucket_activ;
     }
