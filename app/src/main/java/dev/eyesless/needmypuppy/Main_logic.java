@@ -32,10 +32,7 @@ public class Main_logic {
 
         // для тестирования корректного запоминания выбора спиннеров и т.п.
     }
-    public String getBestchoise() {
-
-        return bestchoise;
-    }
+    public String getBestchoise() {return bestchoise;}
 
     public void setBestchoise(String bestchoise) {
         this.bestchoise = bestchoise;
@@ -44,15 +41,11 @@ public class Main_logic {
 
         //для тестирования возврата пород
 
-    public String getReturnbreed () {
+    public String getReturnbreed () {return returnbreed;}
 
-        return returnbreed;
-    }
-    public void setReturnbreed() {
-        this.returnbreed = Data.haski.getBreedParam();
-    }
+    public void setReturnbreed() {this.returnbreed = Data.haski.getBreedFullDescription();}
 
-
+    // сеттеры и геттеры для корзин
 
     public int getBucket_activ() {
         return bucket_activ;
@@ -79,8 +72,9 @@ public class Main_logic {
     }
 
 
+    //TODO зачем все эти онлайн сеттеры и геттеры пусть юзер выбирает значения потом перед созданием новой активности создается из логики контент, все упрощается
 
-    //сеттеры и геттеры для флагов и свитчей
+    //сеттер и геттер для свитча была ли собака
 
     public boolean isOpt_switch_temp() {
         return opt_switch_temp;
@@ -89,6 +83,8 @@ public class Main_logic {
     public void setOpt_switch_temp(boolean opt_switch_temp) {
         this.opt_switch_temp = opt_switch_temp;
     }
+
+    //сеттеры и геттеры для чекбоксов зачем собака
 
     public boolean isShow_flag_bool() {
         return show_flag_bool;
@@ -102,25 +98,21 @@ public class Main_logic {
         return company_flag_bool;
     }
 
-    public void setCompany_flag_bool(boolean company_flag_bool) {
-        this.company_flag_bool = company_flag_bool;
-    }
+    public void setCompany_flag_bool(boolean company_flag_bool) {this.company_flag_bool = company_flag_bool;}
 
     public boolean isRunning_flag_bool() {
         return running_flag_bool;
     }
 
-    public void setRunning_flag_bool(boolean running_flag_bool) {
-        this.running_flag_bool = running_flag_bool;
-    }
+    public void setRunning_flag_bool(boolean running_flag_bool) {this.running_flag_bool = running_flag_bool;}
 
     public boolean isTracking_flag_bool() {
         return tracking_flag_bool;
     }
 
-    public void setTracking_flag_bool(boolean tracking_flag_bool) {
-        this.tracking_flag_bool = tracking_flag_bool;
-    }
+    public void setTracking_flag_bool(boolean tracking_flag_bool) {this.tracking_flag_bool = tracking_flag_bool;}
+
+    // сеттеры и геттеры для свитчей уровень опыта и свободное время
 
     public int getExp_level() {
         return exp_level;
