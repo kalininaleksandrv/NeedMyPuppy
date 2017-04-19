@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // код спиннера про располагаемое время без адаптера
-        Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
+        // код спиннера про располагаемое время без адаптера, т.е. значения из values-string
+                Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
         spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -113,3 +113,15 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
+    /*
+
+TODO 1 Реализовать массив или коллекцию пород в отдельном классе (запилить ранее сделанные описания и картинки).
+TODO 2 Реализовать перебор коллекции с формированием выходных  записей в новый массив (пока без логики)
+TODO 3 Реализовать списковую активность из массива пород (4).
+TODO 4 Релизовать description-активность создаваемую по клику на списковой активности (5).
+TODO 5 Реализовать фрагменты
+TODO 6 Встартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
+
+
+
+    */
