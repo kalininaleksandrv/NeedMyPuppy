@@ -13,6 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import static android.R.layout.simple_list_item_1;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // код кнопки "Дальше"
         Button go_button = (Button) findViewById(R.id.button_opt2);
@@ -116,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
 
     /*
 
-TODO 1 Реализовать массив или коллекцию пород в отдельном классе (запилить ранее сделанные описания и картинки).
 TODO 2 Реализовать перебор коллекции с формированием выходных  записей в новый массив (пока без логики)
 TODO 3 Реализовать списковую активность из массива пород (4).
 TODO 4 Релизовать description-активность создаваемую по клику на списковой активности (5).

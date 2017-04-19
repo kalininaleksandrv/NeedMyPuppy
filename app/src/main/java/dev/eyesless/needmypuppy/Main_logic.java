@@ -10,7 +10,7 @@ public class Main_logic {
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
     private String bestchoise;
-    private String returnbreed = "just empty";
+    private String returnbreed;
 
     private boolean opt_switch_temp = false;
     private boolean show_flag_bool = false;
@@ -39,11 +39,22 @@ public class Main_logic {
     }
 
 
-        //для тестирования возврата пород
+        //для тестирования возврата пород -инициализируется лист, реализуется простой перебор
+    //TODO перебор должен возвращать все значения а не только последнее
+    //TODO реализовать нормальный итератор
 
     public String getReturnbreed () {return returnbreed;}
 
-    public void setReturnbreed() {this.returnbreed = Data.haski.getBreedFullDescription();}
+    public void setReturnbreed() {
+
+        Data.BreedCollInit();
+        for (Breed tmp : Data.breedArrayList){
+
+        String temp = tmp.getBreed_title();
+            this.returnbreed = temp;
+        }
+
+        }
 
     // сеттеры и геттеры для корзин
 
