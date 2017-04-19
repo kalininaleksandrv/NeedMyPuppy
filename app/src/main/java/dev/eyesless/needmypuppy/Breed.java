@@ -60,9 +60,9 @@ Breed (int ID, String breed_title, String breed_descr, String FCI_linc, int obid
 
     }
 
-    public String toString() {
-        String res = breed_title.concat(breed_descr).concat(FCI_linc);
-        //.concat(String.valueOf())
+    public String getBreedParam() {
+        String res = breed_title.concat(" ").concat(breed_descr).concat(" ").concat(FCI_linc);
+
         return res;
     }
 }

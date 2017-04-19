@@ -10,7 +10,7 @@ public class Main_logic {
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
     private String bestchoise;
-    private String returnbreed;
+    private String returnbreed = "just empty";
 
     private boolean opt_switch_temp = false;
     private boolean show_flag_bool = false;
@@ -48,8 +48,8 @@ public class Main_logic {
 
         return returnbreed;
     }
-    public void setReturnbreed(String returnbreed) {
-        this.returnbreed = returnbreed;
+    public void setReturnbreed() {
+        this.returnbreed = Data.haski.getBreedParam();
     }
 
 
