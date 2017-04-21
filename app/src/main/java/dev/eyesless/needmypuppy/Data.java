@@ -36,8 +36,6 @@ public class Data {
 
     // Создаем коллекцию лист для пород
 
-    public static ArrayList<Breed> breedArrayList;
-
     public HashSet<Breed> initBreedColl () {
 
        HashSet<Breed> myBreedColl = new HashSet<Breed>();

@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 newlogic.setReturnbreed();
                 Intent resultintent = new Intent(MainActivity.this, Resultactivity.class);
-                resultintent.putExtra(Resultactivity.EXTRA_MSG, newlogic.getReturnbreed());
+                ArrayList <String> temp = new ArrayList<String>(newlogic.getReturnbreed());
+                resultintent.putExtra(Resultactivity.EXTRA_MSG, temp);
                 startActivity(resultintent);
             }
         });
@@ -119,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
     /*
 
 TODO 2 Реализовать перебор коллекции с формированием выходных  записей в новый массив (пока без логики)
-TODO 3 Реализовать списковую активность из массива пород (4).
 TODO 4 Релизовать description-активность создаваемую по клику на списковой активности (5).
 TODO 5 Реализовать фрагменты
 TODO 6 Встартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail

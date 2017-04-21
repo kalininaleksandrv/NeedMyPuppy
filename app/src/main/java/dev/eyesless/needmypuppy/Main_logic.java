@@ -13,7 +13,7 @@ public class Main_logic {
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
     private String bestchoise;
-    private String returnbreed;
+    private ArrayList<String> returnbreed;
 
     private boolean opt_switch_temp = false;
     private boolean show_flag_bool = false;
@@ -46,7 +46,7 @@ public class Main_logic {
     //TODO перебор должен возвращать все значения а не только последнее
     //TODO реализовать нормальный итератор
 
-    public String getReturnbreed () {return returnbreed;}
+    public ArrayList<String> getReturnbreed () {return returnbreed;}
 
     public void setReturnbreed() {
 
@@ -58,7 +58,7 @@ public class Main_logic {
 
             temp.add(tmp.getBreed_title());
 
-            this.returnbreed = temp.toString ();
+            this.returnbreed = temp;
         }
 
         }
