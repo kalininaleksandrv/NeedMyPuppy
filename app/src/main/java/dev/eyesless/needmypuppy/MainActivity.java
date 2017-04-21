@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         go_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newlogic.bucket_changer();
+                newlogic.setReturnbreed();
                 Intent resultintent = new Intent(MainActivity.this, Resultactivity.class);
-                resultintent.putExtra(Resultactivity.EXTRA_MSG, newlogic.getBestchoise());
+                resultintent.putExtra(Resultactivity.EXTRA_MSG, newlogic.getReturnbreed());
                 startActivity(resultintent);
             }
         });
@@ -46,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView chektext = (TextView) findViewById(R.id.opt_starttext);
                 newlogic.bucket_changer();
-                newlogic.setReturnbreed();
-                chektext.setText(newlogic.getReturnbreed());
+                chektext.setText(newlogic.getBestchoise());
             }
         });
 

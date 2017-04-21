@@ -1,5 +1,7 @@
 package dev.eyesless.needmypuppy;
 
+import java.util.HashSet;
+
 /**
  * Created by Eyesless on 21.03.2017.
  */
@@ -47,8 +49,9 @@ public class Main_logic {
 
     public void setReturnbreed() {
 
-        Data.BreedCollInit();
-        for (Breed tmp : Data.breedArrayList){
+        Data mydata = new Data();
+
+        for (Breed tmp :  mydata.initBreedColl()){
 
         String temp = tmp.getBreed_title();
             this.returnbreed = temp;

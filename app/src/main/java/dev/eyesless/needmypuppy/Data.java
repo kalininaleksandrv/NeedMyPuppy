@@ -1,6 +1,9 @@
 package dev.eyesless.needmypuppy;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * Created by Eyesless on 28.03.2017.
@@ -34,13 +37,25 @@ public class Data {
     // Создаем коллекцию лист для пород
 
     public static ArrayList<Breed> breedArrayList;
-
-    public static void BreedCollInit(){
+	//TODO этот метод должен принимать на вход коллекцию и возвращать коллекцию
+    // реализовать через hashset
+	public static void BreedCollInit(){
 
         breedArrayList = new ArrayList<Breed>();
         breedArrayList.add(haski);
         breedArrayList.add(labr);
         breedArrayList.add(ger_sheperd);
+
+    }
+
+    public HashSet<Breed> initBreedColl () {
+
+       HashSet<Breed> myBreedColl = new HashSet<Breed>();
+
+       Collections.addAll(myBreedColl, haski, labr, ger_sheperd);
+
+        return myBreedColl;
+
 
     }
 
