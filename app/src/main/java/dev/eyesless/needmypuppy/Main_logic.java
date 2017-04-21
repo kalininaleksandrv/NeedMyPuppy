@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -51,10 +52,13 @@ public class Main_logic {
 
         Data mydata = new Data();
 
+        ArrayList <String> temp = new ArrayList<String>();
+
         for (Breed tmp :  mydata.initBreedColl()){
 
-        String temp = tmp.getBreed_title();
-            this.returnbreed = temp;
+            temp.add(tmp.getBreed_title());
+
+            this.returnbreed = temp.toString ();
         }
 
         }

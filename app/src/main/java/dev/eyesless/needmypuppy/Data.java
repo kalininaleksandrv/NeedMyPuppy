@@ -30,23 +30,13 @@ public class Data {
             "средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
             "http://www.fci.be/en/nomenclature/LABRADOR-RETRIEVER-122.html", 1, 8, 5, R.drawable.labr_1_1);
 
-    public static final Breed ger_sheperd = new Breed(166, "немецкая овчарка",
+    public static final Breed ger_sheperd = new Breed(166, "Hемецкая овчарка",
             "средняя по размеру служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке",
             "http://www.fci.be/en/nomenclature/GERMAN-SHEPHERD-DOG-166.html", 1, 8, 5,  R.drawable.germshep_1_1);
 
     // Создаем коллекцию лист для пород
 
     public static ArrayList<Breed> breedArrayList;
-	//TODO этот метод должен принимать на вход коллекцию и возвращать коллекцию
-    // реализовать через hashset
-	public static void BreedCollInit(){
-
-        breedArrayList = new ArrayList<Breed>();
-        breedArrayList.add(haski);
-        breedArrayList.add(labr);
-        breedArrayList.add(ger_sheperd);
-
-    }
 
     public HashSet<Breed> initBreedColl () {
 
