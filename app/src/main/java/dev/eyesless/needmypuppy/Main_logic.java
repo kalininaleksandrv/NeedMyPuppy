@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Created by Eyesless on 21.03.2017.
@@ -43,8 +44,7 @@ public class Main_logic {
 
 
         //для тестирования возврата пород -инициализируется лист, реализуется простой перебор
-    //TODO перебор должен возвращать все значения а не только последнее
-    //TODO реализовать нормальный итератор
+
 
     public ArrayList<String> getReturnbreed () {return returnbreed;}
 
@@ -52,13 +52,18 @@ public class Main_logic {
 
         Data mydata = new Data();
 
-        ArrayList <String> temp = new ArrayList<String>();
+        ArrayList <String> finalListOfBreed = new ArrayList<String>();
 
-        for (Breed tmp :  mydata.initBreedColl()){
+        Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
 
-            temp.add(tmp.getBreed_title());
+        while (myBreedIterator.hasNext()) {
 
-            this.returnbreed = temp;
+            Breed breed = myBreedIterator.next();
+
+            if (breed.getSize() < 6) finalListOfBreed.add(breed.getBreed_title());
+
+            this.returnbreed = finalListOfBreed;
+
         }
 
         }
