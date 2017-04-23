@@ -16,6 +16,8 @@ public class Main_logic {
     private String bestchoise;
     private ArrayList<String> returnbreed;
 
+    public static ArrayList <Breed> sortedBreeds;
+
     private boolean opt_switch_temp = false;
     private boolean show_flag_bool = false;
     private boolean company_flag_bool = false;
@@ -48,11 +50,13 @@ public class Main_logic {
 
     public ArrayList<String> getReturnbreed () {return returnbreed;}
 
+
     public void setReturnbreed() {
 
         Data mydata = new Data();
 
         ArrayList <String> finalListOfBreed = new ArrayList<>();
+        ArrayList <Breed> finalListOfBreedObj = new ArrayList<>();
 
         Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
 
@@ -60,9 +64,15 @@ public class Main_logic {
 
             Breed breed = myBreedIterator.next();
 
-            if (breed.getSize() < 6) finalListOfBreed.add(breed.getBreed_title());
+            if (breed.getSize() < 6) {
+
+                finalListOfBreed.add(breed.getBreed_title());
+                finalListOfBreedObj.add(breed);
+
+            }
 
             this.returnbreed = finalListOfBreed;
+            this.sortedBreeds = finalListOfBreedObj;
 
         }
 
