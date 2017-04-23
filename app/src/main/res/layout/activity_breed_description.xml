@@ -4,12 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundGravity="center"
     tools:context="dev.eyesless.needmypuppy.BreedDescriptionActivity">
 
-    <TextView
-        android:id="@+id/breed_title"
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="224dp" />
+        android:foregroundGravity="center"
+        android:gravity="center"
+
+        >
+
+        <ImageView
+            android:id="@+id/breed_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/def_merge"
+            android:foregroundGravity="fill_horizontal"
+
+            app:srcCompat="@drawable/empty" />
+
+        <TextView
+            android:id="@+id/breed_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/breed_image"
+            android:layout_centerHorizontal="true"
+            android:text="@string/no_data"
+            android:layout_margin="@dimen/def_merge"
+            android:textSize="@dimen/text_size"/>
+
+        <TextView
+            android:id="@+id/breed_descript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:layout_below="@+id/breed_title"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/def_merge"
+            android:textSize="@dimen/text_size_small"/>
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

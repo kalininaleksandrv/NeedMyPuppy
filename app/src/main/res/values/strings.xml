@@ -15,6 +15,7 @@
     <string name="btn_opt1">Надоело!</string>
     <string name="btn_opt2">Дальше</string>
     <string name="resultText"></string>
+    <string name="no_data">ошибка загрузки</string>
 
 
     <string-array name="opt_time">

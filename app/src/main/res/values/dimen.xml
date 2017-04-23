@@ -2,4 +2,6 @@
 <resources>
     <dimen name="text_size">18dp</dimen>
     <dimen name="text_size_small">14dp</dimen>
+    <dimen name="def_merge">10dp</dimen>
+    <dimen name="small_merge">5dp</dimen>
 </resources>
