@@ -23,6 +23,6 @@ public class BreedDescriptionActivity extends AppCompatActivity {
 
         TextView myBreedTitle = (TextView) findViewById(R.id.breed_title);
 
-        myBreedTitle.setText(myListOfBreed.get(breedId).getBreed_title());
+        myBreedTitle.setText(myListOfBreed.get(breedId).getBreed_descr());
     }
 }

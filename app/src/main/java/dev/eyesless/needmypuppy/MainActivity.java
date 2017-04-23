@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         go_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                newlogic.setFinalListOfBreed();
                 newlogic.setReturnbreed();
                 Intent resultintent = new Intent(MainActivity.this, BreedListActivity.class);
                 ArrayList <String> temp = new ArrayList<String>(newlogic.getReturnbreed());

@@ -50,13 +50,28 @@ public class Main_logic {
 
     public ArrayList<String> getReturnbreed () {return returnbreed;}
 
+    public void setReturnbreed (){
 
-    public void setReturnbreed() {
+        ArrayList <String> finalListOfBreedDescr = new ArrayList<>();
+
+        Iterator <Breed> myBreedIterator = sortedBreeds.iterator();
+
+        while (myBreedIterator.hasNext()) {
+
+            Breed breed = myBreedIterator.next();
+            finalListOfBreedDescr.add(breed.getBreed_title());
+
+        }
+
+        this.returnbreed = finalListOfBreedDescr;
+    }
+
+
+    public void setFinalListOfBreed() {
 
         Data mydata = new Data();
 
-        ArrayList <String> finalListOfBreed = new ArrayList<>();
-        ArrayList <Breed> finalListOfBreedObj = new ArrayList<>();
+        ArrayList <Breed> finalListOfBreed = new ArrayList<>();
 
         Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
 
@@ -66,17 +81,17 @@ public class Main_logic {
 
             if (breed.getSize() < 6) {
 
-                finalListOfBreed.add(breed.getBreed_title());
-                finalListOfBreedObj.add(breed);
+                finalListOfBreed.add(breed);
 
             }
 
-            this.returnbreed = finalListOfBreed;
-            this.sortedBreeds = finalListOfBreedObj;
+            this.sortedBreeds = finalListOfBreed;
 
         }
 
         }
+
+
 
     // сеттеры и геттеры для корзин
 
