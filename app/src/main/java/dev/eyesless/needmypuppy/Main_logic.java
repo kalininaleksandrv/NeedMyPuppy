@@ -44,52 +44,40 @@ public class Main_logic {
         this.bestchoise = bestchoise;
     }
 
+    // формирование финального списка пород по заданной логике формируем arraylist т.к. нам важна последовательность хранения
 
-        //для тестирования возврата пород -инициализируется лист, реализуется простой перебор
+    public void setFinalListOfBreed() {
 
+        Data mydata = new Data();
+        ArrayList <Breed> finalListOfBreed = new ArrayList<>();
+        Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
+
+        while (myBreedIterator.hasNext()) {
+            Breed breed = myBreedIterator.next();
+            //TODO сделать полноценную логику формирования
+            if (breed.getSize() < 6) {
+                finalListOfBreed.add(breed);
+            }
+            this.sortedBreeds = finalListOfBreed;
+        }
+    }
+
+    //возврат только названий пород из финального списка пород
 
     public ArrayList<String> getReturnbreed () {return returnbreed;}
 
     public void setReturnbreed (){
 
         ArrayList <String> finalListOfBreedDescr = new ArrayList<>();
-
         Iterator <Breed> myBreedIterator = sortedBreeds.iterator();
 
         while (myBreedIterator.hasNext()) {
-
             Breed breed = myBreedIterator.next();
             finalListOfBreedDescr.add(breed.getBreed_title());
-
         }
-
         this.returnbreed = finalListOfBreedDescr;
     }
 
-
-    public void setFinalListOfBreed() {
-
-        Data mydata = new Data();
-
-        ArrayList <Breed> finalListOfBreed = new ArrayList<>();
-
-        Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
-
-        while (myBreedIterator.hasNext()) {
-
-            Breed breed = myBreedIterator.next();
-
-            if (breed.getSize() < 6) {
-
-                finalListOfBreed.add(breed);
-
-            }
-
-            this.sortedBreeds = finalListOfBreed;
-
-        }
-
-        }
 
 
 
