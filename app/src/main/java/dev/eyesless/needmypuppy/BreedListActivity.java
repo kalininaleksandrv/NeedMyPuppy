@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Resultactivity extends ListActivity {
+public class BreedListActivity extends ListActivity {
 
     public static final String EXTRA_MSG = "myBreeds";
 

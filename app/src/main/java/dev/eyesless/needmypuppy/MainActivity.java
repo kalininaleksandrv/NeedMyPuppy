@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newlogic.setReturnbreed();
-                Intent resultintent = new Intent(MainActivity.this, Resultactivity.class);
+                Intent resultintent = new Intent(MainActivity.this, BreedListActivity.class);
                 ArrayList <String> temp = new ArrayList<String>(newlogic.getReturnbreed());
-                resultintent.putExtra(Resultactivity.EXTRA_MSG, temp);
+                resultintent.putExtra(BreedListActivity.EXTRA_MSG, temp);
                 startActivity(resultintent);
             }
         });

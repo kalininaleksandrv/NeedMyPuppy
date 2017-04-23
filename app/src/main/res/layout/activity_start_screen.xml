@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/startscreenbutton"
+            android:drawableRight="@drawable/dog_silhuet2_small"
            />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
