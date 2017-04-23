@@ -52,7 +52,7 @@ public class Main_logic {
 
         Data mydata = new Data();
 
-        ArrayList <String> finalListOfBreed = new ArrayList<String>();
+        ArrayList <String> finalListOfBreed = new ArrayList<>();
 
         Iterator <Breed> myBreedIterator = mydata.initBreedColl().iterator();
 
