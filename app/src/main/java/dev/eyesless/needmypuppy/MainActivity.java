@@ -80,7 +80,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // код спиннера про располагаемое время без адаптера, т.е. значения из values-string
-                Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
+        Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
+
+        ArrayAdapter<String> spiner_time_adapter = new ArrayAdapter<String>
+                (this, R.layout.list_item, Data.spinner_time_array);
+        spiner_time.setAdapter(spiner_time_adapter);
+
+
         spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

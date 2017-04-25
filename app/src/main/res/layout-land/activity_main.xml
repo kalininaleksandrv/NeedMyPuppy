@@ -72,8 +72,7 @@
                     app:layout_columnSpan="2"
                     app:layout_gravity="fill"
                     android:gravity="center"
-                    app:layout_row="1"
-                    android:entries="@array/opt_time"/>
+                    app:layout_row="1"/>
 
                 <TextView
                     android:id="@+id/textView2"
