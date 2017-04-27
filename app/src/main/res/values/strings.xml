@@ -6,16 +6,19 @@
     <string name="switch_about">Уже есть собака(и)?</string>
     <string name="no">нет</string>
     <string name="yes">да</string>
-    <string name="say_me_age">Ну ладно, давай посмотрим кто тут у нас...</string>
-    <string name="flags_description">Собака для ... отметь верные варианты</string>
+    <string name="say_me_age">Чтобы правильно выбрать для Вас щенка оптимальной породы, пройдите несколько несложных раундов вопросов. Выбирайте тему ниже в любой последовательности. Чем больше ответов, тем выше точность рекомендаций.</string>
     <string name="flag_opt1">выставок и соревнований</string>
     <string name="flag_opt2">для компании</string>
     <string name="flag_opt3">пробежек по утрам</string>
     <string name="flag_opt4">охоты, трекинга</string>
-    <string name="btn_opt1">Надоело!</string>
+    <string name="btn_block1">Какая собака подходит Вам?</string>
+    <string name="btn_block2">Какой собаке подходите Вы?</string>
+    <string name="btn_block3">О радостных минутах...</string>
     <string name="btn_opt2">Дальше</string>
     <string name="resultText"></string>
     <string name="no_data">ошибка загрузки</string>
-
+    <string name="intro_about_owner_activity">При выборе собаки, очень важно понимать Ваши возможности. Для этого ответьте на вопросы ниже</string>
+    <string name="intro_about_for_what_activity">Разные породы собак лучше подходят для разных занятий. Выберите - как Вы хотели бы проводить время с Вашей собакой?</string>
+    <string name="intro_about_infrastructure">Для некоторых пород очень важно - какие окружающие условия Вы им обеспечите.</string>
 
 </resources>

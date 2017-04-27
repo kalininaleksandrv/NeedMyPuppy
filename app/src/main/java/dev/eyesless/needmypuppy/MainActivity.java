@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // код конпки "Надоело"
-        Button luck_button = (Button) findViewById(R.id.button_opt1);
+        Button luck_button = (Button) findViewById(R.id.button_block1);
         luck_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,84 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // код свитча была ли собака
-        SwitchCompat opt_switch = (SwitchCompat) findViewById(R.id.opt_switch);
-        opt_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                newlogic.setOpt_switch_temp(isChecked);
-            }
-        });
-
-        // код спиннера про опыт с адаптером на массив в классе Data,
-        // кастомное представление list_item
-        Spinner spiner_exp = (Spinner) findViewById(R.id.spinner_exp);
-
-        ArrayAdapter<String> spiner_exp_adapter = new ArrayAdapter<String>
-                (this, R.layout.list_item, Data.spinner_exp_array);
-        spiner_exp.setAdapter(spiner_exp_adapter);
-        spiner_exp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-              newlogic.setExp_level(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                newlogic.setExp_level(0);
-            }
-        });
-
-        // код спиннера про располагаемое время без адаптера, т.е. значения из values-string
-        Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
-
-        ArrayAdapter<String> spiner_time_adapter = new ArrayAdapter<String>
-                (this, R.layout.list_item, Data.spinner_time_array);
-        spiner_time.setAdapter(spiner_time_adapter);
 
 
-        spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                newlogic.setTime_level(position);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                newlogic.setTime_level(0);
-            }
-        });
     };
-
-    // код чекбоксов про использование собаки
-    public void onCheckboxClicked(View view) {
-
-        CheckBox opt_checkfield = (CheckBox) view;
-
-        boolean checked = opt_checkfield.isChecked();
-
-        switch(view.getId()) {
-            case R.id.checkBox_opt1:
-                newlogic.setShow_flag_bool(checked);
-                break;
-            case R.id.checkBox_opt2:
-                newlogic.setCompany_flag_bool(checked);
-                break;
-            case R.id.checkBox_opt3:
-                newlogic.setRunning_flag_bool(checked);
-                break;
-            case R.id.checkBox_opt4:
-                newlogic.setTracking_flag_bool(checked);
-                break;
-        }
-    }
 
 }
 
     /*
-
 TODO 4 Релизовать description-активность создаваемую по клику на списковой активности (5).
 TODO 5 Реализовать фрагменты
 TODO 6 В стартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
-
-
-
     */

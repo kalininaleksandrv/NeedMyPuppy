@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dev.eyesless.needmypuppy.Infrastructure">
+
+    <TextView
+        android:id="@+id/textView_top"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="wrap"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_about_infrastructure"
+        android:textSize="@dimen/text_size"
+        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_main"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <ImageView
+        android:id="@+id/imageView_main"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="wrap"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="wrap"
+        app:srcCompat="@drawable/playing_puppys"
+        app:layout_constraintTop_toBottomOf="@+id/textView_top"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/opt_switch"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/opt_switch"
+        android:layout_width="wrap_content"
+        app:layout_constraintWidth_default="wrap"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:checked="false"
+        android:text="@string/switch_about"
+        android:textOff="@string/no"
+        android:textOn="@string/yes"
+        android:textSize="@dimen/text_size_small"
+        app:layout_gravity="fill"
+        app:showText="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
