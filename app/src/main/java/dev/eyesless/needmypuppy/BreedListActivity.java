@@ -2,15 +2,11 @@ package dev.eyesless.needmypuppy;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class BreedListActivity extends ListActivity {
 

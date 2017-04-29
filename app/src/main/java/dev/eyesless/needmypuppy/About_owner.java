@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,6 @@ public class About_owner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_owner);
-
 
 
         // код спиннера про опыт с адаптером на массив в классе Data,

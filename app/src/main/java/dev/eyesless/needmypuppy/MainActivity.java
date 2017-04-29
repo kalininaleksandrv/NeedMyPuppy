@@ -3,19 +3,12 @@ package dev.eyesless.needmypuppy;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static android.R.layout.simple_list_item_1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +18,48 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //код конопки "какая собака подходит вам"
+
+        Button dog_to_you_button = (Button) findViewById(R.id.button_block1);
+        dog_to_you_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent start_new_block = new Intent(MainActivity.this, About_owner.class);
+
+                startActivity(start_new_block);
+
+            }
+        });
+
+        //код конопки "какой собаке подходите вы"
+
+        Button you_to_dog_button = (Button) findViewById(R.id.button_block2);
+        you_to_dog_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent start_new_block = new Intent(MainActivity.this, Infrastructure.class);
+
+                startActivity(start_new_block);
+
+            }
+        });
+
+        Button happy_minutes_button  = (Button) findViewById(R.id.button_block3);
+        happy_minutes_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent start_new_block = new Intent(MainActivity.this, For_what.class);
+
+                startActivity(start_new_block);
+
+            }
+        });
+
 
 
         // код кнопки "Дальше"
@@ -40,19 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(resultintent);
             }
         });
-
-        // код конпки "Надоело"
-        Button luck_button = (Button) findViewById(R.id.button_block1);
-        luck_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView chektext = (TextView) findViewById(R.id.opt_starttext);
-                newlogic.bucket_changer();
-                chektext.setText(newlogic.getBestchoise());
-            }
-        });
-
-
 
     };
 
