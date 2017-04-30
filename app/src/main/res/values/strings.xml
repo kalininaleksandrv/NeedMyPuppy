@@ -15,6 +15,7 @@
     <string name="btn_block2">Какой собаке подходите Вы?</string>
     <string name="btn_block3">О радостных минутах...</string>
     <string name="btn_opt2">Дальше</string>
+    <string name="btn_complete">Готово!</string>
     <string name="resultText"></string>
     <string name="no_data">ошибка загрузки</string>
     <string name="intro_about_owner_activity">При выборе собаки, очень важно понимать Ваши возможности. Для этого ответьте на вопросы ниже</string>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class About_owner extends AppCompatActivity {
@@ -54,6 +55,22 @@ public class About_owner extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 setTime_level(0);
+            }
+        });
+
+        //код кнопки готово
+
+        Button complete_button = (Button) findViewById(R.id.button_complete);
+        complete_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Data.is_about_owner = true;
+
+                Intent start_new_block = new Intent(About_owner.this, MainActivity.class);
+                startActivity(start_new_block);
+
             }
         });
 

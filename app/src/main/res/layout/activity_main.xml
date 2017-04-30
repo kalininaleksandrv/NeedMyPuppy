@@ -57,13 +57,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:drawableLeft="@android:drawable/ic_input_add"
             app:layout_constraintBottom_toTopOf="@+id/button_block2"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toBottomOf="@+id/opt_starttext"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginBottom="8dp" />
+
+        <ImageView
+            android:id="@+id/dog_to_you_image"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_warning_yello_36dp"
+            app:layout_constraintTop_toTopOf="@+id/button_block1"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_block1"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/button_block1" />
 
         <Button
             android:id="@+id/button_block2"
@@ -77,13 +89,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:drawableLeft="@android:drawable/ic_input_add"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/button_block3"
             app:layout_constraintTop_toBottomOf="@+id/button_block1"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginBottom="8dp" />
+
+        <ImageView
+            android:id="@+id/you_to_dog_image"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_warning_yello_36dp"
+            app:layout_constraintTop_toTopOf="@+id/button_block2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_block2"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/button_block2" />
 
         <Button
             android:id="@+id/button_block3"
@@ -97,13 +121,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:drawableLeft="@android:drawable/ic_input_add"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toBottomOf="@+id/button_block2"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="32dp"
             app:layout_constraintHorizontal_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/infrastructure_image"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:srcCompat="@drawable/ic_warning_yello_36dp"
+            app:layout_constraintTop_toTopOf="@+id/button_block3"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_block3"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/button_block3" />
 
         <Button
             android:id="@+id/button_opt2"

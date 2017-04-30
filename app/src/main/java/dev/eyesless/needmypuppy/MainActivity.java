@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Main_logic newlogic = new Main_logic();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
         //код конопки "какая собака подходит вам"
 
         Button dog_to_you_button = (Button) findViewById(R.id.button_block1);
+        ImageView dog_to_you_image = (ImageView) findViewById(R.id.dog_to_you_image);
+        if (Data.is_about_owner) dog_to_you_image.setImageResource(R.drawable.ic_check_green_36dp);
+        else dog_to_you_image.setImageResource(R.drawable.ic_warning_yello_36dp);
+
+
         dog_to_you_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         //код конопки "какой собаке подходите вы"
 
         Button you_to_dog_button = (Button) findViewById(R.id.button_block2);
+        ImageView you_to_dog_image = (ImageView) findViewById(R.id.you_to_dog_image);
+        if (Data.is_about_structure) you_to_dog_image.setImageResource(R.drawable.ic_check_green_36dp);
+        else you_to_dog_image.setImageResource(R.drawable.ic_warning_yello_36dp);
+
         you_to_dog_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -49,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button happy_minutes_button  = (Button) findViewById(R.id.button_block3);
+        ImageView infrastr_image = (ImageView) findViewById(R.id.infrastructure_image);
+        if (Data.is_for_what) infrastr_image.setImageResource(R.drawable.ic_check_green_36dp);
+        else infrastr_image.setImageResource(R.drawable.ic_warning_yello_36dp);
+
         happy_minutes_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         go_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Main_logic newlogic = new Main_logic();
                 newlogic.setFinalListOfBreed();
                 newlogic.setReturnbreed();
                 Intent resultintent = new Intent(MainActivity.this, BreedListActivity.class);
@@ -81,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 }
 
     /*
-TODO 4 Релизовать description-активность создаваемую по клику на списковой активности (5).
 TODO 5 Реализовать фрагменты
 TODO 6 В стартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
     */

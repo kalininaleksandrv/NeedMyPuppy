@@ -1,8 +1,10 @@
 package dev.eyesless.needmypuppy;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 public class For_what extends AppCompatActivity {
@@ -17,6 +19,22 @@ public class For_what extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_for_what);
+
+        //кнопка готово
+
+        Button complete_button = (Button) findViewById(R.id.button_complete);
+        complete_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Data.is_for_what = true;
+
+                Intent start_new_block = new Intent(For_what.this, MainActivity.class);
+                startActivity(start_new_block);
+
+            }
+        });
 
         //tODO сделать подсказку возможно выбрать любое количество вариантов
 

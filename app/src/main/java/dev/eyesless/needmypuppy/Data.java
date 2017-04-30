@@ -14,7 +14,6 @@ public class Data {
 
     /*
     массивы для спиннеров
-    TODO реализовать массивы для всех спиннеров
     */
 
     public static final String [] spinner_exp_array = {"есть ли опыт содержания и воспитания собак?",
@@ -46,9 +45,12 @@ public class Data {
        Collections.addAll(myBreedColl, haski, labr, ger_sheperd);
 
         return myBreedColl;
-
-
     }
+
+    public static boolean is_about_owner = false;
+    public static boolean is_about_structure = false;
+    public static boolean is_for_what = false;
+
 
 
 
