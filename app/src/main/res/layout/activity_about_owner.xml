@@ -33,7 +33,7 @@
         app:layout_constraintWidth_default="wrap"
         android:layout_height="0dp"
         app:layout_constraintHeight_default="wrap"
-        app:srcCompat="@drawable/playing_puppys"
+        app:srcCompat="@drawable/about_owner_image"
         app:layout_constraintTop_toBottomOf="@+id/textView_top"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"

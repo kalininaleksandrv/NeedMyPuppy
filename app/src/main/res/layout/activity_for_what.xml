@@ -33,7 +33,7 @@
         app:layout_constraintWidth_default="wrap"
         android:layout_height="0dp"
         app:layout_constraintHeight_default="wrap"
-        app:srcCompat="@drawable/playing_puppys"
+        app:srcCompat="@drawable/for_what_image"
         app:layout_constraintTop_toBottomOf="@+id/textView_top"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBox_opt2"
         app:layout_constraintLeft_toLeftOf="@+id/guideline3"
         android:layout_marginLeft="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/button_complete" />
 
     <android.support.constraint.Guideline
