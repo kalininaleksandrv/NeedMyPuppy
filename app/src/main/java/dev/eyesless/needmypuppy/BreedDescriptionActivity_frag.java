@@ -17,3 +17,5 @@ public class BreedDescriptionActivity_frag extends AppCompatActivity {
 
     }
 }
+
+//TODO: 02.05.2017 создавая Фрагмент-описание и фрагмент-список нужно передавать им лист пород еще в конструкторе создавая в этом классе их экземпляры
