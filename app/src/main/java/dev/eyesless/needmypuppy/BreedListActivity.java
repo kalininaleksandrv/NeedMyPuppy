@@ -35,7 +35,7 @@ public class BreedListActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        Intent descrintent = new Intent(BreedListActivity.this, BreedDescriptionActivity.class);
+        Intent descrintent = new Intent(BreedListActivity.this, BreedDescriptionActivity_frag.class);
         descrintent.putExtra(BreedDescriptionActivity.EXTRA_BREED_ID, (int) id);
         startActivity(descrintent);
 

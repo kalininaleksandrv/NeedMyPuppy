@@ -23,7 +23,8 @@
         <activity android:name=".BreedDescriptionActivity" />
         <activity android:name=".About_owner" />
         <activity android:name=".For_what" />
-        <activity android:name=".Infrastructure"></activity>
+        <activity android:name=".Infrastructure" />
+        <activity android:name=".BreedDescriptionActivity_frag"></activity>
     </application>
 
 </manifest>
