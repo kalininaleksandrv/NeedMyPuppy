@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Fragment_description extends Fragment {
 
 
-    private Integer myBreedId;
+    private int myBreedId;
 
     // получаем лист выбранных пород
     ArrayList<Breed> myListOfBreed = Main_logic.sortedBreeds;
@@ -32,6 +32,9 @@ public class Fragment_description extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (savedInstanceState !=null) myBreedId = savedInstanceState.getInt("myBreedId");
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_description, container, false);
 
@@ -58,8 +61,14 @@ public class Fragment_description extends Fragment {
 
     }
 
+    public void onSaveInstanceState (Bundle savedState) {
+
+        savedState.putInt("myBreedId", myBreedId);
+
+    }
+
     public void setBreedId (int id) {
-        this.myBreedId = (Integer) id;
+        this.myBreedId = id;
     }
 
 }
