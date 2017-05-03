@@ -4,11 +4,14 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class BreedDescriptionActivity_frag extends AppCompatActivity implements Fragment_list.Fragment_list_listner{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_breed_description_frag);
 
     }

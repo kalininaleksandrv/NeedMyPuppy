@@ -13,17 +13,10 @@ public class Main_logic {
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
     private String bestchoise;
-    private ArrayList<String> returnbreed;
 
     public static ArrayList<Breed> sortedBreeds;
+    public static ArrayList<String> finalListOfBreedTitles;
 
-
-
-
-    public void bucket_changer() {
-
-
-    }
 
     public String getBestchoise() {
         return bestchoise;
@@ -53,20 +46,16 @@ public class Main_logic {
 
     //возврат только названий пород из финального списка пород
 
-    public ArrayList<String> getReturnbreed() {
-        return returnbreed;
-    }
-
     public void setReturnbreed() {
 
-        ArrayList<String> finalListOfBreedDescr = new ArrayList<>();
+        ArrayList<String> finalListOfBreedTitles = new ArrayList<>();
         Iterator<Breed> myBreedIterator = sortedBreeds.iterator();
 
         while (myBreedIterator.hasNext()) {
             Breed breed = myBreedIterator.next();
-            finalListOfBreedDescr.add(breed.getBreed_title());
+            finalListOfBreedTitles.add(breed.getBreed_title());
         }
-        this.returnbreed = finalListOfBreedDescr;
+        this.finalListOfBreedTitles = finalListOfBreedTitles;
     }
 
 

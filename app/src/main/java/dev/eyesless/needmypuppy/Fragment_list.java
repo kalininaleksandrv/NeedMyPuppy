@@ -21,8 +21,9 @@ import static android.R.attr.id;
  */
 public class Fragment_list extends ListFragment {
 
+
     public Fragment_list() {
-        // Required empty public constructor
+
     }
 
     //создаем интерфейс для слушателя
@@ -40,7 +41,7 @@ public class Fragment_list extends ListFragment {
 
     //получаем из листа пород лист строк названий через итератор в методе setListOfBreed
 
-    ArrayList<String> mylist = new ArrayList<String>(setListOfBreed());
+    ArrayList<String> mylist = new ArrayList<String>(Main_logic.finalListOfBreedTitles);
 
 
     @Override
@@ -69,18 +70,6 @@ public class Fragment_list extends ListFragment {
 
         if (myfraglistner != null) myfraglistner.itemClicked(id);
 
-    }
-
-    // метод итератор превращающий лист пород в лист сторк
-
-    public ArrayList<String> setListOfBreed () {
-        ArrayList<String> finalListOfBreedDescr = new ArrayList<>();
-        Iterator<Breed> myBreedIterator = Main_logic.sortedBreeds.iterator();
-        while (myBreedIterator.hasNext()) {
-            Breed breed = myBreedIterator.next();
-            finalListOfBreedDescr.add(breed.getBreed_title());
-        }
-        return finalListOfBreedDescr;
     }
 
 }

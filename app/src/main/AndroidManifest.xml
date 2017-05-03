@@ -21,7 +21,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/opt_name" />
-        <activity android:name=".BreedListActivity" />
         <activity android:name=".BreedDescriptionActivity" />
         <activity android:name=".About_owner" />
         <activity android:name=".For_what" />
