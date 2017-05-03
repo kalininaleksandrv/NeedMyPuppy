@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 Main_logic newlogic = new Main_logic();
                 newlogic.setFinalListOfBreed();
                 newlogic.setReturnbreed();
-                Intent resultintent = new Intent(MainActivity.this, BreedListActivity.class);
-                ArrayList <String> temp = new ArrayList<String>(newlogic.getReturnbreed());
-                resultintent.putExtra(BreedListActivity.EXTRA_MSG, temp);
+                Intent resultintent = new Intent(MainActivity.this, BreedDescriptionActivity_frag.class);
+//                ArrayList <String> temp = new ArrayList<String>(newlogic.getReturnbreed());
+//                resultintent.putExtra(BreedListActivity.EXTRA_MSG, temp);
                 startActivity(resultintent);
             }
         });

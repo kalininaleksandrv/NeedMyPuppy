@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Fragment_description extends Fragment {
 
 
-    private Integer breedId;
+    private Integer myBreedId;
 
     // получаем лист выбранных пород
     ArrayList<Breed> myListOfBreed = Main_logic.sortedBreeds;
@@ -46,20 +46,20 @@ public class Fragment_description extends Fragment {
 
             // из листа пород по ID выводим название описание и картинку конкретной породы
             TextView myBreedTitle = (TextView) myview.findViewById(R.id.breed_title);
-            myBreedTitle.setText(myListOfBreed.get(breedId).getBreed_title());
+            myBreedTitle.setText(myListOfBreed.get(myBreedId).getBreed_title());
 
             ImageView myBreedImage = (ImageView) myview.findViewById(R.id.breed_image);
-            myBreedImage.setImageResource(myListOfBreed.get(breedId).getImageId());
+            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getImageId());
 
             TextView myBreedDescript = (TextView) myview.findViewById(R.id.breed_descript);
-            myBreedDescript.setText(myListOfBreed.get(breedId).getBreed_descr());
+            myBreedDescript.setText(myListOfBreed.get(myBreedId).getBreed_descr());
 
         }
 
     }
 
-    public void setBreedId (Integer id) {
-        this.breedId = id;
+    public void setBreedId (int id) {
+        this.myBreedId = (Integer) id;
     }
 
 }
