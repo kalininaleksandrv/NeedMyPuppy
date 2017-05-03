@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:foregroundGravity="center"
-    tools:context="dev.eyesless.needmypuppy.BreedDescriptionActivity">
+    tools:context="dev.eyesless.needmypuppy.DescriptionActivity">
 
 
     <ImageView

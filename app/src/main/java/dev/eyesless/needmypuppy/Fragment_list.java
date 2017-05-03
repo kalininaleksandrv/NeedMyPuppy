@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -10,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import static android.R.attr.id;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,13 +54,12 @@ public class Fragment_list extends ListFragment {
     }
 
     //метод регистрирующий слушатель который передает активность во фрагменте при прикреплении фрагмента к активности
-    // TODO: 03.05.2017  разобраться с deprecated
-    public void onAttach (Activity activity) {
-
-        super.onAttach(activity);
-
-        this.myfraglistner = (Fragment_list_listner) activity;
+    // для возврата к варианту метода deprecated сменить аргумент на Activity activity
+    public void onAttach (Context context) {
+        super.onAttach(context);
+        this.myfraglistner = (Fragment_list_listner) context;
             }
+
 
     //слушатель собственно
 

@@ -95,6 +95,5 @@ public class MainActivity extends AppCompatActivity {
 }
 
     /*
-TODO 5 Реализовать фрагменты
 TODO 6 В стартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
     */
