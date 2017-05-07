@@ -49,13 +49,11 @@
         app:layout_constraintHeight_default="wrap"
         android:textSize="@dimen/text_size"
         android:gravity="left|center_vertical"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/spinner_time"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_complete"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/button_complete" />
 
     <Spinner
         android:id="@+id/spinner_time"
@@ -66,11 +64,9 @@
         android:textSize="@dimen/text_size"
         android:gravity="left|center_vertical"
         app:layout_constraintBottom_toTopOf="@+id/spinner_exp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView_top"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp" />
 
     <Button
