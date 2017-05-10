@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.app.Application;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -14,19 +15,17 @@ public class Main_logic {
     private int bucket_activ;
     private int bucket_hard = 0;
     private int bucket_frendly = 0;
-    private String bestchoise;
 
     public static ArrayList<Breed> sortedBreeds;
     public static ArrayList<String> finalListOfBreedTitles;
 
+    //конструктор по умолчанию
+    public Main_logic (){
 
-    public String getBestchoise() {
-        return bestchoise;
+        Log.w("MY_TAG", "Main_Logic");
     }
 
-    public void setBestchoise(String bestchoise) {
-        this.bestchoise = bestchoise;
-    }
+
 
     // формирование финального списка пород по заданной логике формируем arraylist т.к. нам важна последовательность хранения
 
@@ -43,7 +42,9 @@ public class Main_logic {
                 finalListOfBreed.add(breed);
             }
             this.sortedBreeds = finalListOfBreed;
+
         }
+        Log.w("MY_TAG", "setFinalListOfBreed");
     }
 
     //возврат только названий пород из финального списка пород
@@ -58,6 +59,7 @@ public class Main_logic {
             finalListOfBreedTitles.add(breed.getBreed_title());
         }
         this.finalListOfBreedTitles = finalListOfBreedTitles;
+        Log.w("MY_TAG", "setReturnbreed");
     }
 
 
