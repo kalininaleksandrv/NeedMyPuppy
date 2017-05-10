@@ -1,5 +1,7 @@
 package dev.eyesless.needmypuppy;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -11,6 +13,11 @@ import java.util.HashSet;
 
 public class Data {
 
+    //конструктор по умолчанию
+    public Data (){
+
+        Log.w("MY_TAG", "Data");
+    }
 
     /*
     массивы для спиннеров
@@ -39,6 +46,8 @@ public class Data {
     // Создаем коллекцию хэш сет для пород - хэш сет т.к. максимальное быстродействие
 
     public HashSet<Breed> initBreedColl () {
+
+        Log.w("MY_TAG", "initBreedColl");
 
        HashSet<Breed> myBreedColl = new HashSet<Breed>();
 

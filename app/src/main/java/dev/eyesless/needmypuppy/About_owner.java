@@ -19,13 +19,14 @@ public class About_owner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_owner);
 
+        //получаем контекст инициирующей активности чтобы обратиться к методам, устанавливающим спиннеры
+        InitiationActivity inact = ((InitiationActivity) getApplicationContext());
 
         // код спиннера про опыт с адаптером на массив в классе Data,
         // кастомное представление list_item
         Spinner spiner_exp = (Spinner) findViewById(R.id.spinner_exp);
-
         ArrayAdapter<String> spiner_exp_adapter = new ArrayAdapter<String>
-                (this, R.layout.list_item, Data.spinner_exp_array);
+                (this, R.layout.list_item, inact.getSpinner_exp_array());
         spiner_exp.setAdapter(spiner_exp_adapter);
         spiner_exp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -43,7 +44,7 @@ public class About_owner extends AppCompatActivity {
         Spinner spiner_time = (Spinner) findViewById(R.id.spinner_time);
 
         ArrayAdapter<String> spiner_time_adapter = new ArrayAdapter<String>
-                (this, R.layout.list_item, Data.spinner_time_array);
+                (this, R.layout.list_item, inact.getSpinner_time_array());
         spiner_time.setAdapter(spiner_time_adapter);
 
 
@@ -74,11 +75,7 @@ public class About_owner extends AppCompatActivity {
             }
         });
 
-
-
-
     }
-
 
     // сеттеры для запоминания значений спиннеров
     public void setExp_level(int exp_level) {
