@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.app.Application;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ public class StartScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_screen);
+                setContentView(R.layout.activity_start_screen);
         startbutton = (Button) findViewById(R.id.button2);
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,7 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".InitiationActivity">
         <activity android:name=".StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,8 @@
         <activity android:name=".For_what" />
         <activity android:name=".Infrastructure" />
         <activity android:name=".BreedDescriptionActivity_frag" />
-        <activity android:name=".DescriptionActivity"></activity>
+        <activity android:name=".DescriptionActivity" />
+        <activity android:name=".InitiationActivity"></activity>
     </application>
 
 </manifest>
