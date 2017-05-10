@@ -3,6 +3,7 @@ package dev.eyesless.needmypuppy;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent start_new_block = new Intent(MainActivity.this, Infrastructure.class);
-
                 startActivity(start_new_block);
 
             }
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent start_new_block = new Intent(MainActivity.this, For_what.class);
-
                 startActivity(start_new_block);
 
             }
@@ -96,4 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
     /*
 TODO 6 В стартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
+TODO 7 реализовать фрагмент во фрагменте - кнопки назад и вперел в description (layout)
+todo 8 реализовать класс Application для хранения данных (пояснение: aplication это по сути реалтизация патерна
+todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
+todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
     */

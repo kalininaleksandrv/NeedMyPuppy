@@ -25,7 +25,6 @@ public class Fragment_list extends ListFragment {
     }
 
     //создаем интерфейс для слушателя
-    // TODO: 03.05.2017 реализовать без интерфейса?
 
     static interface Fragment_list_listner {
 
