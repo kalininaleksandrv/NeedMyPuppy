@@ -3,6 +3,7 @@ package dev.eyesless.needmypuppy;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,8 @@ public class About_owner extends AppCompatActivity {
 
         //получаем контекст инициирующей активности чтобы обратиться к методам, устанавливающим спиннеры
         InitiationActivity inact = ((InitiationActivity) getApplicationContext());
+        Log.w("MY_TAG", "About_owner");
+
 
         // код спиннера про опыт с адаптером на массив в классе Data,
         // кастомное представление list_item

@@ -4,6 +4,7 @@ package dev.eyesless.needmypuppy;
 import android.app.Fragment;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class Fragment_description extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        Log.w("MY_TAG", "Fragment_description_onCreate");
         View myview = getView();
 
         if (myview != null){
@@ -72,3 +74,5 @@ public class Fragment_description extends Fragment {
     }
 
 }
+
+// TODO: 11.05.2017 создаем фрагмент с 2мя кнопками по нажатию кнопки создаем экземпляр descriptionActivity передаем в него ID++
