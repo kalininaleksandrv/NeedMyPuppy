@@ -2,10 +2,11 @@ package dev.eyesless.needmypuppy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-import java.util.function.ToDoubleBiFunction;
 
-public class DescriptionActivity extends AppCompatActivity {
+public class DescriptionActivity extends AppCompatActivity implements Fragment_nxtbtn.onButtonListner {
 
     public static final String GETBREEDID = "getbreedid";
 
@@ -14,7 +15,7 @@ public class DescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
 
-        //вызываем фрагмент breed description
+        //получаем ссылку на фрагмент breed description через создание его экземпляра
 
         Fragment_description mydescription = (Fragment_description)getFragmentManager()
                 .findFragmentById(R.id.frame_breed_description);
@@ -23,8 +24,22 @@ public class DescriptionActivity extends AppCompatActivity {
 
         mydescription.setBreedId((int)getIntent().getExtras().get("getbreedid"));
 
-        //вызываем фрагмент btns
+        //вызываем фрагмент nxtbtn
+
+//        mynxtbtn.setBreed_id((int)getIntent().getExtras().get("getbreedid"));
+//        mynxtbtn.setCounter(Main_logic.sortedBreeds.size());
+
         // TODO: 11.05.2017 здесь вызываем метод фрагмента nxtbtn для передачи ему (как?) количества айтемов в списке
+
+
+    }
+
+    @Override
+    public void buttonClicked(String s) {
+
+        Fragment_nxtbtn mynxtbtn = (Fragment_nxtbtn) getFragmentManager().findFragmentById(R.id.frame_nxtbtn);
+        mynxtbtn.setMytesttext("test");
+        Log.w("MY_TAG", "buttonClicked");
 
 
     }
