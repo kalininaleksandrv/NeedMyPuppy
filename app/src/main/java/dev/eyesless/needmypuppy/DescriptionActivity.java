@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 
 
 public class DescriptionActivity extends AppCompatActivity implements Fragment_nxtbtn.onButtonListner
@@ -50,22 +51,40 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
             switch (v.getId()) {
               case R.id.nxtbtn_imageButton_next:
 
-                  newdescription.setBreedId(1);
-
-                  fratra_up.replace(R.id.frame_breed_description, newdescription);
-                  fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                  fratra_up.commit();
+                  if (fragmentCounter(Main_logic.finalListOfBreedTitles, interid)){
+                        interid ++;
+                        newdescription.setBreedId(interid);
+                        fratra_up.replace(R.id.frame_breed_description, newdescription);
+                        fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        fratra_up.commit();}
 
               break;
               case R.id.nxtbtn_imageButton_prev:
-                  newdescription.setBreedId(0);
-                  fratra_up.replace(R.id.frame_breed_description, newdescription);
-                  fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                  fratra_up.commit();
+
+                  if (fragmentCounter(Main_logic.finalListOfBreedTitles, interid)){
+                      interid --;
+                      newdescription.setBreedId(interid);
+                      fratra_up.replace(R.id.frame_breed_description, newdescription);
+                      fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                      fratra_up.commit();}
 
               break;
             }
 
+
+
+
+    }
+
+    //метод для установки значения при переключении фрагмента, получает на вход лист коллекции чтобы узнать обще кол-во записей и теекущую запись
+
+    public boolean fragmentCounter (ArrayList<String> array, int count){
+
+        if ( count < array.size() & count > -1){
+
+           return true;
+
+        } else return false;
 
 
 

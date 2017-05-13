@@ -38,7 +38,7 @@ public class Main_logic {
         while (myBreedIterator.hasNext()) {
             Breed breed = myBreedIterator.next();
             //TODO сделать полноценную логику формирования
-            if (breed.getSize() < 6) {
+            if (breed.getSize() < 10) {
                 finalListOfBreed.add(breed);
             }
             this.sortedBreeds = finalListOfBreed;
