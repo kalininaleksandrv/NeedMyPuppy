@@ -1,10 +1,11 @@
 package dev.eyesless.needmypuppy;
 
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +21,11 @@ import android.widget.TextView;
  */
 public class Fragment_nxtbtn extends Fragment {
 
-    private int breed_id;
-    private int counter;
-
-
-    private String mytesttext;
 
     // реализуем интерфейс и его экземпляр
 
     static interface onButtonListner {
-        void buttonClicked (String s);
+        void buttonClicked (View s);
     }
     onButtonListner myButtonListner;
 
@@ -53,19 +49,7 @@ public class Fragment_nxtbtn extends Fragment {
             @Override
             public void onClick(View v) {
 
-  //             myButtonListner.buttonClicked("test");
-
-                TextView testtextview = (TextView) parentview.findViewById(R.id.textView_idofitem);
-
-                switch (v.getId()){
-
-                    case R.id.nxtbtn_imageButton_next: testtextview.setText("next");
-                        break;
-                    case R.id.nxtbtn_imageButton_prev: testtextview.setText("prev");
-                        break;
-                }
-
-
+               myButtonListner.buttonClicked(v);
 
             }
         };
@@ -74,18 +58,13 @@ public class Fragment_nxtbtn extends Fragment {
 
         nextbtn.setOnClickListener(myOnClickListner);
         prevbtn.setOnClickListener(myOnClickListner);
-
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                                  Bundle savedInstanceState) {
 
         return  inflater.inflate(R.layout.fragment_nxtbtn, container, false);
-
 
     }
 
@@ -99,17 +78,5 @@ public class Fragment_nxtbtn extends Fragment {
 
     }
 
-    public void setBreed_id(int breed_id) {
-        this.breed_id = breed_id;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-
-    public void setMytesttext(String mytesttext) {
-        this.mytesttext = mytesttext;
-    }
 
 }
