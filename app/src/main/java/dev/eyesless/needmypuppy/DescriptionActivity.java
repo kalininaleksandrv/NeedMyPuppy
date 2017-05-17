@@ -23,15 +23,23 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
 
-        //получаем ссылку на фрагмент breed description через создание его экземпляра
+        //если активность создается впервые получаем ссылку на фрагмент breed description через создание его экземпляра
+        // если повторно - просто берем значение ID из сейва
+
+        if (savedInstanceState != null){
+
+            int i = savedInstanceState.getInt("interID");
+            setInterID(i);
+
+        } else {
 
         setInterID((int)getIntent().getExtras().get("getbreedid"));
         Fragment_description newdescription = new Fragment_description();
         newdescription.setBreedId(getInterID());
         FragmentTransaction fratra = getFragmentManager().beginTransaction();
-        fratra.add(R.id.frame_breed_description, newdescription);
+        fratra.replace(R.id.frame_breed_description, newdescription);
         fratra.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fratra.commit();
+        fratra.commit();}
 
     }
 
