@@ -4,6 +4,8 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -46,43 +48,39 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
     @Override
     public void buttonClicked(View v) {
 
-        //gjлучаем ID из интента
+        //получаем ID из интента
+
+        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
+        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
 
 
-        Fragment_nxtbtn mynxtbtn = (Fragment_nxtbtn) getSupportFragmentManager().findFragmentById(R.id.frame_nxtbtn);
-        Fragment_description newdescription = new Fragment_description();
-        FragmentTransaction fratra_up = getFragmentManager().beginTransaction();
-
-        // TODO: 16.05.2017 оптимизировать эту жесть
 
 
             switch (v.getId()) {
-              case R.id.nxtbtn_imageButton_next:
+                  case R.id.nxtbtn_imageButton_next:
 
-                  setInterID(getInterID()+1);
+                      setInterID(getInterID()+1);
 
-                  if (fragmentCounter(getInterID())){
+                      if (fragmentCounter(getInterID())){
 
-                        newdescription.setBreedId(getInterID());
-                        fratra_up.replace(R.id.frame_breed_description, newdescription);
-                        fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fratra_up.commit();}
-                  else setInterID(getInterID()-1);
+                          fragmentOnClickReplacer();
+                         }
 
-              break;
-              case R.id.nxtbtn_imageButton_prev:
+                      else {next.setClickable(false);
+                      setInterID(getInterID()-1);}
 
-                  setInterID(getInterID()-1);
 
-                  if (fragmentCounter(getInterID())){
+                  break;
+                  case R.id.nxtbtn_imageButton_prev:
 
-                      newdescription.setBreedId(getInterID());
-                      fratra_up.replace(R.id.frame_breed_description, newdescription);
-                      fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                      fratra_up.commit();}
-                  else setInterID(getInterID()+1);
+                      setInterID(getInterID()-1);
+                      if (fragmentCounter(getInterID())){
+                          fragmentOnClickReplacer();
+                      }
+                      else {prev.setClickable(false);
+                          setInterID(getInterID()+1);}
 
-              break;
+                  break;
             }
 
 
@@ -90,19 +88,28 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
 
     }
 
+    public void fragmentOnClickReplacer (){
+
+        Fragment_nxtbtn mynxtbtn = (Fragment_nxtbtn) getSupportFragmentManager().findFragmentById(R.id.frame_nxtbtn);
+        Fragment_description newdescription = new Fragment_description();
+        FragmentTransaction fratra_up = getFragmentManager().beginTransaction();
+        newdescription.setBreedId(getInterID());
+        fratra_up.replace(R.id.frame_breed_description, newdescription);
+        fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fratra_up.commit();
+    }
+
     //метод для установки значения при переключении фрагмента, получает на вход лист коллекции чтобы узнать обще кол-во записей и теекущую запись
 
     public boolean fragmentCounter (int count){
 
-       int temp = Main_logic.finalListOfBreedTitles.size();
 
-        if (count < temp & count > -1 ){
-
-           return true;
-
-        } else return false;
+        if (count > Main_logic.finalListOfBreedTitles.size()-1 || count<0){
 
 
+           return false;
+
+        } else return true;
 
     }
 
