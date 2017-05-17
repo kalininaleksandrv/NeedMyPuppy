@@ -50,11 +50,6 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
 
         //получаем ID из интента
 
-        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
-        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
-
-
-
 
             switch (v.getId()) {
                   case R.id.nxtbtn_imageButton_next:
@@ -64,9 +59,10 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
                       if (fragmentCounter(getInterID())){
 
                           fragmentOnClickReplacer();
+
                          }
 
-                      else {next.setClickable(false);
+                      else {v.setClickable(false); //если дошел до последнего айтема установим кнопке falce (см onClickReplacer)
                       setInterID(getInterID()-1);}
 
 
@@ -77,7 +73,7 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
                       if (fragmentCounter(getInterID())){
                           fragmentOnClickReplacer();
                       }
-                      else {prev.setClickable(false);
+                      else {v.setClickable(false);
                           setInterID(getInterID()+1);}
 
                   break;
@@ -97,6 +93,14 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
         fratra_up.replace(R.id.frame_breed_description, newdescription);
         fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratra_up.commit();
+
+        //устанавливаем значение кнопок в true
+        View v = mynxtbtn.getView();
+        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
+        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
+        prev.setClickable(true);
+        next.setClickable(true);
+
     }
 
     //метод для установки значения при переключении фрагмента, получает на вход лист коллекции чтобы узнать обще кол-во записей и теекущую запись
