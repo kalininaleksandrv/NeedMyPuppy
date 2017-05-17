@@ -1,6 +1,8 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,7 +50,8 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
     @Override
     public void buttonClicked(View v) {
 
-        //получаем ID из интента
+        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
+        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
 
 
             switch (v.getId()) {
@@ -62,8 +65,11 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
 
                          }
 
-                      else {v.setClickable(false); //если дошел до последнего айтема установим кнопке falce (см onClickReplacer)
-                      setInterID(getInterID()-1);}
+                      else {
+                          next.setEnabled(false); //если дошел до последнего айтема установим кнопке falce (см onClickReplacer)
+                          next.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                          setInterID(getInterID()-1);
+                      }
 
 
                   break;
@@ -73,14 +79,14 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
                       if (fragmentCounter(getInterID())){
                           fragmentOnClickReplacer();
                       }
-                      else {v.setClickable(false);
-                          setInterID(getInterID()+1);}
+                      else {
+                          prev.setEnabled(false);
+                          prev.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                          setInterID(getInterID()+1);
+                      }
 
                   break;
             }
-
-
-
 
     }
 
@@ -94,12 +100,14 @@ public class DescriptionActivity extends AppCompatActivity implements Fragment_n
         fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratra_up.commit();
 
-        //устанавливаем значение кнопок в true
+        //устанавливаем значение кнопок в true a вид в обычный
         View v = mynxtbtn.getView();
         ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
         ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
-        prev.setClickable(true);
-        next.setClickable(true);
+        prev.setEnabled(true);
+        next.setEnabled(true);
+        prev.setColorFilter(null);
+        next.setColorFilter(null);
 
     }
 
