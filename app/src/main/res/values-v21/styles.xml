@@ -12,8 +12,6 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="android:colorBackground">@color/backGround</item>
         <item name="android:windowBackground">@color/backGround</item>
-
-
     </style>
 
 

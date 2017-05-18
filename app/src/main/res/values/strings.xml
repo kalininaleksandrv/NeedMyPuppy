@@ -19,9 +19,8 @@
     <string name="intro_about_owner_activity">При выборе собаки, очень важно понимать Ваши возможности. Для этого ответьте на вопросы ниже</string>
     <string name="intro_about_for_what_activity">Разные породы собак лучше подходят для разных занятий. Выберите - как Вы хотели бы проводить время с Вашей собакой?</string>
     <string name="intro_about_infrastructure">Для некоторых пород очень важно - какие окружающие условия Вы им обеспечите.</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main__menu">Main_Activity_menu</string>
+    <string name="main_action_save">сохранить профиль ответов</string>
+    <string name="main_action_email">получить отчет на e-mail</string>
+    <string name="main_action_settings">настройки</string>
 
 </resources>
