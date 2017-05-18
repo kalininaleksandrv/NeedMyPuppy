@@ -75,4 +75,4 @@ public class Fragment_description extends Fragment {
 
 }
 
-// TODO: 11.05.2017 создаем фрагмент с 2мя кнопками по нажатию кнопки создаем экземпляр descriptionActivity передаем в него ID++
+

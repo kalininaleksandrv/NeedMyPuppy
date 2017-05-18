@@ -47,6 +47,7 @@
 
         <Button
             android:id="@+id/button_block1"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             app:layout_constraintWidth_default="spread"
             android:layout_height="wrap_content"
@@ -79,6 +80,7 @@
 
         <Button
             android:id="@+id/button_block2"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             app:layout_constraintWidth_default="spread"
             android:layout_height="wrap_content"
@@ -111,6 +113,7 @@
 
         <Button
             android:id="@+id/button_block3"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             app:layout_constraintWidth_default="spread"
             android:layout_height="wrap_content"

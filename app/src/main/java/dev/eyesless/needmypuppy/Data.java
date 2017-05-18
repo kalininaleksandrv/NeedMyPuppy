@@ -32,7 +32,7 @@ public class Data {
 
     public static final Breed ger_sheperd = new Breed(166, "Hемецкая овчарка",
             "   Немецкая овчарка - средняя по размеру служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке",
-            "http://www.fci.be/en/nomenclature/GERMAN-SHEPHERD-DOG-166.html", 1, 8, 7,  R.drawable.germshep_1_1);
+            "http://www.fci.be/en/nomenclature/GERMAN-SHEPHERD-DOG-166.html", 1, 8, 7,  R.drawable.labr_1_1);
 
     // Создаем коллекцию хэш сет для пород - хэш сет т.к. максимальное быстродействие
 

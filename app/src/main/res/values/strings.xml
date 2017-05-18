@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Хочу щеночка!</string>
-    <string name="opt_name">Главный экран</string>
     <string name="startscreendecription">Выбор домашнего питомца - ответственный и волнующий момент! Давайте пройдем этот путь вместе и найдем единственного и неповторимого - только Вашего - щенка!</string>
     <string name="startscreenbutton">НАЧАТЬ</string>
     <string name="switch_about">Уже есть собака(и)?</string>

@@ -6,10 +6,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Ну что, начнем?"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/PuppysMainTheme"
         android:name=".InitiationActivity">
         <activity android:name=".StartScreen">
             <intent-filter>
@@ -20,13 +20,18 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/opt_name" />
-        <activity android:name=".About_owner" />
-        <activity android:name=".For_what" />
-        <activity android:name=".Infrastructure" />
-        <activity android:name=".BreedDescriptionActivity_frag" />
-        <activity android:name=".DescriptionActivity" />
-        <activity android:name=".InitiationActivity"></activity>
+            android:label="Рады Вас видеть!" />
+        <activity android:name=".About_owner"
+            android:label="@string/btn_block1"
+            />
+        <activity android:name=".For_what"
+            android:label="@string/btn_block3"/>
+        <activity android:name=".Infrastructure"
+            android:label="@string/btn_block2"/>
+        <activity android:name=".BreedDescriptionActivity_frag"
+            android:label="теперь выбираем породу"/>
+        <activity android:name=".DescriptionActivity"
+            android:label="теперь выбираем породу"/>
     </application>
 
 </manifest>
