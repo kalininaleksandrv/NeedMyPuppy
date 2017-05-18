@@ -22,5 +22,6 @@
     <string name="main_action_save">сохранить профиль ответов</string>
     <string name="main_action_email">получить отчет на e-mail</string>
     <string name="main_action_settings">настройки</string>
+    <string name="main_action_new">Новый профиль ответов</string>
 
 </resources>

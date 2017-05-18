@@ -88,11 +88,15 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    //создаем  action-menu
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_mainactivity, menu);
         return true;
     }
+
+    //слушатель для меню
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
