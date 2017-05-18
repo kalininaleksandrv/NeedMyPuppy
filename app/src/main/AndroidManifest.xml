@@ -4,13 +4,13 @@
     package="dev.eyesless.needmypuppy">
 
     <application
+        android:name=".InitiationActivity"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Ну что, начнем?"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/PuppysMainTheme"
-        android:name=".InitiationActivity">
+        android:theme="@style/PuppysMainTheme">
         <activity android:name=".StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,17 +21,21 @@
         <activity
             android:name=".MainActivity"
             android:label="Рады Вас видеть!" />
-        <activity android:name=".About_owner"
-            android:label="@string/btn_block1"
-            />
-        <activity android:name=".For_what"
-            android:label="@string/btn_block3"/>
-        <activity android:name=".Infrastructure"
-            android:label="@string/btn_block2"/>
-        <activity android:name=".BreedDescriptionActivity_frag"
-            android:label="теперь выбираем породу"/>
-        <activity android:name=".DescriptionActivity"
-            android:label="теперь выбираем породу"/>
+        <activity
+            android:name=".About_owner"
+            android:label="@string/btn_block1" />
+        <activity
+            android:name=".For_what"
+            android:label="@string/btn_block3" />
+        <activity
+            android:name=".Infrastructure"
+            android:label="@string/btn_block2" />
+        <activity
+            android:name=".BreedDescriptionActivity_frag"
+            android:label="теперь выбираем породу" />
+        <activity
+            android:name=".DescriptionActivity"
+            android:label="теперь выбираем породу" />
     </application>
 
 </manifest>
