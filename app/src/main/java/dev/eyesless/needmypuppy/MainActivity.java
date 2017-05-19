@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -119,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
           default: return super.onOptionsItemSelected(item);
         }
 
-
     }
 }
 
@@ -129,6 +127,5 @@ todo 8 реализовать класс Application для хранения д�
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
 todo 9 при повороте экрана не сохраняются выбранные значения в детализирующих активностях
-todo 10 на 6.0 нет вариантов share
 todo 11 на 6.0. нет картинок ОК в landscape
     */
