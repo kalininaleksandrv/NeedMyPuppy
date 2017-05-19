@@ -1,8 +1,10 @@
 package dev.eyesless.needmypuppy;
 
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +13,6 @@ import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         // код кнопки "Дальше"
         Button go_button = (Button) findViewById(R.id.button_opt2);
         go_button.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +91,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_mainactivity, menu);
-        return true;
+
+        return super.onCreateOptionsMenu(menu);
     }
+
 
     //слушатель для меню
 
@@ -112,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 //do something
                 return true;
+            case R.id.action_delet:
+                //do something
+                return true;
 
           default: return super.onOptionsItemSelected(item);
         }
@@ -125,5 +128,7 @@ TODO 6 В стартовую активность запилить форму "�
 todo 8 реализовать класс Application для хранения данных (пояснение: aplication это по сути реалтизация патерна
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
-todo 9 реализовать навигацию и боковое менюб в навигации сохранение выборки отправка выборки на почту и удаление выборки в боковом меню раздел мои выборки и написать разрабочикам
+todo 9 при повороте экрана не сохраняются выбранные значения в детализирующих активностях
+todo 10 на 6.0 нет вариантов share
+todo 11 на 6.0. нет картинок ОК в landscape
     */

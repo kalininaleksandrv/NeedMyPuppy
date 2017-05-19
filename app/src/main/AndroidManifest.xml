@@ -32,10 +32,12 @@
             android:label="@string/btn_block2" />
         <activity
             android:name=".BreedDescriptionActivity_frag"
-            android:label="теперь выбираем породу" />
+            android:label="теперь выбираем породу"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".DescriptionActivity"
-            android:label="теперь выбираем породу" />
+            android:label="теперь выбираем породу"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

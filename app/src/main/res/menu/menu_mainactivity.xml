@@ -8,24 +8,25 @@
     <item
         android:id="@+id/action_saveoptions"
         android:orderInCategory="100"
-        android:title="@string/main_action_save"
+        android:title="@string/action_save"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_email"
         android:orderInCategory="100"
-        android:title="@string/main_action_email"
+        android:title="@string/action_email"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/main_action_settings"
+        android:title="@string/action_settings"
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_createnew"
-        android:icon="@drawable/ic_share_white_18dp"
-        android:orderInCategory="1"
-        android:title="@string/main_action_new"
+        android:id="@+id/action_delet"
+        android:icon="@drawable/ic_delete_white_24dp"
+        android:orderInCategory="2"
+        android:title="@string/action_garbage"
         app:showAsAction="ifRoom"/>
+
 
 </menu>
