@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,16 +8,37 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private String [] titles;
+    private ListView drawerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //код diwider-а
+
+        InitiationActivity inact = ((InitiationActivity) getApplicationContext());
+
+        titles = inact.getDrawer_titles();
+        drawerList = (ListView) findViewById(R.id.list_drawer_main);
+        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles));
+        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner(getSupportActionBar(), titles);
+        drawerList.setOnItemClickListener(myDrawlerListner);
+
+
+
+
+
 
         //код конопки "какая собака подходит вам"
 
@@ -102,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_saveoptions:
-                //do something
-                return true;
             case R.id.action_email:
                 //do something
                 return true;
@@ -119,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }
 
     /*

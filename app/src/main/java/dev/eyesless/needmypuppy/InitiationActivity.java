@@ -15,6 +15,11 @@ public class InitiationActivity extends Application {
     private String [] spinner_time_array = {"cколько времени готов тратить на собаку?",
             "не более 1 часа в день", "не более 2-3 часов в день", "все свободное время"};
 
+
+
+    private String [] drawer_titles = {"сохранить ответы",
+            "загрузить ответы", "написать разработчику"};
+
     @Override
     public void onCreate() {
 
@@ -31,4 +36,6 @@ public class InitiationActivity extends Application {
     public String[] getSpinner_time_array() {
         return spinner_time_array;
     }
+
+    public String[] getDrawer_titles() { return drawer_titles; }
 }
