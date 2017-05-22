@@ -1,6 +1,8 @@
 package dev.eyesless.needmypuppy;
 
 
+import android.app.Activity;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,13 +16,17 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
 
     android.support.v7.app.ActionBar myBar;
     String[] titles;
+    DrawerLayout myDrawer;
+    ListView myDrawerList;
 
 
-    public DrawlerItemClickListner(ActionBar myBar, String[] titles) {
+    public DrawlerItemClickListner(ActionBar myBar, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
         super();
 
         this.myBar = myBar;
         this.titles = titles;
+        this.myDrawer = myDrawer;
+        this.myDrawerList = myDrawerList;
     }
 
     @Override
@@ -37,15 +43,20 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
         switch ((int) id){
 
             case 0:
+                // TODO: 22.05.2017 реализовать сохранение ответов
                 break;
             case 1:
+                // TODO: 22.05.2017 реализовать загрузку ответов
                 break;
             case 2:
+                // TODO: 22.05.2017 реализовать письмо разработчикам
                 break;
             default:
                 break;
 
         }
+
+        myDrawer.closeDrawer(myDrawerList);
 
     }
 }

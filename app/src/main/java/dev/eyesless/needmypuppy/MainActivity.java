@@ -3,6 +3,8 @@ package dev.eyesless.needmypuppy;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String [] titles;
     private ListView drawerList;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         titles = inact.getDrawer_titles();
         drawerList = (ListView) findViewById(R.id.list_drawer_main);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_main);
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles));
-        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner(getSupportActionBar(), titles);
+        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
+                (getSupportActionBar(), drawer, drawerList, titles);
         drawerList.setOnItemClickListener(myDrawlerListner);
 
-
-
+        //код Drawer Togle (кнопка выдвижения и задвижения drawer-а)
 
 
 
@@ -125,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.action_email:
-                //do something
+                //todo реализовать отправку списка порорд по e-mail
                 return true;
             case R.id.action_settings:
-                //do something
+                //todo реализовать настройки
                 return true;
             case R.id.action_delet:
-                //do something
+                //todo реализовать обнуление ответов
                 return true;
 
           default: return super.onOptionsItemSelected(item);
@@ -142,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
 }
 
     /*
-TODO 6 В стартовую активность запилить форму "написать разработчику" с выбором приложеня e-mail
 todo 8 реализовать класс Application для хранения данных (пояснение: aplication это по сути реалтизация патерна
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)

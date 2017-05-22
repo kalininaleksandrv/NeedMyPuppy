@@ -24,5 +24,7 @@
     <string name="action_settings">настройки</string>
     <string name="action_garbage">Сбросить ответы</string>
     <string name="action_share">Поделиться</string>
+    <string name="drawer_open">Открыт</string>
+    <string name="drawer_closed">Закрыт</string>
 
 </resources>
