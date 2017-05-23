@@ -9,8 +9,8 @@
     <string name="flag_opt2">для компании</string>
     <string name="flag_opt3">пробежек по утрам</string>
     <string name="flag_opt4">охоты, трекинга</string>
-    <string name="btn_block1">Какая собака подходит Вам?</string>
-    <string name="btn_block2">Какой собаке подходите Вы?</string>
+    <string name="btn_block1">О Вас...</string>
+    <string name="btn_block2">О собаке...</string>
     <string name="btn_block3">О радостных минутах...</string>
     <string name="btn_opt2">Дальше</string>
     <string name="btn_complete">Готово!</string>
@@ -27,6 +27,9 @@
     <string name="send_to">Отправить</string>
     <string name="drawer_open">Открыт</string>
     <string name="drawer_closed">Закрыт</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
