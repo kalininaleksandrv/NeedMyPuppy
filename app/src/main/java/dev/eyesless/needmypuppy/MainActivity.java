@@ -1,6 +1,7 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
         drawer.setDrawerListener(drawerToggle);
         // TODO: 22.05.2017 разобраться с deprecated
+
+        //вызов основного фрагмента
+
+        Fragment_main newFragmentMain = new Fragment_main();
+        FragmentTransaction fratramain = getFragmentManager().beginTransaction();
+        fratramain.replace(R.id.frame_main, newFragmentMain);
+        fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fratramain.commit();
+
 
         //код конопки "какая собака подходит вам"
 
