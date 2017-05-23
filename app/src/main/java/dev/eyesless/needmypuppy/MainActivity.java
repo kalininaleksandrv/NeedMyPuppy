@@ -67,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
 
         //вызов основного фрагмента
 
-        Fragment_main newFragmentMain = new Fragment_main();
+        Frame_main newFrameMain = new Frame_main();
         FragmentTransaction fratramain = getFragmentManager().beginTransaction();
-        fratramain.replace(R.id.frame_main, newFragmentMain);
+        fratramain.replace(R.id.frame_main, newFrameMain);
+        fratramain.addToBackStack(null);
         fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratramain.commit();
 
