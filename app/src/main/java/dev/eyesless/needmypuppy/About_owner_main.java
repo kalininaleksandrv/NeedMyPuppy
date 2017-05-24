@@ -1,24 +1,32 @@
 package dev.eyesless.needmypuppy;
 
 
-import android.app.Fragment;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class About_owner_main extends Fragment  {
+public class About_owner_main extends Fragment {
 
 
+    static interface onButtonListner {
+        void buttonClicked (View s);
+    }
+
+    onButtonListner myButtonListner;
 
     public About_owner_main() {
         // Required empty public constructor
@@ -76,10 +84,40 @@ public class About_owner_main extends Fragment  {
             }
         });
 
-
-
-        return layout;
+         return layout;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        this.myButtonListner = (onButtonListner) context;
+
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        final View parentview = getView();
+
+        ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
+
+        //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
+
+        View.OnClickListener myOnClickListner = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                myButtonListner.buttonClicked(v);
+
+            }
+        };
+
+        //реализуем онкликлистнер на подключенной кнопке
+
+        completebutton.setOnClickListener(myOnClickListner);
+    }
 
 }

@@ -1,23 +1,21 @@
 package dev.eyesless.needmypuppy;
 
-import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements About_owner_main.onButtonListner {
 
 
     private String [] titles;
@@ -67,12 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         //вызов основного фрагмента
 
-        Frame_main newFrameMain = new Frame_main();
-        FragmentTransaction fratramain = getFragmentManager().beginTransaction();
-        fratramain.replace(R.id.frame_main, newFrameMain);
-        fratramain.addToBackStack(null);
-        fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fratramain.commit();
+       frameRemoover(new About_owner_main());
 
 
     };
@@ -112,6 +105,37 @@ public class MainActivity extends AppCompatActivity {
                         return super.onOptionsItemSelected(item);
                 }
 
+
+    }
+
+    @Override
+    public void buttonClicked(View v) {
+
+        switch (v.getId()){
+
+            case R.id.button_complete:
+                frameRemoover(new Buttons_main());
+
+                break;
+
+        }
+
+
+
+
+
+    }
+
+    public void frameRemoover (Fragment fragment){
+
+
+        Frame_main newFrameMain = new Frame_main();
+        newFrameMain.setMyfragment(fragment);
+        android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
+        fratramain.replace(R.id.frame_main, newFrameMain);
+        fratramain.addToBackStack(null);
+        fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fratramain.commit();
 
     }
 
