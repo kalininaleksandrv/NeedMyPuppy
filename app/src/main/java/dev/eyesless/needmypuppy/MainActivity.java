@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements About_owner_main.
 
         //вызов основного фрагмента
 
-       frameRemoover(new About_owner_main());
+       frameRemoover(new Buttons_main());
 
 
     };
@@ -115,6 +115,12 @@ public class MainActivity extends AppCompatActivity implements About_owner_main.
 
             case R.id.button_complete:
                 frameRemoover(new Buttons_main());
+
+                break;
+
+
+            case R.id.imageButton_aboutowner:
+                frameRemoover(new About_owner_main());
 
                 break;
 
