@@ -30,7 +30,7 @@
     <ImageView
         android:id="@+id/imageView_main"
         android:layout_width="0dp"
-        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintWidth_default="spread"
         android:layout_height="0dp"
         app:layout_constraintHeight_default="wrap"
         app:srcCompat="@drawable/about_owner_image"
@@ -47,7 +47,7 @@
     <Spinner
         android:id="@+id/spinner_exp"
         android:layout_width="0dp"
-        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintWidth_default="spread"
         android:layout_height="wrap_content"
         app:layout_constraintHeight_default="wrap"
         android:textSize="@dimen/text_size"
