@@ -24,9 +24,6 @@ public class Fragment_nxtbtn extends Fragment {
 
     // реализуем интерфейс и его экземпляр
 
-    static interface onButtonListner {
-        void buttonClicked (View s);
-    }
     onButtonListner myButtonListner;
 
 

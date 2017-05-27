@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity implements About_owner_main.onButtonListner {
+public class MainActivity extends AppCompatActivity implements onButtonListner {
 
 
     private String [] titles;
@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements About_owner_main.
         //вызов основного фрагмента
 
        frameRemoover(new Buttons_main());
+
+        //todo при повороте активность не должна сбрасывать фрагмент на стартовый
 
 
     };
@@ -121,6 +123,11 @@ public class MainActivity extends AppCompatActivity implements About_owner_main.
 
             case R.id.imageButton_aboutowner:
                 frameRemoover(new About_owner_main());
+
+                break;
+
+            case R.id.imageButton_forwhat:
+                frameRemoover(new Forwhat_main());
 
                 break;
 

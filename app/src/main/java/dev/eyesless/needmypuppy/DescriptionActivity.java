@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class DescriptionActivity extends AppCompatActivity implements Fragment_nxtbtn.onButtonListner
+public class DescriptionActivity extends AppCompatActivity implements onButtonListner
  {
     public static final String GETBREEDID = "getbreedid";
     private int interID;

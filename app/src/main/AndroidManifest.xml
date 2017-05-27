@@ -22,12 +22,6 @@
             android:name=".MainActivity"
             android:label="Рады Вас видеть!" />
         <activity
-            android:name=".About_owner"
-            android:label="@string/btn_block1" />
-        <activity
-            android:name=".For_what"
-            android:label="@string/btn_block3" />
-        <activity
             android:name=".Infrastructure"
             android:label="@string/btn_block2" />
         <activity

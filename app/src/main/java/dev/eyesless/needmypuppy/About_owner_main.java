@@ -22,10 +22,6 @@ import android.widget.Spinner;
 public class About_owner_main extends Fragment {
 
 
-    static interface onButtonListner {
-        void buttonClicked (View s);
-    }
-
     onButtonListner myButtonListner;
 
     public About_owner_main() {
