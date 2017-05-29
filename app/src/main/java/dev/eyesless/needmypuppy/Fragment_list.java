@@ -46,7 +46,7 @@ public class Fragment_list extends ListFragment {
                              Bundle savedInstanceState) {
 
         ArrayAdapter<String> breedAdapter = new ArrayAdapter<String>(inflater.getContext(),
-                R.layout.list_item, mylist);
+                R.layout.list_item_image, R.id.textviewonlist, mylist);
         setListAdapter(breedAdapter);
 
         return super.onCreateView(inflater, container, savedInstanceState);
