@@ -1,18 +1,17 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements onButtonListner {
@@ -48,14 +47,11 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_closed){
 
             public void onDrawerClosed (View v) {
-
                 super.onDrawerClosed(v);
-
             }
+
             public void onDrawerOpened (View v) {
-
                 super.onDrawerOpened(v);
-
             }
 
         };
@@ -110,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
     }
 
+    //реакция на нажате кнопок в фрагменте buttons main
+
     @Override
     public void buttonClicked(View v) {
 
@@ -117,30 +115,35 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
             case R.id.button_complete:
                 frameRemoover(new Buttons_main());
-
                 break;
-
 
             case R.id.imageButton_aboutowner:
                 frameRemoover(new About_owner_main());
-
                 break;
 
             case R.id.imageButton_forwhat:
                 frameRemoover(new Forwhat_main());
+                break;
+
+            case R.id.imageButton_aboutdog:
+                frameRemoover(new About_dog_main());
+                break;
+
+            case R.id.button_gonext:
+
+                Main_logic newlogic = new Main_logic();
+                newlogic.setFinalListOfBreed();
+                newlogic.setReturnbreed();
+                Intent resultintent = new Intent(MainActivity.this, BreedDescriptionActivity_frag.class);
+                startActivity(resultintent);
 
                 break;
 
         }
 
-
-
-
-
     }
 
     public void frameRemoover (Fragment fragment){
-
 
         Frame_main newFrameMain = new Frame_main();
         newFrameMain.setMyfragment(fragment);
