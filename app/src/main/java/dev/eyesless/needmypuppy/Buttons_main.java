@@ -5,6 +5,7 @@ import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,8 @@ onButtonListner myButtonListner;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        Log.w("MY_TAG", "Buttons_main");
+
         return inflater.inflate(R.layout.buttons_main, container, false);
     }
 

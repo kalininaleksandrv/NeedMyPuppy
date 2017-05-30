@@ -80,7 +80,6 @@
         android:layout_width="0dp"
         app:layout_constraintWidth_default="wrap"
         android:layout_height="wrap_content"
-        android:onClick="onCheckboxClicked"
         android:text="@string/flag_opt5"
         android:textSize="@dimen/text_size"
         app:layout_constraintLeft_toLeftOf="parent"

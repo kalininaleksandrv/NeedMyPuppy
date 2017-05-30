@@ -3,7 +3,9 @@ package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +32,15 @@ public class Frame_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        if (savedInstanceState != null) {
+            onRestoreInstanceState(savedInstanceState);
 
-        if (myfragment == null) { myfragment = new About_owner_main();}
+            Log.w("MY_TAG", "restored FRAGMENT");
+
+        }
+
+
+ //       if (myfragment == null) { myfragment = new Buttons_main();}
         android.support.v4.app.FragmentTransaction fratramain =  getFragmentManager().beginTransaction();
         fratramain.replace(R.id.replaced_main, myfragment);
         fratramain.addToBackStack(null);
@@ -39,6 +48,20 @@ public class Frame_main extends Fragment {
         fratramain.commit();
 
         return inflater.inflate(R.layout.fragment_frame_main, container, false);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        getFragmentManager().putFragment(outState, "myFragment", myfragment);
+        Log.w("MY_TAG", "saved FRAGMENT");
+
+    }
+
+    public void onRestoreInstanceState (Bundle inState){
+
+        myfragment = getFragmentManager().getFragment(inState, "myFragment");
     }
 
 
