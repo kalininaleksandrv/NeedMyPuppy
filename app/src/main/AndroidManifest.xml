@@ -24,11 +24,12 @@
         <activity
             android:name=".BreedDescriptionActivity_frag"
             android:label="теперь выбираем породу"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DescriptionActivity"
             android:label="теперь выбираем породу"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".List_profile"></activity>
     </application>
 
 </manifest>

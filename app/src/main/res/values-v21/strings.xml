@@ -27,7 +27,9 @@
     <string name="action_settings">настройки</string>
     <string name="action_garbage">Сбросить ответы</string>
     <string name="action_share">Поделиться</string>
+    <string name="send_to">Отправить</string>
     <string name="drawer_open">Открыт</string>
     <string name="drawer_closed">Закрыт</string>
-
+    <string name="obidience">Послушание и обучаемость</string>
+    <string name="guard">Охранные качества</string>
 </resources>
