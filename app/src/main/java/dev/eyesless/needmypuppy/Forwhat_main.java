@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -20,35 +21,16 @@ import android.widget.TextView;
  */
 public class Forwhat_main extends Fragment {
 
-
    onButtonListner myButtonListner;
 
-    private boolean show;
-    private boolean frend;
-    private boolean run;
-    private boolean hunt;
-    private boolean obidence;
-    private boolean guard;
-
-
     public Forwhat_main() {
-        // Required empty public constructor
-    }
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-        if (savedInstanceState != null) {
-           show = savedInstanceState.getBoolean("show");
-           frend = savedInstanceState.getBoolean("frend");
-           run = savedInstanceState.getBoolean("run");
-           hunt = savedInstanceState.getBoolean("hunt");
-           obidence = savedInstanceState.getBoolean("obidence");
-           guard = savedInstanceState.getBoolean("guard");
-        }
         return inflater.inflate(R.layout.forwhat_main, container, false);
     }
 
@@ -74,113 +56,48 @@ public class Forwhat_main extends Fragment {
             @Override
             public void onClick(View v) {
 
-                myButtonListner.buttonClicked(v);
-
+                checkboxReader(parentview);
+                // myButtonListner.buttonClicked(v);
+                // TODO: 31.05.2017 после создания инфраструктуры учета, открыть mybuttonlistner и убрать тосты
             }
         };
-
-        //реализуем онкликлистнер на подключенной кнопке
-
         completebutton.setOnClickListener(myOnClickListner);
-
-        //подключаем чекбоксы
-
-        CheckBox showcheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt1);
-        CheckBox frendcheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt2);
-        CheckBox runcheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt3);
-        CheckBox huntcheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt4);
-        CheckBox obidencecheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt5);
-        CheckBox guardcheck = (CheckBox) parentview.findViewById(R.id.checkBox_opt6);
-
-        //создаем слушатель
-
-        View.OnClickListener myCheckboxOnClickListner = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                boolean checked = ((CheckBox) v).isChecked();
-
-                switch (v.getId()) {
-
-                    case R.id.checkBox_opt1:
-
-                      if (checked) {show = true;
-                      } else {
-                          show = false;
-                      }
-                        break;
-
-                    case R.id.checkBox_opt2:
-
-                      if (checked) {frend = true;
-                      } else {
-                          frend = false;
-                      }
-                        break;
-
-                    case R.id.checkBox_opt3:
-
-                      if (checked) {run = true;
-                      } else {
-                          run = false;
-                      }
-                        break;
-
-                    case R.id.checkBox_opt4:
-
-                      if (checked) {hunt = true;
-                      } else {
-                          hunt = false;
-                      }
-                        break;
-
-                    case R.id.checkBox_opt5:
-
-                      if (checked) {obidence = true;
-                      } else {
-                          obidence = false;
-                      }
-                        break;
-
-                    case R.id.checkBox_opt6:
-
-                      if (checked) {guard = true;
-                      } else {
-                          guard = false;
-                      }
-                        break;
-                }
-            }
-        };
-
-        // TODO: 30.05.2017 упростить за счет считывания значений только в конце работы фрагмента (онлайн не нужен) 
-        
-        //привязываем слушатель к кнопкам
-
-        showcheck.setOnClickListener(myCheckboxOnClickListner);
-        frendcheck.setOnClickListener(myCheckboxOnClickListner);
-        runcheck.setOnClickListener(myCheckboxOnClickListner);
-        huntcheck.setOnClickListener(myCheckboxOnClickListner);
-        obidencecheck.setOnClickListener(myCheckboxOnClickListner);
-        guardcheck.setOnClickListener(myCheckboxOnClickListner);
-
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    // подключаем чекбоксы и передаем состояние
 
-        // TODO: 30.05.2017 при упрощении сохранения значений не нужно при уничтожении активности все переменные считываются и передаются вовне 
+    public void checkboxReader (View view) {
 
-        outState.putBoolean("show", show);
-        outState.putBoolean("frend", frend);
-        outState.putBoolean("run", run);
-        outState.putBoolean("hunt", hunt);
-        outState.putBoolean("obidence", obidence);
-        outState.putBoolean("guard", guard);
+        CheckBox showcheck = (CheckBox) view.findViewById(R.id.checkBox_opt1);
+        CheckBox frendcheck = (CheckBox) view.findViewById(R.id.checkBox_opt2);
+        CheckBox runcheck = (CheckBox) view.findViewById(R.id.checkBox_opt3);
+        CheckBox huntcheck = (CheckBox) view.findViewById(R.id.checkBox_opt4);
+        CheckBox obidencecheck = (CheckBox) view.findViewById(R.id.checkBox_opt5);
+        CheckBox guardcheck = (CheckBox) view.findViewById(R.id.checkBox_opt6);
 
+        if (showcheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "SHOW", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (frendcheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "FREND", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (runcheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "RUN", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (huntcheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "HUNT", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (obidencecheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "OBIDIENCE", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        if (guardcheck.isChecked()){
+            Toast toast = Toast.makeText(getContext(), "GUARD", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
-
-
-
 }

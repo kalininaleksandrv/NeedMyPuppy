@@ -20,15 +20,6 @@ public class InitiationActivity extends Application {
     private String [] drawer_titles = {"сохранить ответы",
             "загрузить ответы", "написать разработчику"};
 
-    @Override
-    public void onCreate() {
-
-        super.onCreate();
-
-        Log.w("MY_TAG", "InitiationActivity");
-
-    }
-
     public String[] getSpinner_exp_array() {
         return spinner_exp_array;
     }
