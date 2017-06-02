@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements onButtonListner {
@@ -66,10 +67,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
             frameRemoover(new Buttons_main());
             Log.w("MY_TAG", "first time frame_main call");
-
-
         }
-
     };
 
     //создаем  action-menu
@@ -111,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                         return super.onOptionsItemSelected(item);
                 }
 
-
     }
 
     //реакция на нажате кнопок в фрагменте buttons main
@@ -120,45 +117,33 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     public void buttonClicked(View v) {
 
         switch (v.getId()){
-
             case R.id.button_complete:
                 frameRemoover(new Buttons_main());
                 break;
-
             case R.id.imageButton_aboutowner:
                 frameRemoover(new About_owner_main());
                 break;
-
             case R.id.imageButton_forwhat:
                 frameRemoover(new Forwhat_main());
                 break;
-
             case R.id.imageButton_aboutdog:
                 frameRemoover(new About_dog_main());
                 break;
-
             case R.id.button_gonext:
-
                 Main_logic newlogic = new Main_logic();
                 newlogic.setFinalListOfBreed();
                 newlogic.setReturnbreed();
                 Intent resultintent = new Intent(MainActivity.this, BreedDescriptionActivity_frag.class);
                 startActivity(resultintent);
-
                 break;
-
         }
-
     }
 
     public void frameRemoover (Fragment fragment){
 
-        Frame_main newFrameMain = new Frame_main();
-        newFrameMain.setMyfragment(fragment);
         android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
-        fratramain.replace(R.id.frame_main, newFrameMain);
-       // fratramain.addToBackStack(null);
-        // TODO: 02.06.2017 вернуть бэкстэк  тут и во frame_main если разберусь с onSaveInstanceState
+        fratramain.replace(R.id.replaced_main, fragment);
+        fratramain.addToBackStack(null);
         fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratramain.commit();
 
@@ -170,7 +155,6 @@ todo 8 реализовать класс Application для хранения д�
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
 todo 9 после однократного использования кнопки about_ и forwhat должны становиться неактивными
-todo 10 если пользователь вышел через back из кнопки и после через back из меню результатов, приложение не должно аварийно завершаться
 todo 11 реализовать слушатели для чекбоксов, спиннеров и т.п.
 todo 13 реализовать recycle view вместо listview для 5.0 +
 
