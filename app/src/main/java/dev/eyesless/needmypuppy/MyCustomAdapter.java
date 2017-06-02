@@ -52,7 +52,7 @@ public class MyCustomAdapter extends ArrayAdapter<MyBucket> {
             
             if (title != null) {
                 
-                value.setText(newbucket.getTitle());
+                title.setText(newbucket.getTitle());
             }
             if (value != null) {
 

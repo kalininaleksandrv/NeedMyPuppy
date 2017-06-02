@@ -5,13 +5,12 @@
     <string name="no">нет</string>
     <string name="yes">да</string>
     <string name="say_me_age">Чтобы правильно выбрать для Вас щенка оптимальной породы, пройдите несколько несложных раундов вопросов. Выбирайте тему ниже в любой последовательности. Чем больше ответов, тем выше точность рекомендаций.</string>
-    <string name="flag_opt1">участвовать в выставках</string>
+    <string name="flag_opt1">компаньон для детей</string>
     <string name="flag_opt2">просто для компании</string>
     <string name="flag_opt3">пробежек по утрам, трекинга</string>
     <string name="flag_opt4">охотиться</string>
     <string name="flag_opt5">для соревнований (напр. послушание)</string>
     <string name="flag_opt6">для защитно-караульной службы</string>
-    <string name="flag_opt7">ездового спорта</string>
     <string name="btn_block1">О Вас...</string>
     <string name="btn_block2">О собаке...</string>
     <string name="btn_block3">О радостных минутах...</string>

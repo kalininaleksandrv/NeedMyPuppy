@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 /**
@@ -9,4 +10,5 @@ import android.view.View;
 public interface onButtonListner {
 
     public void buttonClicked(View v);
+
 }

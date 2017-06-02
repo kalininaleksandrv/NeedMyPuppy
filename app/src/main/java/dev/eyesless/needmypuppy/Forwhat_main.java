@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,7 @@ import android.widget.Toast;
 public class Forwhat_main extends Fragment {
 
    onButtonListner myButtonListner;
+
 
     public Forwhat_main() {
 
@@ -57,8 +61,7 @@ public class Forwhat_main extends Fragment {
             public void onClick(View v) {
 
                 checkboxReader(parentview);
-                // myButtonListner.buttonClicked(v);
-                // TODO: 31.05.2017 после создания инфраструктуры учета, открыть mybuttonlistner и убрать тосты
+                myButtonListner.buttonClicked(v);
             }
         };
         completebutton.setOnClickListener(myOnClickListner);
@@ -68,36 +71,56 @@ public class Forwhat_main extends Fragment {
 
     public void checkboxReader (View view) {
 
-        CheckBox showcheck = (CheckBox) view.findViewById(R.id.checkBox_opt1);
+        InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
+
+
+        CheckBox babycheck = (CheckBox) view.findViewById(R.id.checkBox_opt1);
         CheckBox frendcheck = (CheckBox) view.findViewById(R.id.checkBox_opt2);
         CheckBox runcheck = (CheckBox) view.findViewById(R.id.checkBox_opt3);
         CheckBox huntcheck = (CheckBox) view.findViewById(R.id.checkBox_opt4);
         CheckBox obidencecheck = (CheckBox) view.findViewById(R.id.checkBox_opt5);
         CheckBox guardcheck = (CheckBox) view.findViewById(R.id.checkBox_opt6);
 
-        if (showcheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "SHOW", Toast.LENGTH_SHORT);
-            toast.show();
+        if (babycheck.isChecked()){
+            inact.obidience.setValue(max(inact.obidience.getValue(),2));
+            inact.agressive.setValue(min(inact.agressive.getValue(),1));
+            inact.active.setValue(max(inact.active.getValue(),3));
         }
+
         if (frendcheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "FREND", Toast.LENGTH_SHORT);
-            toast.show();
+
+            inact.obidience.setValue(max(inact.obidience.getValue(),2));
+            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.active.setValue(max(inact.active.getValue(),2));
+
         }
         if (runcheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "RUN", Toast.LENGTH_SHORT);
-            toast.show();
+
+            inact.obidience.setValue(max(inact.obidience.getValue(),3));
+            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.active.setValue(max(inact.active.getValue(),3));
+            inact.hardy.setValue(max(inact.hardy.getValue(),4));
+
+
         }
         if (huntcheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "HUNT", Toast.LENGTH_SHORT);
-            toast.show();
+
         }
+
         if (obidencecheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "OBIDIENCE", Toast.LENGTH_SHORT);
-            toast.show();
+
+            inact.obidience.setValue(max(inact.obidience.getValue(),5));
+            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.active.setValue(max(inact.active.getValue(),3));
+            inact.size.setValue(max(inact.size.getValue(),3));
+
         }
         if (guardcheck.isChecked()){
-            Toast toast = Toast.makeText(getContext(), "GUARD", Toast.LENGTH_SHORT);
-            toast.show();
+
+            inact.obidience.setValue(max(inact.obidience.getValue(),4));
+            inact.guard.setValue(max(inact.guard.getValue(),5));
+            inact.active.setValue(max(inact.active.getValue(),3));
+            inact.size.setValue(max(inact.active.getValue(),4));
         }
     }
 }

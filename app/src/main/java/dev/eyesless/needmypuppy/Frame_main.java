@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,18 +35,15 @@ public class Frame_main extends Fragment {
 
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
-
-            Log.w("MY_TAG", "restored FRAGMENT");
-
         }
 
-
- //       if (myfragment == null) { myfragment = new Buttons_main();}
         android.support.v4.app.FragmentTransaction fratramain =  getFragmentManager().beginTransaction();
         fratramain.replace(R.id.replaced_main, myfragment);
         fratramain.addToBackStack(null);
         fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratramain.commit();
+
+        Log.w("MY_TAG", "create FRAGMENT");
 
         return inflater.inflate(R.layout.fragment_frame_main, container, false);
     }
@@ -54,20 +52,30 @@ public class Frame_main extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        getFragmentManager().putFragment(outState, "myFragment", myfragment);
+        getChildFragmentManager().putFragment(outState, "myFragment", myfragment);
         Log.w("MY_TAG", "saved FRAGMENT");
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Context mycontext = context.getApplicationContext();
+
+        Toast.makeText(mycontext, String.valueOf(myfragment), Toast.LENGTH_SHORT).show();
 
     }
 
     public void onRestoreInstanceState (Bundle inState){
 
         myfragment = getFragmentManager().getFragment(inState, "myFragment");
-    }
+        Log.w("MY_TAG", "restored FRAGMENT from save");
 
+    }
 
     public void setMyfragment(Fragment myfragment) {
         this.myfragment = myfragment;
     }
-
 
 }

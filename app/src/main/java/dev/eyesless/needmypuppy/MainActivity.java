@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
                     case R.id.action_email:
                         //todo реализовать отправку списка порорд по e-mail
+
+                        Intent intent = new Intent(this, List_profile.class);
+                        startActivity(intent);
+
                         return true;
                     case R.id.action_settings:
                         //todo реализовать настройки
@@ -153,21 +157,21 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         newFrameMain.setMyfragment(fragment);
         android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
         fratramain.replace(R.id.frame_main, newFrameMain);
-        fratramain.addToBackStack(null);
+       // fratramain.addToBackStack(null);
+        // TODO: 02.06.2017 вернуть бэкстэк  тут и во frame_main если разберусь с onSaveInstanceState
         fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratramain.commit();
 
     }
-
 }
 
     /*
 todo 8 реализовать класс Application для хранения данных (пояснение: aplication это по сути реалтизация патерна
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
-todo 9 упростить forwhat_main
+todo 9 после однократного использования кнопки about_ и forwhat должны становиться неактивными
+todo 10 если пользователь вышел через back из кнопки и после через back из меню результатов, приложение не должно аварийно завершаться
 todo 11 реализовать слушатели для чекбоксов, спиннеров и т.п.
-todo 12 реализовать кастомный listview где перед названиями пород будут картинки (
 todo 13 реализовать recycle view вместо listview для 5.0 +
 
     */

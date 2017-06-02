@@ -15,7 +15,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_size_small"/>
 
     <TextView
         android:id="@+id/value"
@@ -25,6 +28,9 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:padding="10dp"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_size_small"/>
 
 </android.support.constraint.ConstraintLayout>

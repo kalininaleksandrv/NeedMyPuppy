@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 public class InitiationActivity extends Application {
 
+    //значения для спиннеров
+
     private String [] spinner_exp_array = {"есть ли опыт содержания и воспитания собак?",
             "нет опыта", "опыт минимальный", "я довольно опытный", "эксперт"};
 
@@ -26,17 +28,36 @@ public class InitiationActivity extends Application {
 
     public String[] getDrawer_titles() { return drawer_titles; }
 
-    MyBucket obidience = new MyBucket(getString(R.string.obidience), 1);
-    MyBucket guard = new MyBucket(getString(R.string.guard), 1);
+    //создаем 5 корзин для основных свойств выбора собаки
+    //послушание 1- породы не способные к дрессировке, 2 -хаски, 5 миалинуа
+    //охрана 1-хаски 5-малинуа
+    //агрессивность 1-хаски 5-САО
+    //активность 1-флегматичные собаки 5-джекрассел
+    //выносливость 1-утомляемые собаки 4-хаски 5-риджбэк
+    //размер 1-чихуа 2-джекрассел 3-хаски, лабр 4 - малинуа 5-САО
+    //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
 
-// TODO: 31.05.2017 make agressive, active, size
+    MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
+    MyBucket guard = new MyBucket("Охранные качества", 1);
+    MyBucket agressive = new MyBucket("Агрессивность", 1);
+    MyBucket active = new MyBucket("Активность", 1);
+    MyBucket hardy = new MyBucket("Выносливость", 1);
+    MyBucket size = new MyBucket("Размер", 1);
+    MyBucket care = new MyBucket("Сложный / специфичный уход", 1);
 
-    ArrayList<MyBucket> mybuckelisttmaker () {
+    // создаем лист объектов корзина для передачи в список List_profile
+
+    public ArrayList<MyBucket> mybuckelisttmaker () {
 
         ArrayList<MyBucket> mybusketslist = new ArrayList<>();
 
         mybusketslist.add(obidience);
         mybusketslist.add(guard);
+        mybusketslist.add(agressive);
+        mybusketslist.add(active);
+        mybusketslist.add(hardy);
+        mybusketslist.add(size);
+        mybusketslist.add(care);
 
         return mybusketslist;
     }
