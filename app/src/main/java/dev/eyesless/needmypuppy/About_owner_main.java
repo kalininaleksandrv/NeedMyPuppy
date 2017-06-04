@@ -15,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import static java.lang.Math.max;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,7 @@ public class About_owner_main extends Fragment {
 
 
     onButtonListner myButtonListner;
+    private int expvalue;
 
     public About_owner_main() {
         // Required empty public constructor
@@ -52,6 +55,8 @@ public class About_owner_main extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                expvalue = position;
+
             }
 
             @Override
@@ -67,6 +72,57 @@ public class About_owner_main extends Fragment {
                 (inflater.getContext(), R.layout.list_item, inact.getSpinner_time_array());
         spiner_time.setAdapter(spiner_time_adapter);
         spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //код спиннера время
+
+        Spinner spiner_age = (Spinner)layout.findViewById(R.id.spinner_age);
+        ArrayAdapter<String> spiner_age_adapter = new ArrayAdapter<String>
+                (inflater.getContext(), R.layout.list_item, inact.getSpinner_age_array());
+        spiner_age.setAdapter(spiner_age_adapter);
+        spiner_age.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //код спиннера время
+
+        Spinner spiner_activ = (Spinner)layout.findViewById(R.id.spinner_activ);
+        ArrayAdapter<String> spiner_activ_adapter = new ArrayAdapter<String>
+                (inflater.getContext(), R.layout.list_item, inact.getSpinner_activ_array());
+        spiner_activ.setAdapter(spiner_activ_adapter);
+        spiner_activ.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //код спиннера время
+
+        Spinner spiner_family = (Spinner)layout.findViewById(R.id.spinner_family);
+        ArrayAdapter<String> spiner_family_adapter = new ArrayAdapter<String>
+                (inflater.getContext(), R.layout.list_item, inact.getSpinner_family_array());
+        spiner_family.setAdapter(spiner_family_adapter);
+        spiner_family.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -104,6 +160,7 @@ public class About_owner_main extends Fragment {
             @Override
             public void onClick(View v) {
 
+                checkboxReader();
                 myButtonListner.buttonClicked(v);
 
             }
@@ -112,6 +169,21 @@ public class About_owner_main extends Fragment {
         //реализуем онкликлистнер на подключенной кнопке
 
         completebutton.setOnClickListener(myOnClickListner);
+    }
+
+    private void checkboxReader() {
+
+        InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
+
+        inact.obidience.setValue(max(inact.obidience.getValue(),5-expvalue));
+//        inact.guard.setValue(max(inact.guard.getValue(),4));
+//        inact.agressive.setValue(max(inact.agressive.getValue(),4));
+//        inact.active.setValue(max(inact.active.getValue(),4));
+//        inact.hardy.setValue(max(inact.hardy.getValue(),4));
+//        inact.size.setValue(max(inact.size.getValue(),4));
+//        inact.care.setValue(max(inact.care.getValue(),4));
+
+
     }
 
 }

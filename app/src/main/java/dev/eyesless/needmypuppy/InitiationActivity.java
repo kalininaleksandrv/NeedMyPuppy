@@ -15,6 +15,15 @@ public class InitiationActivity extends Application {
     private String [] spinner_time_array = {"cколько времени готов тратить на собаку?",
             "не более 1 часа в день", "не более 2-3 часов в день", "все свободное время"};
 
+    private String [] spinner_age_array = {"сколько Вам лет?",
+            "до 16", "16 - 25", "26 - 40", "41 - 60", "более 60"};
+
+    private String [] spinner_activ_array = {"физическая форма (для Вашего возраста)",
+            "неудовлетворительная", "обычная", "хорошая", "отличная"};
+
+    private String [] spinner_family_array = {"кроме Вас с собакой будут заниматься другие люди:",
+            "никто", "очень редко", "да, часто, их физическая форма лучше моей", "да, часто, их физическая форма хуже моей"};
+
     private String [] drawer_titles = {"сохранить ответы",
             "загрузить ответы", "написать разработчику"};
 
@@ -27,6 +36,12 @@ public class InitiationActivity extends Application {
     }
 
     public String[] getDrawer_titles() { return drawer_titles; }
+
+    public String[] getSpinner_age_array() {return spinner_age_array;}
+
+    public String[] getSpinner_activ_array() {return spinner_activ_array;}
+
+    public String[] getSpinner_family_array() {return spinner_family_array;}
 
 
 

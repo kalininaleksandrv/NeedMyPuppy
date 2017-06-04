@@ -69,7 +69,7 @@ public class Forwhat_main extends Fragment {
 
     // подключаем чекбоксы и передаем состояние
 
-    public void checkboxReader (View view) {
+    private void checkboxReader (View view) {
 
         InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
 
