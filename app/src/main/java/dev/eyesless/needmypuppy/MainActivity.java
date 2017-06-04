@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,15 +24,15 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private ListView drawerList;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
+    private InitiationActivity inact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        inact = ((InitiationActivity) getApplicationContext());
         //код diwider-а
-
-        InitiationActivity inact = ((InitiationActivity) getApplicationContext());
 
         titles = inact.getDrawer_titles();
         drawerList = (ListView) findViewById(R.id.list_drawer_main);
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                 (getSupportActionBar(), drawer, drawerList, titles);
         drawerList.setOnItemClickListener(myDrawlerListner);
 
-        //код Drawer Togle (кнопка выдвижения и задвижения drawer-а)
+        //код Drawer Togle кнопка выдвижения и задвижения drawer-а
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -93,16 +94,17 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
                     case R.id.action_email:
                         //todo реализовать отправку списка порорд по e-mail
-
                         Intent intent = new Intent(this, List_profile.class);
                         startActivity(intent);
-
                         return true;
+
                     case R.id.action_settings:
                         //todo реализовать настройки
                         return true;
+
                     case R.id.action_delet:
-                        //todo реализовать обнуление ответов
+                        //deliting all choosing parameters ant set buttons status NOT pressed
+                        inact.bucketseraser();
                         return true;
 
                     default:
@@ -120,15 +122,22 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
             case R.id.button_complete:
                 frameRemoover(new Buttons_main());
                 break;
+
             case R.id.imageButton_aboutowner:
                 frameRemoover(new About_owner_main());
                 break;
+
             case R.id.imageButton_forwhat:
-                frameRemoover(new Forwhat_main());
+                //check if button already been pressed, cant pressed next time
+                if (inact.isButtonforwhatispressed()){toastmaker();}
+                else
+                    frameRemoover(new Forwhat_main());
                 break;
+
             case R.id.imageButton_aboutdog:
                 frameRemoover(new About_dog_main());
                 break;
+
             case R.id.button_gonext:
                 Main_logic newlogic = new Main_logic();
                 newlogic.setFinalListOfBreed();
@@ -139,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         }
     }
 
+    //main method for remoove frames when clicked
     public void frameRemoover (Fragment fragment){
 
         android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
@@ -148,13 +158,20 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         fratramain.commit();
 
     }
+
+    // if button was pressed and trying next time, set toast about
+    private void toastmaker() {
+        String helpstring = getString(R.string.disabled_button);
+        Toast myToast = Toast.makeText(getApplicationContext(), helpstring, Toast.LENGTH_SHORT);
+        myToast.setGravity(Gravity.BOTTOM, 0, 30);
+        myToast.show();
+    }
 }
 
     /*
 todo 8 реализовать класс Application для хранения данных (пояснение: aplication это по сути реалтизация патерна
 todo 8 singleton - когда создаешь объекты они не вызывают чей нибудь статический getInstance а ты им передаешь
 todo 8 экземпляр в конструктор, т.е. они не опираются на какой о конкретный синглтон)
-todo 9 после однократного использования кнопки about_ и forwhat должны становиться неактивными
 todo 11 реализовать слушатели для чекбоксов, спиннеров и т.п.
 todo 13 реализовать recycle view вместо listview для 5.0 +
 

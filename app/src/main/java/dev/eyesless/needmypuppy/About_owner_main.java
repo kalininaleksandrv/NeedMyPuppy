@@ -40,8 +40,6 @@ public class About_owner_main extends Fragment {
                              Bundle savedInstanceState) {
 
         InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
-        Log.w("MY_TAG", "About_owner");
-
         View layout = inflater.inflate(R.layout.about_owner_main, container, false);
 
         //код спиннера опыт

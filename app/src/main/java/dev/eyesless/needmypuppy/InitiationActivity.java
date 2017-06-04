@@ -28,6 +28,10 @@ public class InitiationActivity extends Application {
 
     public String[] getDrawer_titles() { return drawer_titles; }
 
+
+
+    private boolean buttonforwhatispressed;
+
     //создаем 5 корзин для основных свойств выбора собаки
     //послушание 1- породы не способные к дрессировке, 2 -хаски, 5 миалинуа
     //охрана 1-хаски 5-малинуа
@@ -60,6 +64,27 @@ public class InitiationActivity extends Application {
         mybusketslist.add(care);
 
         return mybusketslist;
+    }
+
+    public void bucketseraser () {
+
+        obidience.setValue(1);
+        guard.setValue(1);
+        agressive.setValue(1);
+        active.setValue(1);
+        hardy.setValue(1);
+        size.setValue(1);
+        care.setValue(1);
+        buttonforwhatispressed = false;
+
+    }
+
+    public void setButtonforwhatispressed(boolean buttonforwhatispressed) {
+        this.buttonforwhatispressed = buttonforwhatispressed;
+    }
+
+    public boolean isButtonforwhatispressed() {
+        return buttonforwhatispressed;
     }
 
 }

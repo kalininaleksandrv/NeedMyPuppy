@@ -31,4 +31,5 @@
     <string name="drawer_closed">Закрыт</string>
     <string name="obidience">Послушание и обучаемость</string>
     <string name="guard">Охранные качества</string>
+    <string name="disabled_button">Вы уже отвечали на эти вопросы. Чтобы начать заново используйте значок КОРЗИНА.</string>
 </resources>

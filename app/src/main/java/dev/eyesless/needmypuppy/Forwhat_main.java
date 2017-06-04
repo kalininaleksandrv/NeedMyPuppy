@@ -73,13 +73,14 @@ public class Forwhat_main extends Fragment {
 
         InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
 
-
         CheckBox babycheck = (CheckBox) view.findViewById(R.id.checkBox_opt1);
         CheckBox frendcheck = (CheckBox) view.findViewById(R.id.checkBox_opt2);
         CheckBox runcheck = (CheckBox) view.findViewById(R.id.checkBox_opt3);
         CheckBox huntcheck = (CheckBox) view.findViewById(R.id.checkBox_opt4);
         CheckBox obidencecheck = (CheckBox) view.findViewById(R.id.checkBox_opt5);
         CheckBox guardcheck = (CheckBox) view.findViewById(R.id.checkBox_opt6);
+
+        inact.setButtonforwhatispressed(true);
 
         if (babycheck.isChecked()){
             inact.obidience.setValue(max(inact.obidience.getValue(),2));
