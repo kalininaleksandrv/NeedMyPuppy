@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static java.lang.StrictMath.abs;
 
 
 /**
@@ -25,7 +27,15 @@ public class About_owner_main extends Fragment {
 
 
     onButtonListner myButtonListner;
+    private InitiationActivity inact;
     private int expvalue;
+    private int timevalue;
+    private int agevalue;
+
+
+
+    private int activvalue;
+    private int familyvalue;
 
     public About_owner_main() {
         // Required empty public constructor
@@ -42,7 +52,7 @@ public class About_owner_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
+        inact = ((InitiationActivity) getActivity().getApplicationContext());
         View layout = inflater.inflate(R.layout.about_owner_main, container, false);
 
         //код спиннера опыт
@@ -54,9 +64,7 @@ public class About_owner_main extends Fragment {
         spiner_exp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 expvalue = position;
-
             }
 
             @Override
@@ -74,7 +82,7 @@ public class About_owner_main extends Fragment {
         spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                timevalue = position;
             }
 
             @Override
@@ -82,7 +90,7 @@ public class About_owner_main extends Fragment {
 
             }
         });
-        //код спиннера время
+        //код спиннера возраст ТОЛЬКО влияет только на значение активность
 
         Spinner spiner_age = (Spinner)layout.findViewById(R.id.spinner_age);
         ArrayAdapter<String> spiner_age_adapter = new ArrayAdapter<String>
@@ -91,7 +99,8 @@ public class About_owner_main extends Fragment {
         spiner_age.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                agevalue = position;
+                if (position > 3){ setActivvalue(getActivvalue()-(-3+position));}
             }
 
             @Override
@@ -99,7 +108,7 @@ public class About_owner_main extends Fragment {
 
             }
         });
-        //код спиннера время
+        //код спиннера активность
 
         Spinner spiner_activ = (Spinner)layout.findViewById(R.id.spinner_activ);
         ArrayAdapter<String> spiner_activ_adapter = new ArrayAdapter<String>
@@ -108,7 +117,7 @@ public class About_owner_main extends Fragment {
         spiner_activ.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                setActivvalue(getActivvalue()+position);
             }
 
             @Override
@@ -116,7 +125,7 @@ public class About_owner_main extends Fragment {
 
             }
         });
-        //код спиннера время
+        //код спиннера семья влияет только на значение активность
 
         Spinner spiner_family = (Spinner)layout.findViewById(R.id.spinner_family);
         ArrayAdapter<String> spiner_family_adapter = new ArrayAdapter<String>
@@ -125,7 +134,7 @@ public class About_owner_main extends Fragment {
         spiner_family.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                if (position == 4) {setActivvalue(getActivvalue()-1);}
             }
 
             @Override
@@ -160,7 +169,8 @@ public class About_owner_main extends Fragment {
             @Override
             public void onClick(View v) {
 
-                checkboxReader();
+                obidiencesetter();
+                guardsetter ();
                 myButtonListner.buttonClicked(v);
 
             }
@@ -171,19 +181,28 @@ public class About_owner_main extends Fragment {
         completebutton.setOnClickListener(myOnClickListner);
     }
 
-    private void checkboxReader() {
+    private void guardsetter() {
 
-        InitiationActivity inact = ((InitiationActivity) getActivity().getApplicationContext());
+        if (expvalue < 3 && timevalue < 2) { inact.guard.setValue(min(inact.guard.getValue(),4));} //если опыт хотя бы 2 ИЛИ временные затраты хотя бы 1 то допускается охранные качества 5 иначе не более 4
 
-        inact.obidience.setValue(max(inact.obidience.getValue(),5-expvalue));
-//        inact.guard.setValue(max(inact.guard.getValue(),4));
-//        inact.agressive.setValue(max(inact.agressive.getValue(),4));
-//        inact.active.setValue(max(inact.active.getValue(),4));
-//        inact.hardy.setValue(max(inact.hardy.getValue(),4));
-//        inact.size.setValue(max(inact.size.getValue(),4));
-//        inact.care.setValue(max(inact.care.getValue(),4));
+    }
+
+    private void obidiencesetter() {
+
+        inact.obidience.setValue(max(inact.obidience.getValue(),4-timevalue)); //установить послушание максимальное из (уже установленное, 4-значение временных затрат (т.е. чем меньше временные затраты тем больше послушание)
+        inact.obidience.setValue(max(inact.obidience.getValue(),5-activvalue)); //установить послушание максимальное из (уже установленное, 4-значение активности (т.е. чем меньше активность тем больше послушание - важно! возраст и члени семьи влияют на активность прямо а на этот показатель соответственно опосредованно)
+        if (expvalue >3){inact.obidience.setValue(min(inact.obidience.getValue(),3));} //если опыт ЭКСПЕРТ то уменьшить минимально допустимое послушание до 3, даже если ранее выставлено больше
+        if (agevalue < 2) {inact.obidience.setValue(max(inact.obidience.getValue(),4));} //если возраст менее 16 лет то увеличить минимально допустимое послушание до 4, даже если ранее выставлено меньше, превалирует над ЭКСПЕРТ
+
+    }
 
 
+    public int getActivvalue() {
+        return activvalue;
+    }
+
+    public void setActivvalue(int activvalue) {
+        this.activvalue = activvalue;
     }
 
 }

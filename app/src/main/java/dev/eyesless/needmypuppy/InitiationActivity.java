@@ -57,7 +57,7 @@ public class InitiationActivity extends Application {
     //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
 
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
-    MyBucket guard = new MyBucket("Охранные качества", 1);
+    MyBucket guard = new MyBucket("Охранные качества", 5);
     MyBucket agressive = new MyBucket("Агрессивность", 1);
     MyBucket active = new MyBucket("Активность", 1);
     MyBucket hardy = new MyBucket("Выносливость", 1);
