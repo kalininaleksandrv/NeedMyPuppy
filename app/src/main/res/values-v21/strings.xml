@@ -33,4 +33,6 @@
     <string name="guard">Охранные качества</string>
     <string name="disabled_button">Вы уже отвечали на эти вопросы. Чтобы начать заново используйте значок КОРЗИНА.</string>
     <string name="disabled_button_short">Вы уже отвечали на эти вопросы. </string>
+    <string name="flag_havedog">отметьте, если уже есть собака(и)</string>
+    <string name="flag_havechild">отметьте, если есть дети младше 10</string>
 </resources>

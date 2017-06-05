@@ -24,16 +24,21 @@ public class InitiationActivity extends Application {
     private String [] spinner_family_array = {"кроме Вас с собакой будут заниматься другие люди:",
             "никто", "очень редко", "да, часто, их физическая форма лучше моей", "да, часто, их физическая форма хуже моей"};
 
+    private String [] spinner_walk_array = {"где собака будет гулять чаще всего:",
+            "минимальные условия для выгула", "ограниченный выгул в городской черте", "лес или лесопарк", "неограниченно на своей территории"};
+
+    private String [] spinner_cynologist_array = {"есть ли доступ к профессиональному кинологу, дрессировщику:",
+            "нет", "ролики в интернет, литертатура", "вероятно есть", "развитые кинологические услуги"};
+
+    private String [] spinner_vet_array = {"оцените доступность ветеринарных услуг:",
+            "не доступны", "минимально доступны", "не известно", "хорошо доступны"};
+
     private String [] drawer_titles = {"сохранить ответы",
             "загрузить ответы", "написать разработчику"};
 
-    public String[] getSpinner_exp_array() {
-        return spinner_exp_array;
-    }
+    public String[] getSpinner_exp_array() { return spinner_exp_array; }
 
-    public String[] getSpinner_time_array() {
-        return spinner_time_array;
-    }
+    public String[] getSpinner_time_array() { return spinner_time_array; }
 
     public String[] getDrawer_titles() { return drawer_titles; }
 
@@ -43,11 +48,11 @@ public class InitiationActivity extends Application {
 
     public String[] getSpinner_family_array() {return spinner_family_array;}
 
+    public String[] getSpinner_walk_array() {return spinner_walk_array; }
 
+    public String[] getSpinner_cynologist_array() {return spinner_cynologist_array;}
 
-    private boolean buttonforwhatispressed;
-    private boolean buttonaboutownerispressed;
-
+    public String[] getSpinner_vet_array() {return spinner_vet_array;}
 
     //создаем 5 корзин для основных свойств выбора собаки
     //послушание 1- породы не способные к дрессировке, 2 -хаски, 5 миалинуа
@@ -83,6 +88,12 @@ public class InitiationActivity extends Application {
         return mybusketslist;
     }
 
+
+    private boolean buttonforwhatispressed;
+    private boolean buttonaboutownerispressed;
+
+    private boolean buttonaboutdogispressed;
+
     public void bucketseraser () {
 
         obidience.setValue(1);
@@ -107,5 +118,11 @@ public class InitiationActivity extends Application {
     }
 
     public boolean isButtonaboutownerispressed() {return buttonaboutownerispressed;}
+
+    public boolean isButtonaboutdogispressed() {return buttonaboutdogispressed;}
+
+    public void setButtonaboutdogispressed(boolean buttonaboutdogispressed) {
+        this.buttonaboutdogispressed = buttonaboutdogispressed;
+    }
 
 }

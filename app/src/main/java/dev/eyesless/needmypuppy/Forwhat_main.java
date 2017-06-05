@@ -74,6 +74,7 @@ public class Forwhat_main extends Fragment {
             @Override
             public void onClick(View v) {
 
+                inact.setButtonforwhatispressed(true);
                 checkboxReader();
                 myButtonListner.buttonClicked(v);
             }
@@ -85,7 +86,6 @@ public class Forwhat_main extends Fragment {
 
     private void checkboxReader () {
 
-                inact.setButtonforwhatispressed(true);
 
                 if (babycheck.isChecked()){
                     inact.obidience.setValue(max(inact.obidience.getValue(),2));
@@ -98,19 +98,18 @@ public class Forwhat_main extends Fragment {
                     inact.obidience.setValue(max(inact.obidience.getValue(),2));
                     inact.agressive.setValue(min(inact.agressive.getValue(),2));
                     inact.active.setValue(max(inact.active.getValue(),2));
-
                 }
+
                 if (runcheck.isChecked()){
 
                     inact.obidience.setValue(max(inact.obidience.getValue(),3));
                     inact.agressive.setValue(min(inact.agressive.getValue(),2));
                     inact.active.setValue(max(inact.active.getValue(),3));
                     inact.hardy.setValue(max(inact.hardy.getValue(),4));
-
-
                 }
-                if (huntcheck.isChecked()){
 
+                if (huntcheck.isChecked()){
+                    // TODO: 05.06.2017 implement
                 }
 
                 if (obidencecheck.isChecked()){
