@@ -98,8 +98,6 @@ public class InitiationActivity extends Application {
         this.buttonforwhatispressed = buttonforwhatispressed;
     }
 
-    public boolean isButtonforwhatispressed() {
-        return buttonforwhatispressed;
-    }
+    public boolean isButtonforwhatispressed() {return buttonforwhatispressed;}
 
 }
