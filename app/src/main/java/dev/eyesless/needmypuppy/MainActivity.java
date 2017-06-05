@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                 break;
 
             case R.id.imageButton_aboutowner:
+                //check if button already been pressed, cant pressed next time
+                if (inact.isButtonaboutownerispressed()){toastmaker();}
+                else
                 frameRemoover(new About_owner_main());
                 break;
 

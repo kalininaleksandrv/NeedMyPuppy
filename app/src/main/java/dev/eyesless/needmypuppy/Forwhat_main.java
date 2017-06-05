@@ -85,8 +85,6 @@ public class Forwhat_main extends Fragment {
 
     private void checkboxReader () {
 
-       if (inact.isButtonforwhatispressed()==false){
-
                 inact.setButtonforwhatispressed(true);
 
                 if (babycheck.isChecked()){
@@ -130,11 +128,7 @@ public class Forwhat_main extends Fragment {
                     inact.active.setValue(max(inact.active.getValue(),3));
                     inact.size.setValue(max(inact.active.getValue(),4));
                 }
-       } else {
 
-           babycheck.setEnabled(false);
-
-       }
     }
 
     //init checkboxes and set it disabled if re-entry

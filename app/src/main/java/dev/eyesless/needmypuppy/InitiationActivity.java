@@ -46,6 +46,8 @@ public class InitiationActivity extends Application {
 
 
     private boolean buttonforwhatispressed;
+    private boolean buttonaboutownerispressed;
+
 
     //создаем 5 корзин для основных свойств выбора собаки
     //послушание 1- породы не способные к дрессировке, 2 -хаски, 5 миалинуа
@@ -57,11 +59,11 @@ public class InitiationActivity extends Application {
     //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
 
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
-    MyBucket guard = new MyBucket("Охранные качества", 5);
-    MyBucket agressive = new MyBucket("Агрессивность", 1);
+    MyBucket guard = new MyBucket("Охранные качества", 1);
+    MyBucket agressive = new MyBucket("Агрессивность", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket active = new MyBucket("Активность", 1);
     MyBucket hardy = new MyBucket("Выносливость", 1);
-    MyBucket size = new MyBucket("Размер", 1);
+    MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 1);
 
     // создаем лист объектов корзина для передачи в список List_profile
@@ -85,7 +87,7 @@ public class InitiationActivity extends Application {
 
         obidience.setValue(1);
         guard.setValue(1);
-        agressive.setValue(1);
+        agressive.setValue(5);
         active.setValue(1);
         hardy.setValue(1);
         size.setValue(1);
@@ -99,5 +101,11 @@ public class InitiationActivity extends Application {
     }
 
     public boolean isButtonforwhatispressed() {return buttonforwhatispressed;}
+
+    public void setButtonaboutownerispressed(boolean buttonforwhatispressed) {
+        this.buttonaboutownerispressed = buttonforwhatispressed;
+    }
+
+    public boolean isButtonaboutownerispressed() {return buttonaboutownerispressed;}
 
 }
