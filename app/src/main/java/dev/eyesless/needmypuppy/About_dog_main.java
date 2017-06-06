@@ -127,8 +127,14 @@ public class About_dog_main extends Fragment {
             public void onClick(View v) {
 
                 inact.setButtonaboutdogispressed(true);
-              //  checkboxReader();
-                // TODO: 05.06.2017 implement spinners realizatoin
+                checkboxReader();
+
+                obidiencesetter();
+                guardsetter ();
+                agressivesetter ();
+                activsetter ();
+                sizesetter ();
+                caresetter ();
 
                 myButtonListner.buttonClicked(v);
 
@@ -143,20 +149,18 @@ public class About_dog_main extends Fragment {
     private void checkboxReader() {
 
         if (havedog.isChecked()){
-            // TODO: 05.06.2017 implement
-
+            inact.agressive.setValue(min(inact.agressive.getValue(),3)); //в случае другой собаки агрессивность не более 3
         }
 
         if (havechild.isChecked()){
-            // TODO: 05.06.2017 implement
-
+            inact.agressive.setValue(min(inact.agressive.getValue(),2)); //в случае наличия детей агрессивность не более 2
         }
     }
 
     private void statussetter() {
 
-        havedog = (CheckBox) parentview.findViewById(R.id.checkBox_opt1);
-        havechild = (CheckBox) parentview.findViewById(R.id.checkBox_opt2);
+        havedog = (CheckBox) parentview.findViewById(R.id.checkBox_havedog);
+        havechild = (CheckBox) parentview.findViewById(R.id.checkBox_havechild);
 
         if (inact.isButtonaboutdogispressed()) {
 
@@ -168,6 +172,34 @@ public class About_dog_main extends Fragment {
             spinner_cynologist.setEnabled(false);
             spinner_vet.setEnabled(false);
         }
+    }
+
+    //main logic - setting different parameters on Initiation Activity
+
+    private void obidiencesetter() {
+        inact.obidience.setValue(max(inact.obidience.getValue(),4-cynologistvalue)); //чем хуже развиты кинологические услуги, тем послушнее должна быть собака (дисконт 1)
+    }
+
+    private void guardsetter() {
+        inact.guard.setValue(max(inact.guard.getValue(), cynologistvalue)); //чем хуже развиты кинологические услуги, тем менее выраженные охранные качества допускаются
+    }
+
+    private void agressivesetter() {
+        inact.agressive.setValue(min(inact.agressive.getValue(), walkvalue+1)); //чем хуже условия выгула, тем менее агрессивная собака допускается
+        inact.agressive.setValue(min(inact.agressive.getValue(), cynologistvalue)); // чем хуже развиты кинологические услуги, тем менее агрессивная собака допускается
+    }
+
+    private void activsetter() {
+        inact.active.setValue(max(inact.active.getValue(), walkvalue)); //чем хуже условия выгула, тем менее активная собака допускается
+        inact.active.setValue(max(inact.active.getValue(), cynologistvalue+1)); // чем хуже развиты кинологические услуги, тем менее активная собака допускается
+    }
+
+    private void sizesetter() {
+        inact.size.setValue(min(inact.size.getValue(), walkvalue+1)); //чем хуже условия выгула, тем менее крупная собака допускается
+    }
+
+    private void caresetter() {
+        inact.care.setValue(max(inact.care.getValue(), vetvalue+1)); //чем хуже ветеринарная поддержка тем более неприхотливая собака допускается
     }
 
     // if button was pressed and trying next time, set toast about

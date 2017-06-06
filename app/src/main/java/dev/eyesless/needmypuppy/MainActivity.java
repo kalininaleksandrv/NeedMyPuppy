@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                 break;
 
             case R.id.imageButton_aboutdog:
+                if (inact.isButtonaboutdogispressed()){toastmaker();}
+                else
                 frameRemoover(new About_dog_main());
                 break;
 

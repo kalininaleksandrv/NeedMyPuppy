@@ -64,9 +64,9 @@ public class InitiationActivity extends Application {
     //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
 
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
-    MyBucket guard = new MyBucket("Охранные качества", 1);
+    MyBucket guard = new MyBucket("Охранные качества", 2);
     MyBucket agressive = new MyBucket("Агрессивность", 5);//в логике показатель снижается по этому выставлен максимальный
-    MyBucket active = new MyBucket("Активность", 1);
+    MyBucket active = new MyBucket("Активность", 3);
     MyBucket hardy = new MyBucket("Выносливость", 1);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 1);
@@ -91,7 +91,6 @@ public class InitiationActivity extends Application {
 
     private boolean buttonforwhatispressed;
     private boolean buttonaboutownerispressed;
-
     private boolean buttonaboutdogispressed;
 
     public void bucketseraser () {
@@ -101,9 +100,11 @@ public class InitiationActivity extends Application {
         agressive.setValue(5);
         active.setValue(1);
         hardy.setValue(1);
-        size.setValue(1);
+        size.setValue(5);
         care.setValue(1);
         buttonforwhatispressed = false;
+        buttonaboutdogispressed = false;
+        buttonaboutownerispressed = false;
 
     }
 
