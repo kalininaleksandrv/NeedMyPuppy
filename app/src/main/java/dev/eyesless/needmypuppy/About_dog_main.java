@@ -49,56 +49,7 @@ public class About_dog_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         inact = ((InitiationActivity) getActivity().getApplicationContext());
-        View layout = inflater.inflate(R.layout.about_dog_main, container, false);
-
-        //spinner walking
-        spinner_walking = (Spinner)layout.findViewById(R.id.spinner_walking);
-        ArrayAdapter<String> spiner_walk_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_walk_array());
-        spinner_walking.setAdapter(spiner_walk_adapter);
-        spinner_walking.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                walkvalue = position;
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        //spinner walking
-        spinner_cynologist = (Spinner)layout.findViewById(R.id.spinner_cynologist);
-        ArrayAdapter<String> spiner_cynolog_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_cynologist_array());
-        spinner_cynologist.setAdapter(spiner_cynolog_adapter);
-        spinner_cynologist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                cynologistvalue = position;
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        //spinner walking
-        spinner_vet = (Spinner)layout.findViewById(R.id.spinner_vet);
-        ArrayAdapter<String> spiner_vet_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_vet_array());
-        spinner_vet.setAdapter(spiner_vet_adapter);
-        spinner_vet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                vetvalue = position;
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        // Inflate the layout for this fragment
-        return layout;
-
+        return inflater.inflate(R.layout.about_dog_main, container, false);
     }
 
 
@@ -119,6 +70,49 @@ public class About_dog_main extends Fragment {
         ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
 
         statussetter ();
+
+        //spinner walking
+        ArrayAdapter<String> spiner_walk_adapter = new ArrayAdapter<String>
+                (getContext(), R.layout.list_item, inact.getSpinner_walk_array());
+        spinner_walking.setAdapter(spiner_walk_adapter);
+        spinner_walking.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                walkvalue = position;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        //spinner cynologist
+        ArrayAdapter<String> spiner_cynolog_adapter = new ArrayAdapter<String>
+                (getContext(), R.layout.list_item, inact.getSpinner_cynologist_array());
+        spinner_cynologist.setAdapter(spiner_cynolog_adapter);
+        spinner_cynologist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                cynologistvalue = position;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        //spinner veterinary
+        ArrayAdapter<String> spiner_vet_adapter = new ArrayAdapter<String>
+                (getContext(), R.layout.list_item, inact.getSpinner_vet_array());
+        spinner_vet.setAdapter(spiner_vet_adapter);
+        spinner_vet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                vetvalue = position;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
 
         //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
 
@@ -161,6 +155,10 @@ public class About_dog_main extends Fragment {
 
         havedog = (CheckBox) parentview.findViewById(R.id.checkBox_havedog);
         havechild = (CheckBox) parentview.findViewById(R.id.checkBox_havechild);
+        spinner_walking = (Spinner)parentview.findViewById(R.id.spinner_walking);
+        spinner_cynologist = (Spinner)parentview.findViewById(R.id.spinner_cynologist);
+        spinner_vet = (Spinner)parentview.findViewById(R.id.spinner_vet);
+
 
         if (inact.isButtonaboutdogispressed()) {
 
