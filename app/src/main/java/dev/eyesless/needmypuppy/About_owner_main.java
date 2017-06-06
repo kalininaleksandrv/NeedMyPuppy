@@ -61,11 +61,33 @@ public class About_owner_main extends Fragment {
         inact = ((InitiationActivity) getActivity().getApplicationContext());
         View layout = inflater.inflate(R.layout.about_owner_main, container, false);
 
+
+
+         return layout;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        this.myButtonListner = (onButtonListner) context;
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        parentview = getView();
+
+        ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
+
+        spinnerstatussetter ();
+
         //код спиннера опыт
 
-        spiner_exp = (Spinner)layout.findViewById(R.id.spinner_exp);
         ArrayAdapter<String> spiner_exp_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_exp_array());
+                (getContext(), R.layout.list_item, inact.getSpinner_exp_array());
         spiner_exp.setAdapter(spiner_exp_adapter);
         spiner_exp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -80,9 +102,8 @@ public class About_owner_main extends Fragment {
         });
 
         //код спиннера время
-        spiner_time = (Spinner)layout.findViewById(R.id.spinner_time);
         ArrayAdapter<String> spiner_time_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_time_array());
+                (getContext(), R.layout.list_item, inact.getSpinner_time_array());
         spiner_time.setAdapter(spiner_time_adapter);
         spiner_time.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -97,9 +118,8 @@ public class About_owner_main extends Fragment {
         });
 
         //код спиннера возраст ТОЛЬКО влияет только на значение активность
-        spiner_age = (Spinner)layout.findViewById(R.id.spinner_age);
         ArrayAdapter<String> spiner_age_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_age_array());
+                (getContext(), R.layout.list_item, inact.getSpinner_age_array());
         spiner_age.setAdapter(spiner_age_adapter);
         spiner_age.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -115,9 +135,8 @@ public class About_owner_main extends Fragment {
         });
 
         //код спиннера активность
-        spiner_activ = (Spinner)layout.findViewById(R.id.spinner_activ);
         ArrayAdapter<String> spiner_activ_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_activ_array());
+                (getContext(), R.layout.list_item, inact.getSpinner_activ_array());
         spiner_activ.setAdapter(spiner_activ_adapter);
         spiner_activ.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -132,9 +151,8 @@ public class About_owner_main extends Fragment {
         });
 
         //код спиннера семья влияет ТОЛЬКО на значение активность
-        spiner_family = (Spinner)layout.findViewById(R.id.spinner_family);
         ArrayAdapter<String> spiner_family_adapter = new ArrayAdapter<String>
-                (inflater.getContext(), R.layout.list_item, inact.getSpinner_family_array());
+                (getContext(), R.layout.list_item, inact.getSpinner_family_array());
         spiner_family.setAdapter(spiner_family_adapter);
         spiner_family.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -148,27 +166,6 @@ public class About_owner_main extends Fragment {
             }
         });
 
-         return layout;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        this.myButtonListner = (onButtonListner) context;
-
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        parentview = getView();
-
-        ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
-
-        spinnerstatussetter ();
 
         //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
 
@@ -198,6 +195,12 @@ public class About_owner_main extends Fragment {
     //init spinners and set it disabled if re-entry
 
     private void spinnerstatussetter() {
+
+        spiner_exp = (Spinner)parentview.findViewById(R.id.spinner_exp);
+        spiner_time = (Spinner)parentview.findViewById(R.id.spinner_time);
+        spiner_age = (Spinner)parentview.findViewById(R.id.spinner_age);
+        spiner_activ = (Spinner)parentview.findViewById(R.id.spinner_activ);
+        spiner_family = (Spinner)parentview.findViewById(R.id.spinner_family);
 
         if (inact.isButtonaboutownerispressed()) {
 
