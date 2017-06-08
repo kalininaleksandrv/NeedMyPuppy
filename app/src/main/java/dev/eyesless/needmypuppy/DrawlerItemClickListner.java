@@ -2,6 +2,8 @@ package dev.eyesless.needmypuppy;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.view.View;
@@ -18,45 +20,48 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
     String[] titles;
     DrawerLayout myDrawer;
     ListView myDrawerList;
+    MainActivity activity;
+    
 
-
-    public DrawlerItemClickListner(ActionBar myBar, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
+    public DrawlerItemClickListner(MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
         super();
 
         this.myBar = myBar;
         this.titles = titles;
         this.myDrawer = myDrawer;
         this.myDrawerList = myDrawerList;
+        this.activity = activity;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        selectItem (id, this.myBar);
+       selectItem (id);
+
 
     }
 
-    private void selectItem(long id, android.support.v7.app.ActionBar abar) {
-
-        abar.setTitle(titles[(int) id]);
+    private void selectItem(long id) {
 
         switch ((int) id){
 
             case 0:
-                // TODO: 22.05.2017 реализовать сохранение ответов
-                break;
-            case 1:
-                // TODO: 22.05.2017 реализовать загрузку ответов
-                break;
-            case 2:
-                // TODO: 22.05.2017 реализовать письмо разработчикам
-                break;
-            default:
+                activity.activitystarter(BreedViewer.class);
                 break;
 
+            case 1:
+                activity.activitystarter(BreedViewer.class);
+                break;
+
+            case 2:
+                activity.activitystarter(BreedViewer.class);
+                break;
+
+            default:
+                break;
         }
 
         myDrawer.closeDrawer(myDrawerList);
-
     }
+
 }

@@ -48,22 +48,11 @@ public class About_owner_main extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         inact = ((InitiationActivity) getActivity().getApplicationContext());
-        View layout = inflater.inflate(R.layout.about_owner_main, container, false);
-
-
-
-         return layout;
+        return inflater.inflate(R.layout.about_owner_main, container, false);
     }
 
     @Override
@@ -216,7 +205,6 @@ public class About_owner_main extends Fragment {
     }
 
     //main logic - setting different parameters on Initiation Activity
-
     private void obidiencesetter() {
 
         inact.obidience.setValue(max(inact.obidience.getValue(),4-timevalue)); //установить послушание максимальное из (уже установленное, 4-значение временных затрат (т.е. чем меньше временные затраты тем больше послушание)

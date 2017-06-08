@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.animation.ObjectAnimator;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         drawer = (DrawerLayout) findViewById(R.id.drawer_main);
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles));
         DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
-                (getSupportActionBar(), drawer, drawerList, titles);
+                (this, drawer, drawerList, titles);
         drawerList.setOnItemClickListener(myDrawlerListner);
 
         //код Drawer Togle кнопка выдвижения и задвижения drawer-а
@@ -94,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
                     case R.id.action_email:
                         //todo реализовать отправку списка порорд по e-mail
-                        Intent intent = new Intent(this, List_profile.class);
-                        startActivity(intent);
+                        activitystarter(List_profile.class);
+
                         return true;
 
                     case R.id.action_settings:
@@ -153,6 +154,13 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         }
     }
 
+    public void activitystarter(Object o) {
+
+        Intent intent = new Intent(this, (Class<?>) o);
+        startActivity(intent);
+
+    }
+
     //main method for remoove frames when clicked
     public void frameRemoover (Fragment fragment){
 
@@ -165,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     }
 
     // if button was pressed and trying next time, set toast about
-    private void toastmaker() {
+    public void toastmaker() {
         String helpstring = getString(R.string.disabled_button);
         Toast myToast = Toast.makeText(getApplicationContext(), helpstring, Toast.LENGTH_SHORT);
         myToast.setGravity(Gravity.BOTTOM, 0, 30);

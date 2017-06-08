@@ -74,6 +74,7 @@ public class About_dog_main extends Fragment {
         //spinner walking
         ArrayAdapter<String> spiner_walk_adapter = new ArrayAdapter<String>
                 (getContext(), R.layout.list_item, inact.getSpinner_walk_array());
+
         spinner_walking.setAdapter(spiner_walk_adapter);
         spinner_walking.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
