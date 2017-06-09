@@ -3,7 +3,9 @@ package dev.eyesless.needmypuppy;
 import android.app.Application;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class InitiationActivity extends Application {
 
@@ -69,7 +71,7 @@ public class InitiationActivity extends Application {
     MyBucket active = new MyBucket("Активность", 3);
     MyBucket hardy = new MyBucket("Выносливость", 1);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
-    MyBucket care = new MyBucket("Сложный / специфичный уход", 1);
+    MyBucket care = new MyBucket("Сложный / специфичный уход", 5);
 
     // создаем лист объектов корзина для передачи в список List_profile
 
@@ -101,7 +103,7 @@ public class InitiationActivity extends Application {
         active.setValue(1);
         hardy.setValue(1);
         size.setValue(5);
-        care.setValue(1);
+        care.setValue(5);
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;
@@ -124,6 +126,44 @@ public class InitiationActivity extends Application {
 
     public void setButtonaboutdogispressed(boolean buttonaboutdogispressed) {
         this.buttonaboutdogispressed = buttonaboutdogispressed;
+    }
+
+    //obidience
+    public void obidienceincreaser (int i) {
+        obidience.setValue(max(obidience.getValue(), i));
+    }
+
+    //guard
+    public void guardincreaser (int i){
+        guard.setValue(max(guard.getValue(), i));
+    }
+    public void guarddecreaser (int i){
+        guard.setValue(min(guard.getValue(), i));
+    }
+
+    //aggressive
+
+    public void aggresivedecreaser (int i){
+
+        agressive.setValue(min(agressive.getValue(), i));
+    }
+
+    //activesetter
+
+    public void activeincreaser (int i) {
+        active.setValue(max(active.getValue(), i));
+    }
+
+    //sizesetter
+
+    public void sizedecreaser (int i) {
+        size.setValue(min(size.getValue(), i));
+    }
+
+    //caresetter
+
+    public void caredecreaser (int i) {
+        care.setValue(min(care.getValue(), i));
     }
 
 }

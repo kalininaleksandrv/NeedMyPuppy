@@ -164,12 +164,13 @@ public class About_owner_main extends Fragment {
 
                 inact.setButtonaboutownerispressed(true);
 
-                obidiencesetter();
-                guardsetter ();
-                agressivesetter ();
-                activsetter ();
-                sizesetter ();
-                caresetter ();
+                inact.obidienceincreaser(obidiencescond());
+                inact.guarddecreaser(guardcon());
+                inact.aggresivedecreaser(min(expvalue+1, min(timevalue+2, agressivecon()))); //минимальное значение из если прямой зависимости от опыта и времени, возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
+                inact.activeincreaser(max(activvalue+1, max(expvalue+1, timevalue+2))); //чем больше времени готовы тратить на собаку, тем более активная порода допускается, чем больше опыть тем более активная порода допускается, чем вы активнее, тем более активная порода допускается
+                inact.sizedecreaser(sizecon());
+                inact.caredecreaser(min(timevalue+1, expvalue +1));// обратная зависимость от совободного времени и экспертизы
+
 
                 myButtonListner.buttonClicked(v);
 
@@ -205,46 +206,36 @@ public class About_owner_main extends Fragment {
     }
 
     //main logic - setting different parameters on Initiation Activity
-    private void obidiencesetter() {
+    private int obidiencescond() {
 
-        inact.obidience.setValue(max(inact.obidience.getValue(),4-timevalue)); //установить послушание максимальное из (уже установленное, 4-значение временных затрат (т.е. чем меньше временные затраты тем больше послушание)
-        inact.obidience.setValue(max(inact.obidience.getValue(),3-activvalue)); //установить послушание максимальное из (уже установленное, 4-значение активности (т.е. чем меньше активность тем больше послушание - важно! возраст и члени семьи влияют на активность прямо а на этот показатель соответственно опосредованно)
-        if (expvalue >3){inact.obidience.setValue(min(inact.obidience.getValue(),3));} //если опыт ЭКСПЕРТ то уменьшить минимально допустимое послушание до 3, даже если ранее выставлено больше
-        if (agevalue < 2) {inact.obidience.setValue(max(inact.obidience.getValue(),4));} //если возраст менее 16 лет то увеличить минимально допустимое послушание до 4, даже если ранее выставлено меньше, превалирует над ЭКСПЕРТ
+        int i = max(4-timevalue, 3-activvalue); //чем меньше времени тем выше должно быть послушание породы, чем меньше активность тем выше послушание породы
+        if (expvalue >3) i= 3; //если опыт ЭКСПЕРТ то уменьшить минимально допустимое послушание до 3, даже если ранее выставлено больше
+        if (agevalue < 2)i= 4; //если возраст менее 16 лет то увеличить минимально допустимое послушание до 4, даже если ранее выставлено меньше, превалирует над ЭКСПЕРТ
+
+        return i;
     }
 
-    private void guardsetter() {
-
-        if (expvalue < 3 || timevalue < 2) { inact.guard.setValue(min(inact.guard.getValue(),4));} //если опыт хотя бы 2 ИЛИ временные затраты хотя бы 1 то допускается охранные качества 5 иначе не более 4
-    }
-
-    private void agressivesetter() {
-
-        inact.agressive.setValue(min(inact.agressive.getValue(), timevalue+2)); //чем больше времени готовы тратить на собаку, тем более агрессивная порода допускается, но возвращается наименьшее возможное между уже установленным и рассчитанным
-        inact.agressive.setValue(min(inact.agressive.getValue(), expvalue+1)); //чем больше опыть тем более агрессивная порода допускается, но возвращается наименьшее возможное между уже установленным и рассчитанным
-        inact.agressive.setValue(min(inact.agressive.getValue(), activvalue+1)); //чем вы активнее, тем более агрессивная порода допускается, но возвращается наименьшее возможное между уже установленным и рассчитанным
-        if (agevalue < 2) {inact.agressive.setValue(min(inact.agressive.getValue(),2));} //если возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
+    private int guardcon() {
+        if (expvalue < 3 || timevalue < 2) {return 4;}
+        else return 5;//если опыт хотя бы 2 ИЛИ временные затраты хотя бы 1 то допускается охранные качества 5 иначе не более 4
 
     }
 
-    private void activsetter() {
-
-        inact.active.setValue(max(inact.active.getValue(), timevalue+2)); //чем больше времени готовы тратить на собаку, тем более активная порода допускается
-        inact.active.setValue(max(inact.active.getValue(), expvalue+1)); //чем больше опыть тем более активная порода допускается
-        inact.active.setValue(max(inact.active.getValue(), activvalue+1)); //чем вы активнее, тем более активная порода допускается
+    private int agressivecon() {
+     if (agevalue < 2) {return 2;} else return 5; //если возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
     }
 
-    private void sizesetter() {
-
-        if (timevalue < 2 || expvalue < 2) { inact.size.setValue(min(inact.size.getValue(),4));} //если не на собаку готов тратить менее часа в день или опыта нет то размер не более 4
-        if (agevalue < 2 || activvalue < 2) { inact.size.setValue(min(inact.size.getValue(),3));} //если возраст менее 16 или активность менее нормальной (для старшего возраста менее хорошей), то максимальный размер не более 3
+    private int sizecon() {
+        int i;
+        { inact.size.setValue(min(inact.size.getValue(),4));}
+        if (agevalue < 2 || activvalue < 2) { i = 3;} //если возраст менее 16 или активность менее нормальной (для старшего возраста менее хорошей), то максимальный размер не более 3
+        else {
+            if (timevalue < 2 || expvalue < 2) {i = 4;} //если не на собаку готов тратить менее часа в день или опыта нет то размер не более 4
+            else i = 5;
+        }
+        return i;
     }
 
-    private void caresetter() {
-
-        if (timevalue > 1)inact.care.setValue(max(inact.care.getValue(),timevalue));//допускаются породы со специальным уходом при готовности временных затрат (значение 2 и 3)
-        if (expvalue > 2)inact.care.setValue(max(inact.care.getValue(),expvalue +1));//при уровне экспертизы >2 допускаются собаки со сложным уходом (экспертиза +1)
-    }
 
     // if button was pressed and trying next time, set toast about
     private void toastmaker() {

@@ -124,7 +124,8 @@ public class About_dog_main extends Fragment {
                 inact.setButtonaboutdogispressed(true);
                 checkboxReader();
 
-                obidiencesetter();
+                inact.obidienceincreaser(4-cynologistvalue);
+
                 guardsetter ();
                 agressivesetter ();
                 activsetter ();
@@ -174,10 +175,6 @@ public class About_dog_main extends Fragment {
     }
 
     //main logic - setting different parameters on Initiation Activity
-
-    private void obidiencesetter() {
-        inact.obidience.setValue(max(inact.obidience.getValue(),4-cynologistvalue)); //чем хуже развиты кинологические услуги, тем послушнее должна быть собака (дисконт 1)
-    }
 
     private void guardsetter() {
         inact.guard.setValue(max(inact.guard.getValue(), cynologistvalue)); //чем хуже развиты кинологические услуги, тем менее выраженные охранные качества допускаются
