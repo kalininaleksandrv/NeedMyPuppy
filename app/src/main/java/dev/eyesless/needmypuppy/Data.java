@@ -23,7 +23,7 @@ public class Data {
     // инициируем классы пород
 
     public static final Breed haski = new Breed(270, "Сибирский Хаски",
-            "   Хаски - средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
+            "Хаски - средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
             "http://www.fci.be/en/nomenclature/SIBERIAN-HUSKY-270.html", 1, 8, 4, R.drawable.haski_1_1);
 
     public static final Breed labr = new Breed(122, "Лабрадор-ретривер",

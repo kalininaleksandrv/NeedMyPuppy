@@ -26,11 +26,12 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
     private InitiationActivity inact;
+    private static int THISLAYOUT = R.layout.activity_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(THISLAYOUT);
 
         inact = ((InitiationActivity) getApplicationContext());
         //код diwider-а
@@ -60,15 +61,13 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
         };
 
-        drawer.setDrawerListener(drawerToggle);
-        // TODO: 22.05.2017 разобраться с deprecated
+        drawer.addDrawerListener(drawerToggle);
 
         //вызов основного фрагмента
 
         if (savedInstanceState == null) {
 
             frameRemoover(new Buttons_main());
-            Log.w("MY_TAG", "first time frame_main call");
         }
     };
 
@@ -153,6 +152,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                 break;
         }
     }
+
+    // tis method start new activitys, including by external call of DrawerListner
 
     public void activitystarter(Object o) {
 
