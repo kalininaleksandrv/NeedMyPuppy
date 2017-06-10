@@ -1,6 +1,12 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.Application;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -164,6 +170,26 @@ public class InitiationActivity extends Application {
 
     public void caredecreaser (int i) {
         care.setValue(min(care.getValue(), i));
+    }
+
+    public void middledata (){
+
+
+        try {
+            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(this);
+
+            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
+
+            Cursor cursor = mybreeddatabase.query("BREEDS", new String[] {"NAME", "DESCRIPTION"}, null, null, null, null, null);
+
+            // TODO: 10.06.2017  add work with cursor
+        } catch (SQLiteException e) {
+            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
+            myToast.setGravity(Gravity.BOTTOM, 0, 30);
+            myToast.show();
+        }
+
+
     }
 
 }

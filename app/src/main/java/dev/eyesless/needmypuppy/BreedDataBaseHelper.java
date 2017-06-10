@@ -14,7 +14,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "breeds_base";
     private static final int DB_VERSION = 1;
 
-    public BreedDataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public BreedDataBaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -25,7 +25,9 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "NAME TEXT, "
                 + "DESCRIPTION TEXT, "
-                + "IMAGE_RESOURCE_ID INTEGER);");
+                + "IMAGE_RESOURCE_ID INTEGER, "
+                + "FAVOR NUMERIC, "
+                + "COMMENT TEXT);");
 
         incertBreedsToDb (db,
                 "Сибирский Хаски",
