@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private InitiationActivity inact;
     private static int THISLAYOUT = R.layout.activity_main;
 
-    private ArrayList <String> listOfTitles = new ArrayList<>();
-
-    public ArrayList<String> getListOfTitles() {return listOfTitles;}
+//    private ArrayList <String> listOfTitles = new ArrayList<>();
+//
+//    public ArrayList<String> getListOfTitles() {return listOfTitles;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,39 +45,41 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
         inact = ((InitiationActivity) getApplicationContext());
 
-        try {
+        inact.middledata(this);
 
-            Log.w("MY_TAG", "trying create new db");
-
-            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(this);
-
-            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-
-            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
-
-            if (myCursor.moveToFirst()) {
-
-                String tempstr = myCursor.getString(0);
-                listOfTitles.add(tempstr);
-
-            }
-
-                while (myCursor.moveToNext()){
-
-                    String tempstr_next = myCursor.getString(0);
-                    listOfTitles.add(tempstr_next);
-
-                }
-
-
-            myCursor.close();
-            mybreeddatabase.close();
-
-        } catch (SQLiteException e) {
-            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
-            myToast.setGravity(Gravity.BOTTOM, 0, 30);
-            myToast.show();
-        }
+//        try {
+//
+//            Log.w("MY_TAG", "trying create new db");
+//
+//            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(this);
+//
+//            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
+//
+//            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
+//
+//            if (myCursor.moveToFirst()) {
+//
+//                String tempstr = myCursor.getString(0);
+//                listOfTitles.add(tempstr);
+//
+//            }
+//
+//                while (myCursor.moveToNext()){
+//
+//                    String tempstr_next = myCursor.getString(0);
+//                    listOfTitles.add(tempstr_next);
+//
+//                }
+//
+//
+//            myCursor.close();
+//            mybreeddatabase.close();
+//
+//        } catch (SQLiteException e) {
+//            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
+//            myToast.setGravity(Gravity.BOTTOM, 0, 30);
+//            myToast.show();
+//        }
 
 
 
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
                     case R.id.action_settings:
                         //todo реализовать настройки
 
-                        activitystarter(List_profile.class, listOfTitles);
+                        activitystarter(List_profile.class, inact.getListOfTitles());
 
 
                         return true;

@@ -1,5 +1,6 @@
 package dev.eyesless.needmypuppy;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
@@ -174,47 +175,52 @@ public class InitiationActivity extends Application {
 
     //work with db
 
-//    private ArrayList <String> listOfTitles = new ArrayList<>();
-//
-//    public ArrayList<String> getListOfTitles() {return listOfTitles;}
-//
-//    public void middledata (Context context){
-//
-//        Log.w("MY_TAG", "middledata");
-//
-//
-//        try {
-//
-//            Log.w("MY_TAG", "trying create new db");
-//
-//            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(context);
-//
-//            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-//
-//            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"NAME", "DESCRIPTION"}, null, null, null, null, null);
-//
-//            if (myCursor.moveToFirst()){
-//
-//                String tempstr = myCursor.getString(1);
-//                listOfTitles.add(tempstr);
-//
-//                if (myCursor.moveToNext()){
-//
-//                    String tempstr_next = myCursor.getString(1);
-//                    listOfTitles.add(tempstr);
-//
-//                }
-//
-//            }
-//            myCursor.close();
-//            mybreeddatabase.close();
-//
-//        } catch (SQLiteException e) {
-//            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
-//            myToast.setGravity(Gravity.BOTTOM, 0, 30);
-//            myToast.show();
-//        }
-//
-//    }
+    private ArrayList <String> listOfTitles = new ArrayList<>();
+
+    public ArrayList<String> getListOfTitles() {return listOfTitles;}
+
+    public void middledata (Context context){
+
+        Context mycontext = context;
+
+
+        Log.w("MY_TAG", "middledata");
+
+
+        try {
+
+            Log.w("MY_TAG", "trying create new db");
+
+            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(mycontext);
+
+            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
+
+            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
+
+            if (myCursor.moveToFirst()) {
+
+                String tempstr = myCursor.getString(0);
+                listOfTitles.add(tempstr);
+
+            }
+
+                while (myCursor.moveToNext()){
+
+                    String tempstr_next = myCursor.getString(0);
+                    listOfTitles.add(tempstr_next);
+
+                }
+
+
+            myCursor.close();
+            mybreeddatabase.close();
+
+        } catch (SQLiteException e) {
+            Toast myToast = Toast.makeText(context, "Database Unavailable", Toast.LENGTH_SHORT);
+            myToast.setGravity(Gravity.BOTTOM, 0, 30);
+            myToast.show();
+        }
+
+    }
 
 }
