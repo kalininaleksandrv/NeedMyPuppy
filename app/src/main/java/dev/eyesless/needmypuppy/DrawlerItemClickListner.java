@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Eyesless on 22.05.2017.
  */
@@ -21,16 +23,17 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
     DrawerLayout myDrawer;
     ListView myDrawerList;
     MainActivity activity;
+    InitiationActivity inact;
     
 
-    public DrawlerItemClickListner(MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
+    public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
         super();
 
-        this.myBar = myBar;
         this.titles = titles;
         this.myDrawer = myDrawer;
         this.myDrawerList = myDrawerList;
         this.activity = activity;
+        this.inact = inact;
     }
 
     @Override
@@ -46,15 +49,22 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
         switch ((int) id){
 
             case 0:
-                activity.activitystarter(BreedViewer.class);
+                activity.activitystarter(BreedViewer.class, null);
                 break;
 
             case 1:
-                activity.activitystarter(BreedViewer.class);
+                ArrayList<MyBucket> myList = inact.mybuckelisttmaker();
+                activity.activitystarter(List_profile.class, myList);
                 break;
 
             case 2:
-                activity.activitystarter(BreedViewer.class);
+//                Main_logic newlogic = new Main_logic();
+//                newlogic.setFinalListOfBreed();
+//                newlogic.setReturnbreed();
+//                ArrayList<String> myStringList = Main_logic.finalListOfBreedTitles;
+
+//                ArrayList<String> myStringList = inact.getListOfTitles();
+//                activity.activitystarter(List_profile.class, myStringList);
                 break;
 
             default:

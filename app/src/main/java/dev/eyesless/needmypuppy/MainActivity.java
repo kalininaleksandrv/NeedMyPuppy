@@ -3,6 +3,10 @@ package dev.eyesless.needmypuppy;
 import android.animation.ObjectAnimator;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +21,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements onButtonListner {
 
@@ -28,20 +34,60 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private InitiationActivity inact;
     private static int THISLAYOUT = R.layout.activity_main;
 
+    private ArrayList <String> listOfTitles = new ArrayList<>();
+
+    public ArrayList<String> getListOfTitles() {return listOfTitles;}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(THISLAYOUT);
 
         inact = ((InitiationActivity) getApplicationContext());
+
+        try {
+
+            Log.w("MY_TAG", "trying create new db");
+
+            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(this);
+
+            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
+
+            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
+
+            if (myCursor.moveToFirst()){
+
+                String tempstr = myCursor.getString(1);
+                listOfTitles.add(tempstr);
+
+                if (myCursor.moveToNext()){
+
+                    String tempstr_next = myCursor.getString(1);
+                    listOfTitles.add(tempstr);
+
+                }
+
+            }
+            myCursor.close();
+            mybreeddatabase.close();
+
+        } catch (SQLiteException e) {
+            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
+            myToast.setGravity(Gravity.BOTTOM, 0, 30);
+            myToast.show();
+        }
+
+
+
         //код diwider-а
 
         titles = inact.getDrawer_titles();
+
         drawerList = (ListView) findViewById(R.id.list_drawer_main);
         drawer = (DrawerLayout) findViewById(R.id.drawer_main);
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles));
         DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
-                (this, drawer, drawerList, titles);
+                (inact, this, drawer, drawerList, titles);
         drawerList.setOnItemClickListener(myDrawlerListner);
 
         //код Drawer Togle кнопка выдвижения и задвижения drawer-а
@@ -94,12 +140,13 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
                     case R.id.action_email:
                         //todo реализовать отправку списка порорд по e-mail
-                        activitystarter(List_profile.class);
-
+                        ArrayList<MyBucket> myList = inact.mybuckelisttmaker();
+                        activitystarter(List_profile.class, myList);
                         return true;
 
                     case R.id.action_settings:
                         //todo реализовать настройки
+
                         return true;
 
                     case R.id.action_delet:
@@ -153,11 +200,18 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         }
     }
 
-    // tis method start new activitys, including by external call of DrawerListner
+    // tis method start new activitys, including second optional parameter - arraylist, if null just ignored, if not null - put on intent
 
-    public void activitystarter(Object o) {
+    public void activitystarter(Object o, ArrayList<?> al) {
 
         Intent intent = new Intent(this, (Class<?>) o);
+
+        if (al != null) {
+
+            intent.putExtra(List_profile.LIST, al);
+
+        }
+
         startActivity(intent);
 
     }

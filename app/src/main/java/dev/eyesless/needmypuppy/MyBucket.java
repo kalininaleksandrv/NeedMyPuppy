@@ -1,10 +1,12 @@
 package dev.eyesless.needmypuppy;
 
+import java.io.Serializable;
+
 /**
  * Created by Eyesless on 31.05.2017.
  */
 
-public class MyBucket {
+public class MyBucket implements Serializable {
 
     private String title;
     private int value;

@@ -1,10 +1,12 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -96,6 +98,7 @@ public class InitiationActivity extends Application {
         return mybusketslist;
     }
 
+    //true if already answering question in one of fragment
 
     private boolean buttonforwhatispressed;
     private boolean buttonaboutownerispressed;
@@ -149,10 +152,7 @@ public class InitiationActivity extends Application {
 
     //aggressive
 
-    public void aggresivedecreaser (int i){
-
-        agressive.setValue(min(agressive.getValue(), i));
-    }
+    public void aggresivedecreaser (int i){ agressive.setValue(min(agressive.getValue(), i)); }
 
     //activesetter
 
@@ -172,24 +172,49 @@ public class InitiationActivity extends Application {
         care.setValue(min(care.getValue(), i));
     }
 
-    public void middledata (){
+    //work with db
 
-
-        try {
-            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(this);
-
-            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-
-            Cursor cursor = mybreeddatabase.query("BREEDS", new String[] {"NAME", "DESCRIPTION"}, null, null, null, null, null);
-
-            // TODO: 10.06.2017  add work with cursor
-        } catch (SQLiteException e) {
-            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
-            myToast.setGravity(Gravity.BOTTOM, 0, 30);
-            myToast.show();
-        }
-
-
-    }
+//    private ArrayList <String> listOfTitles = new ArrayList<>();
+//
+//    public ArrayList<String> getListOfTitles() {return listOfTitles;}
+//
+//    public void middledata (Context context){
+//
+//        Log.w("MY_TAG", "middledata");
+//
+//
+//        try {
+//
+//            Log.w("MY_TAG", "trying create new db");
+//
+//            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(context);
+//
+//            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
+//
+//            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"NAME", "DESCRIPTION"}, null, null, null, null, null);
+//
+//            if (myCursor.moveToFirst()){
+//
+//                String tempstr = myCursor.getString(1);
+//                listOfTitles.add(tempstr);
+//
+//                if (myCursor.moveToNext()){
+//
+//                    String tempstr_next = myCursor.getString(1);
+//                    listOfTitles.add(tempstr);
+//
+//                }
+//
+//            }
+//            myCursor.close();
+//            mybreeddatabase.close();
+//
+//        } catch (SQLiteException e) {
+//            Toast myToast = Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT);
+//            myToast.setGravity(Gravity.BOTTOM, 0, 30);
+//            myToast.show();
+//        }
+//
+//    }
 
 }

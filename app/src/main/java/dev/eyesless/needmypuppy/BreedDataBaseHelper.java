@@ -23,9 +23,10 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE BREEDS("
                 + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "NAME TEXT, "
+                + "TITLE TEXT, "
                 + "DESCRIPTION TEXT, "
                 + "IMAGE_RESOURCE_ID INTEGER, "
+                + "SIZE INTEGER, "
                 + "FAVOR NUMERIC, "
                 + "COMMENT TEXT);");
 
@@ -41,6 +42,10 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Hемецкая овчарка",
                 "Немецкая овчарка - средняя по размеру служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке",
                 R.drawable.germshep_1_1);
+        incertBreedsToDb (db,
+                "Bельш корги",
+                "миниатюрная пастушья собака с веселым и дружелюбным харакером",
+                R.drawable.velsh_1_1);
 
     }
 
@@ -52,7 +57,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
     private void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId) {
 
         ContentValues con_breed = new ContentValues();
-        con_breed.put ("NAME", name);
+        con_breed.put ("TITLE", name);
         con_breed.put ("DESCRIPTION", description);
         con_breed.put ("IMAGE_RESOURCE_ID", resourceId);
 

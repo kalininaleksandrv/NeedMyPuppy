@@ -22,7 +22,7 @@ public class MyCustomAdapter extends ArrayAdapter<MyBucket> {
     private final Context context;
 
 
-    public MyCustomAdapter(@NonNull Context context, @LayoutRes int resource,  ArrayList<MyBucket> values) {
+    public MyCustomAdapter(@NonNull Context context, @LayoutRes int resource, ArrayList<MyBucket> values) {
         super(context, R.layout.list_item_doubletext, values);
         this.values = values;
         this.context = context;
