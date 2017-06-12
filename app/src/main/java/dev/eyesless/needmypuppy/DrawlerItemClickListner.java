@@ -53,19 +53,11 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
                 break;
 
             case 1:
-                ArrayList<MyBucket> myList = inact.mybuckelisttmaker();
-                activity.activitystarter(List_profile.class, myList);
+                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
 
             case 2:
-//                Main_logic newlogic = new Main_logic();
-//                newlogic.setFinalListOfBreed();
-//                newlogic.setReturnbreed();
-//                ArrayList<String> myStringList = Main_logic.finalListOfBreedTitles;
-
-//                ArrayList<String> myStringList = inact.getListOfTitles();
-//                activity.activitystarter(List_profile.class, myStringList);
-                activity.activitystarter(BreedViewer.class, null);
+                activity.activitystarter(List_profile.class, inact.getListOfTitles());
                 break;
 
             default:
