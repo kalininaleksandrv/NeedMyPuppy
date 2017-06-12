@@ -65,6 +65,7 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
 
 //                ArrayList<String> myStringList = inact.getListOfTitles();
 //                activity.activitystarter(List_profile.class, myStringList);
+                activity.activitystarter(BreedViewer.class, null);
                 break;
 
             default:

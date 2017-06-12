@@ -55,19 +55,21 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
             Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
 
-            if (myCursor.moveToFirst()){
+            if (myCursor.moveToFirst()) {
 
-                String tempstr = myCursor.getString(1);
+                String tempstr = myCursor.getString(0);
                 listOfTitles.add(tempstr);
 
-                if (myCursor.moveToNext()){
+            }
 
-                    String tempstr_next = myCursor.getString(1);
-                    listOfTitles.add(tempstr);
+                while (myCursor.moveToNext()){
+
+                    String tempstr_next = myCursor.getString(0);
+                    listOfTitles.add(tempstr_next);
 
                 }
 
-            }
+
             myCursor.close();
             mybreeddatabase.close();
 
@@ -146,6 +148,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
                     case R.id.action_settings:
                         //todo реализовать настройки
+
+                        activitystarter(List_profile.class, listOfTitles);
+
 
                         return true;
 
