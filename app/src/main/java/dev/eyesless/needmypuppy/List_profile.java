@@ -48,15 +48,4 @@ public class List_profile extends ListActivity {
 
     }
 
-    public void simpmplelistmaker (){
-
-
-    }
-
-    public void customlistmaker (){
-
-
-
-    }
-
 }

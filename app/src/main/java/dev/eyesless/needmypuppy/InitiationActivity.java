@@ -195,7 +195,7 @@ public class InitiationActivity extends Application {
 
             SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
 
-            Cursor myCursor = mybreeddatabase.query("BREEDS", new String[] {"TITLE", "DESCRIPTION"}, null, null, null, null, null);
+            Cursor myCursor = mybreeddatabase.query(BreedDataBaseHelper.TABLE_NAME, new String[] {BreedDataBaseHelper.KEY_TITLE, BreedDataBaseHelper.KEY_DECRIPTION}, null, null, null, null, null);
 
             if (myCursor.moveToFirst()) {
 
