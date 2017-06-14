@@ -41,9 +41,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
         inact = ((InitiationActivity) getApplicationContext());
 
-        //init database
+        //init database if it does not
 
-        inact.middledata(this);
+        if (inact.isDataBaseCreated()) { inact.middledata(this); }
+
 
         //код diwider-а
 

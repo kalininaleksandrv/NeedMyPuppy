@@ -175,6 +175,10 @@ public class InitiationActivity extends Application {
 
     //work with db
 
+    private boolean isDataBaseCreated = false;
+
+    public boolean isDataBaseCreated() { return isDataBaseCreated; }
+
     private ArrayList <String> listOfTitles = new ArrayList<>();
 
     public ArrayList<String> getListOfTitles() {return listOfTitles;}
@@ -215,8 +219,10 @@ public class InitiationActivity extends Application {
             myCursor.close();
             mybreeddatabase.close();
 
+            isDataBaseCreated = true;
+
         } catch (SQLiteException e) {
-            Toast myToast = Toast.makeText(context, "Database Unavailable", Toast.LENGTH_SHORT);
+            Toast myToast = Toast.makeText(mycontext, "Database Unavailable", Toast.LENGTH_SHORT);
             myToast.setGravity(Gravity.BOTTOM, 0, 30);
             myToast.show();
         }
