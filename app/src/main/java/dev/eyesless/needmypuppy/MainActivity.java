@@ -43,7 +43,11 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
         //init database if it does not
 
-        if (inact.isDataBaseCreated()) { inact.middledata(this); }
+        if (inact.isDataBaseCreated() == false) {
+
+            BreedDataBaseCreator myDataCreator = new BreedDataBaseCreator(this, inact);
+            myDataCreator.onCreateDb();
+        }
 
 
         //код diwider-а

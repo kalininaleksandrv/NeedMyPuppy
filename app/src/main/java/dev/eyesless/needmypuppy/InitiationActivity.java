@@ -179,53 +179,25 @@ public class InitiationActivity extends Application {
 
     public boolean isDataBaseCreated() { return isDataBaseCreated; }
 
+    public void setDataBaseCreated(boolean dataBaseCreated) {
+        isDataBaseCreated = dataBaseCreated;
+    }
+
+
     private ArrayList <String> listOfTitles = new ArrayList<>();
 
     public ArrayList<String> getListOfTitles() {return listOfTitles;}
+
+    public void setListOfTitles(ArrayList<String> listOfTitles) {
+        this.listOfTitles = listOfTitles;
+    }
 
     public void middledata (Context context){
 
         Context mycontext = context;
 
 
-        Log.w("MY_TAG", "middledata");
 
-
-        try {
-
-            Log.w("MY_TAG", "trying create new db");
-
-            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(mycontext);
-
-            SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-
-            Cursor myCursor = mybreeddatabase.query(BreedDataBaseHelper.TABLE_NAME, new String[] {BreedDataBaseHelper.KEY_TITLE, BreedDataBaseHelper.KEY_DECRIPTION}, null, null, null, null, null);
-
-            if (myCursor.moveToFirst()) {
-
-                String tempstr = myCursor.getString(0);
-                listOfTitles.add(tempstr);
-
-            }
-
-                while (myCursor.moveToNext()){
-
-                    String tempstr_next = myCursor.getString(0);
-                    listOfTitles.add(tempstr_next);
-
-                }
-
-
-            myCursor.close();
-            mybreeddatabase.close();
-
-            isDataBaseCreated = true;
-
-        } catch (SQLiteException e) {
-            Toast myToast = Toast.makeText(mycontext, "Database Unavailable", Toast.LENGTH_SHORT);
-            myToast.setGravity(Gravity.BOTTOM, 0, 30);
-            myToast.show();
-        }
 
     }
 
