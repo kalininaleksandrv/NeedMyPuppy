@@ -30,58 +30,65 @@ public class BreedDataBaseCreator {
 
             try {
 
-                ArrayList<String> myListOfTitles = new ArrayList<>();
-
                 SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
-
                 SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-
-                Cursor myCursor = mybreeddatabase.query(BreedDataBaseHelper.TABLE_NAME, new String[] {BreedDataBaseHelper.KEY_TITLE, BreedDataBaseHelper.KEY_DECRIPTION}, null, null, null, null, null);
-
-                if (myCursor.moveToFirst()) {
-
-                    String tempstr = myCursor.getString(0);
-                    myListOfTitles.add(tempstr);
-
-                }
-
-                while (myCursor.moveToNext()){
-
-                    String tempstr_next = myCursor.getString(0);
-                    myListOfTitles.add(tempstr_next);
-
-                }
-
-
-                myCursor.close();
-                mybreeddatabase.close();
+                cursorCreator(mybreeddatabase);
 
                 Toast myToast = Toast.makeText(myContext, "Database successfully created", Toast.LENGTH_SHORT);
                 myToast.setGravity(Gravity.BOTTOM, 0, 30);
                 myToast.show();
-
-                inact.setListOfTitles(myListOfTitles);
-
-                inact.setDataBaseCreated(true);
 
             } catch (SQLiteException e) {
                 Toast myToast = Toast.makeText(myContext, "Database Unavailable", Toast.LENGTH_SHORT);
                 myToast.setGravity(Gravity.BOTTOM, 0, 30);
                 myToast.show();
             }
-
-
-
     }
 
-     public void onReCreateDb () {
+    private void cursorCreator (SQLiteDatabase db) {
 
-         Toast myToast = Toast.makeText(myContext, "Database successfully upload", Toast.LENGTH_SHORT);
-         myToast.setGravity(Gravity.BOTTOM, 0, 30);
-         myToast.show();
+        ArrayList<String> myListOfTitles = new ArrayList<>();
+
+        String title = BreedDataBaseHelper.KEY_TITLE;
+        String description = BreedDataBaseHelper.KEY_DECRIPTION;
+
+        String istitle = getAsqCondition();
+
+        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description},
+                "title = ?", new String[]{istitle}, null, null, null);
+
+        if (myCursor.moveToFirst()) {
+
+            String tempstr = myCursor.getString(0);
+            myListOfTitles.add(tempstr);
+
+        }
+
+        while (myCursor.moveToNext()){
+
+            String tempstr_next = myCursor.getString(0);
+            myListOfTitles.add(tempstr_next);
+
+        }
 
 
+        myCursor.close();
+        db.close();
 
+
+        inact.setListOfTitles(myListOfTitles);
+
+        inact.setDataBaseCreated(true);
+
+        Toast myToast = Toast.makeText(myContext, "List of breeds successfully created", Toast.LENGTH_SHORT);
+        myToast.setGravity(Gravity.BOTTOM, 0, 70);
+        myToast.show();
+    }
+
+    private String getAsqCondition() {
+
+
+        return "Сибирский Хаски";
     }
 
 

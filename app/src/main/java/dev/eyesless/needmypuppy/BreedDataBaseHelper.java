@@ -44,7 +44,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Хаски - средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
                 R.drawable.haski_1_1);
         incertBreedsToDb (db,
-                "Лабрадор-ретривер",
+                "Лабрадор - ретривер",
                 "Лабрадор - средняя по размеру служебная собака, подвижная, веселая и прекрано ладящая с людьми",
                 R.drawable.labr_1_1);
         incertBreedsToDb (db,
