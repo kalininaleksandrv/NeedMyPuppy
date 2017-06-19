@@ -57,7 +57,7 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
                 break;
 
             case 2:
-                activity.activitystarter(List_profile.class, inact.getListOfTitles());
+                activity.frameRemoover(new Recycle_view_fragment());
                 break;
 
             default:
