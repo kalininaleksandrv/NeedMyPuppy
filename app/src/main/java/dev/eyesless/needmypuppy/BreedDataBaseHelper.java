@@ -42,19 +42,19 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
         incertBreedsToDb (db,
                 "Сибирский Хаски",
                 "Хаски - средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
-                R.drawable.haski_1_1, 3);
+                R.drawable.b_husky, 3);
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
                 "Лабрадор - средняя по размеру служебная собака, подвижная, веселая и прекрано ладящая с людьми",
-                R.drawable.labr_1_1, 3);
+                R.drawable.b_labrador, 3);
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "Немецкая овчарка - средняя по размеру служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке",
-                R.drawable.germshep_1_1, 4);
+                R.drawable.b_germshep, 4);
         incertBreedsToDb (db,
-                "Bельш корги",
+                "Bельш корги Пемброк",
                 "миниатюрная пастушья собака с веселым и дружелюбным харакером",
-                R.drawable.velsh_1_1, 2);
+                R.drawable.b_welsh_pembrok, 2);
 
     }
 
