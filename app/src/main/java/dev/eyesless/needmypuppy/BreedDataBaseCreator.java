@@ -51,11 +51,12 @@ public class BreedDataBaseCreator {
 
         String title = BreedDataBaseHelper.KEY_TITLE;
         String description = BreedDataBaseHelper.KEY_DECRIPTION;
+        String size = BreedDataBaseHelper.KEY_SIZE;
 
-        String istitle = getAsqCondition();
+        String [] selectionArgs = getAsqCondition();
 
         Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description},
-                "title = ?", new String[]{istitle}, null, null, null);
+                "size < ?", selectionArgs, null, null, null);
 
         if (myCursor.moveToFirst()) {
 
@@ -85,10 +86,9 @@ public class BreedDataBaseCreator {
         myToast.show();
     }
 
-    private String getAsqCondition() {
+    private String[] getAsqCondition() {
 
-
-        return "Сибирский Хаски";
+        return new String [] {"4"};
     }
 
 

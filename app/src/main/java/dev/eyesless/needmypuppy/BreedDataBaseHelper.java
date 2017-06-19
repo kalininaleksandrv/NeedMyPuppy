@@ -42,19 +42,19 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
         incertBreedsToDb (db,
                 "Сибирский Хаски",
                 "Хаски - средняя по размеру собака с энергичным, живым характером, независимая но очень дружелюбная к человеку",
-                R.drawable.haski_1_1);
+                R.drawable.haski_1_1, 3);
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
                 "Лабрадор - средняя по размеру служебная собака, подвижная, веселая и прекрано ладящая с людьми",
-                R.drawable.labr_1_1);
+                R.drawable.labr_1_1, 3);
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "Немецкая овчарка - средняя по размеру служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке",
-                R.drawable.germshep_1_1);
+                R.drawable.germshep_1_1, 4);
         incertBreedsToDb (db,
                 "Bельш корги",
                 "миниатюрная пастушья собака с веселым и дружелюбным харакером",
-                R.drawable.velsh_1_1);
+                R.drawable.velsh_1_1, 2);
 
     }
 
@@ -66,12 +66,13 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId) {
+    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId, int size) {
 
         ContentValues con_breed = new ContentValues();
         con_breed.put (KEY_TITLE, name);
         con_breed.put (KEY_DECRIPTION, description);
         con_breed.put (KEY_IMAGE_RES_ID, resourceId);
+        con_breed.put (KEY_SIZE, size);
 
         db.insert(TABLE_NAME, null, con_breed);
 
