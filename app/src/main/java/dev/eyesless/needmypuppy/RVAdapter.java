@@ -57,9 +57,9 @@ public class RVAdapter extends RecyclerView.Adapter  <RVAdapter.BreedViewHolder>
     @Override
     public void onBindViewHolder(BreedViewHolder holder, int position) {
 
-        holder.breedImage.setImageResource(R.drawable.b_germshep);
-        holder.breedTitle.setText("Немецкая овчарка");
-        holder.breedDescription.setText("Отличная собака для охраны и компании");
+        holder.breedImage.setImageResource(breeds.get(position).getB_image_res_id());
+        holder.breedTitle.setText(breeds.get(position).getB_title());
+        holder.breedDescription.setText(breeds.get(position).getB_description());
 
     }
 
