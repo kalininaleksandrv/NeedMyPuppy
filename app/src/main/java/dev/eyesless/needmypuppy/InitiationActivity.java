@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -173,6 +174,8 @@ public class InitiationActivity extends Application {
         care.setValue(min(care.getValue(), i));
     }
 
+
+
     //work with db
 
     private boolean isDataBaseCreated = false;
@@ -184,21 +187,49 @@ public class InitiationActivity extends Application {
     }
 
 
+    //list of breeds
+
+    private ArrayList <Breed_mod> myListOfBreed_m = new ArrayList<>();
+
+    public ArrayList<Breed_mod> getMyListOfBreed_m() {
+        return myListOfBreed_m;
+    }
+
+    public void setMyListOfBreed_m(ArrayList<Breed_mod> myListOfBreed_m) {
+        this.myListOfBreed_m = myListOfBreed_m;
+    }
+
+
+
+    //list of titles
+
+
     private ArrayList <String> listOfTitles = new ArrayList<>();
 
     public ArrayList<String> getListOfTitles() {return listOfTitles;}
 
-    public void setListOfTitles(ArrayList<String> listOfTitles) {
-        this.listOfTitles = listOfTitles;
+//    public void setListOfTitles(ArrayList<String> listOfTitles) {
+//        this.listOfTitles = listOfTitles;
+//    }
+
+    //возврат только названий пород из финального списка пород
+
+    public void setListOfTitles () {
+
+        ArrayList<String> listOfBreedTitles = new ArrayList<>();
+        Iterator<Breed_mod> myBreedIterator = getMyListOfBreed_m().iterator();
+
+        while (myBreedIterator.hasNext()) {
+            Breed_mod breed = myBreedIterator.next();
+            listOfBreedTitles.add(breed.getB_title());
+        }
+
+        this.listOfTitles = listOfBreedTitles;
+
     }
 
-    public void middledata (Context context){
-
-        Context mycontext = context;
 
 
 
-
-    }
 
 }

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
             BreedDataBaseCreator myDataCreator = new BreedDataBaseCreator(this, inact);
             myDataCreator.onCreateDb();
+            inact.setListOfTitles();
         }
 
 

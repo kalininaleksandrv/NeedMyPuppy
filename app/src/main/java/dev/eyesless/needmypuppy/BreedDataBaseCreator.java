@@ -32,7 +32,9 @@ public class BreedDataBaseCreator {
 
                 SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
                 SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-                cursorCreator(mybreeddatabase);
+                Cursor mCursor = cursorCreator(mybreeddatabase);
+                listOfBreedCreator(mCursor);
+                mybreeddatabase.close();
 
                 Toast myToast = Toast.makeText(myContext, "Database successfully created", Toast.LENGTH_SHORT);
                 myToast.setGravity(Gravity.BOTTOM, 0, 30);
@@ -45,50 +47,71 @@ public class BreedDataBaseCreator {
             }
     }
 
-    private void cursorCreator (SQLiteDatabase db) {
+    private Cursor cursorCreator (SQLiteDatabase db) {
 
-        ArrayList<String> myListOfTitles = new ArrayList<>();
 
         String title = BreedDataBaseHelper.KEY_TITLE;
         String description = BreedDataBaseHelper.KEY_DECRIPTION;
+        String image_res_id = BreedDataBaseHelper.KEY_IMAGE_RES_ID;
         String size = BreedDataBaseHelper.KEY_SIZE;
 
         String [] selectionArgs = getAsqCondition();
 
-        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description},
+        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, image_res_id, size},
                 "size < ?", selectionArgs, null, null, null);
+
+        Toast myToast = Toast.makeText(myContext, "Cursor successfully created", Toast.LENGTH_SHORT);
+        myToast.setGravity(Gravity.BOTTOM, 0, 30);
+        myToast.show();
+
+        return myCursor;
+    }
+
+    private String[] getAsqCondition() {
+
+        return new String [] {"5"};
+
+        // TODO: 19.06.2017 implement custom conditions of query
+    }
+
+    private void listOfBreedCreator (Cursor cursor) {
+
+        Cursor myCursor = cursor;
+
+        ArrayList <Breed_mod> myListOfBreed_m = new ArrayList<>();
+
 
         if (myCursor.moveToFirst()) {
 
-            String tempstr = myCursor.getString(0);
-            myListOfTitles.add(tempstr);
+            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getInt(2), myCursor.getInt(3));
+            myListOfBreed_m.add(myBreedM);
 
         }
 
         while (myCursor.moveToNext()){
 
-            String tempstr_next = myCursor.getString(0);
-            myListOfTitles.add(tempstr_next);
+            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getInt(2), myCursor.getInt(3));
+            myListOfBreed_m.add(myBreedM);
 
         }
 
+         inact.setMyListOfBreed_m(myListOfBreed_m);
 
-        myCursor.close();
-        db.close();
+         inact.setDataBaseCreated(true);
 
+         cursor.close();
 
-        inact.setListOfTitles(myListOfTitles);
-
-        inact.setDataBaseCreated(true);
-
-        Toast myToast = Toast.makeText(myContext, "List of breeds successfully created", Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 70);
-        myToast.show();
     }
 
-    private String[] getAsqCondition() {
+    Breed_mod breed_m_creator (String title, String description, int image_id, int size){
 
-        return new String [] {"4"};
+        Breed_mod myBreedM = new Breed_mod();
+        myBreedM.setB_title(title);
+        myBreedM.setB_description(description);
+        myBreedM.setB_image_res_id(image_id);
+        myBreedM.setB_size(size);
+
+        return myBreedM;
     }
 
 
