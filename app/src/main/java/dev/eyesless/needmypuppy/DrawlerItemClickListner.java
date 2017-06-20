@@ -4,9 +4,12 @@ package dev.eyesless.needmypuppy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.Guideline;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -57,6 +60,11 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
                 break;
 
             case 2:
+                Guideline dragview = (Guideline) activity.findViewById(R.id.guideline2);
+                ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
+                lp.guidePercent = (float) 0.1;
+                dragview.setLayoutParams(lp);
+
                 activity.frameRemoover(new Recycle_view_fragment());
                 break;
 
