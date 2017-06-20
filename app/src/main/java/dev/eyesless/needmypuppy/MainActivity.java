@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private ActionBarDrawerToggle drawerToggle;
     private InitiationActivity inact;
     private static int THISLAYOUT = R.layout.activity_main;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
 
             frameRemoover(new Buttons_main());
         }
+
+        Guideline myGuideline = (Guideline) findViewById(R.id.guideline2);
+        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) myGuideline.getLayoutParams();
+        lp.guidePercent = (float) 0.01;
+        myGuideline.setLayoutParams(lp);
     };
 
     //создаем  action-menu

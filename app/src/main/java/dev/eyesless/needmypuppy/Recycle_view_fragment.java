@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 
 import android.os.Bundle;
+import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ public class Recycle_view_fragment extends Fragment {
 
     protected RecyclerView myRecycleView;
     protected LinearLayoutManager myLayoutManager;
+    protected Guideline myGuideline;
 
 
     public Recycle_view_fragment() {
@@ -42,6 +44,9 @@ public class Recycle_view_fragment extends Fragment {
         RVAdapter adapter = new RVAdapter(inact.getMyListOfBreed_m());
 
         myRecycleView.setAdapter(adapter);
+
+
+
 
 
         return parentview;
