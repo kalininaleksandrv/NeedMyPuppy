@@ -21,14 +21,6 @@
         <activity
             android:name=".MainActivity"
             android:label="Рады Вас видеть!" />
-        <activity
-            android:name=".BreedDescriptionActivity_frag"
-            android:label="теперь выбираем породу"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".DescriptionActivity"
-            android:label="теперь выбираем породу"
-            android:parentActivityName=".MainActivity" />
         <activity android:name=".List_profile" />
         <activity android:name=".BreedViewer"></activity>
     </application>

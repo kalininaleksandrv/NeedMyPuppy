@@ -60,12 +60,7 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
                 break;
 
             case 2:
-                Guideline dragview = (Guideline) activity.findViewById(R.id.guideline2);
-                ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
-                lp.guidePercent = (float) 0.1;
-                dragview.setLayoutParams(lp);
-
-                activity.frameRemoover(new Recycle_view_fragment());
+                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
 
             default:

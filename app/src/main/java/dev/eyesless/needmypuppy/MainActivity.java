@@ -195,11 +195,14 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 break;
 
             case R.id.button_gonext:
-                Main_logic newlogic = new Main_logic();
-                newlogic.setFinalListOfBreed();
-                newlogic.setReturnbreed();
-                Intent resultintent = new Intent(MainActivity.this, BreedDescriptionActivity_frag.class);
-                startActivity(resultintent);
+
+                Guideline dragview = (Guideline) findViewById(R.id.guideline2);
+                ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
+                lp.guidePercent = (float) 0.1;
+                dragview.setLayoutParams(lp);
+
+                frameRemoover(new Recycle_view_fragment());
+
                 break;
         }
     }
