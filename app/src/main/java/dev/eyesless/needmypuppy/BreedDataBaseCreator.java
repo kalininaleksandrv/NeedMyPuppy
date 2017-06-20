@@ -60,10 +60,6 @@ public class BreedDataBaseCreator {
         Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, image_res_id, size},
                 "size < ?", selectionArgs, null, null, null);
 
-        Toast myToast = Toast.makeText(myContext, "Cursor successfully created", Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
-        myToast.show();
-
         return myCursor;
     }
 

@@ -25,13 +25,13 @@ public class BreedDescriptionActivity_frag extends AppCompatActivity implements 
 
         if (frame_breed_description != null)
         {
-            Fragment_description newdescription = new Fragment_description();
-            newdescription.setBreedId((int)id);
-            FragmentTransaction fratra = getFragmentManager().beginTransaction();
-            fratra.replace(R.id.frame_breed_description, newdescription);
-            fratra.addToBackStack(null);
-            fratra.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            fratra.commit();
+//            Fragment_description newdescription = new Fragment_description();
+//            newdescription.setBreedId((int)id);
+//            FragmentTransaction fratra = getFragmentManager().beginTransaction();
+//            fratra.replace(R.id.frame_breed_description, newdescription);
+//            fratra.addToBackStack(null);
+//            fratra.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//            fratra.commit();
         }
         else
         {

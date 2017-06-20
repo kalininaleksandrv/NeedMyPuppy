@@ -40,7 +40,7 @@ public class RVAdapter extends RecyclerView.Adapter  <RVAdapter.BreedViewHolder>
         public void onClick(View view) {
 
             if (myItemClickListner != null) myItemClickListner.onClick(view, getAdapterPosition());
-
+            // TODO: 20.06.2017 check for big list - adapter posotion could define wrong position on List because of ViewHolder (re-used View) 
         }
     }
 

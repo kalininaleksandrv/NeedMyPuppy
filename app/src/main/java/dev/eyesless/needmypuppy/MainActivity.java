@@ -244,12 +244,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
 
-        String s = breeds.get(position).getB_title();
+        Fragment_description myDescrFragm = new Fragment_description();
+        myDescrFragm.setBreedId(position);
 
-
-        Toast myToast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
-        myToast.show();
+        frameRemoover(new Fragment_description());
 
     }
 }

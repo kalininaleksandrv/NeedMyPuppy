@@ -81,22 +81,22 @@ public class DescriptionActivity extends AppCompatActivity implements onButtonLi
     //заместитель фрагментов
     public void fragmentReplacer (){
 
-        Fragment_nxtbtn mynxtbtn = (Fragment_nxtbtn) getSupportFragmentManager().findFragmentById(R.id.frame_nxtbtn);
-        Fragment_description newdescription = new Fragment_description();
-        FragmentTransaction fratra_up = getFragmentManager().beginTransaction();
-        newdescription.setBreedId(getInterID());
-        fratra_up.replace(R.id.frame_breed_description, newdescription);
-        fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fratra_up.commit();
+//        Fragment_nxtbtn mynxtbtn = (Fragment_nxtbtn) getSupportFragmentManager().findFragmentById(R.id.frame_nxtbtn);
+//        Fragment_description newdescription = new Fragment_description();
+//        FragmentTransaction fratra_up = getFragmentManager().beginTransaction();
+//        newdescription.setBreedId(getInterID());
+//        fratra_up.replace(R.id.frame_breed_description, newdescription);
+//        fratra_up.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//        fratra_up.commit();
 
         //устанавливаем значение кнопок в true a вид в обычный
-        View v = mynxtbtn.getView();
-        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
-        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
-        prev.setEnabled(true);
-        next.setEnabled(true);
-        prev.setColorFilter(null);
-        next.setColorFilter(null);
+//        View v = mynxtbtn.getView();
+//        ImageButton prev = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_prev);
+//        ImageButton next = (ImageButton) v.findViewById(R.id.nxtbtn_imageButton_next);
+//        prev.setEnabled(true);
+//        next.setEnabled(true);
+//        prev.setColorFilter(null);
+//        next.setColorFilter(null);
 
     }
 
