@@ -1,12 +1,7 @@
 package dev.eyesless.needmypuppy;
 
-import android.animation.ObjectAnimator;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
@@ -35,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
     private ActionBarDrawerToggle drawerToggle;
     private InitiationActivity inact;
     private static int THISLAYOUT = R.layout.activity_main;
+    protected Guideline myGuideline;
+    protected ConstraintLayout.LayoutParams lp;
+    public static String GUIDLINE_VALUE;
 
 
     @Override
@@ -91,11 +89,35 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
             frameRemoover(new Buttons_main());
         }
 
-        Guideline myGuideline = (Guideline) findViewById(R.id.guideline2);
-        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) myGuideline.getLayoutParams();
-        lp.guidePercent = (float) 0.01;
-        myGuideline.setLayoutParams(lp);
+
+        myGuideline = (Guideline) findViewById(R.id.guideline2);
+        lp = (ConstraintLayout.LayoutParams) myGuideline.getLayoutParams();
+
+        if (savedInstanceState != null){
+
+            onRestoreGuidlineValue(savedInstanceState);
+
+        }
+
     };
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        //saved current value of guidline
+        float f = lp.guidePercent;
+        savedInstanceState.putFloat(GUIDLINE_VALUE, f);
+        Log.w("MY_TAG", "save guideline value");
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    //restore saved value of guideline to correct work with recycle view
+    public void onRestoreGuidlineValue (Bundle savedInstanceState){
+
+        lp.guidePercent = savedInstanceState.getFloat(GUIDLINE_VALUE);
+        myGuideline.setLayoutParams(lp);
+        Log.w("MY_TAG", "restore guideline value");
+    }
 
     //создаем  action-menu
 
