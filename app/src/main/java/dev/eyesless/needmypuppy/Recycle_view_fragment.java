@@ -1,14 +1,17 @@
 package dev.eyesless.needmypuppy;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.constraint.Guideline;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -18,7 +21,7 @@ public class Recycle_view_fragment extends Fragment {
 
     protected RecyclerView myRecycleView;
     protected LinearLayoutManager myLayoutManager;
-    protected Guideline myGuideline;
+    protected ItemClickListner myListner;
 
 
     public Recycle_view_fragment() {
@@ -43,14 +46,11 @@ public class Recycle_view_fragment extends Fragment {
 
         RVAdapter adapter = new RVAdapter(inact.getMyListOfBreed_m());
 
+        adapter.setClickListner((ItemClickListner) getActivity());
+
         myRecycleView.setAdapter(adapter);
-
-
-
-
 
         return parentview;
     }
-
 
 }

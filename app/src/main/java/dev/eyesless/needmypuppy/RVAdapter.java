@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class RVAdapter extends RecyclerView.Adapter  <RVAdapter.BreedViewHolder> {
 
 
-    public class BreedViewHolder extends RecyclerView.ViewHolder {
+    public class BreedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         CardView cardView;
         ImageView breedImage;
@@ -31,11 +31,21 @@ public class RVAdapter extends RecyclerView.Adapter  <RVAdapter.BreedViewHolder>
             breedImage = (ImageView) itemView.findViewById(R.id.cv_imageView);
             breedTitle = (TextView) itemView.findViewById(R.id.cv_title);
             breedDescription = (TextView) itemView.findViewById(R.id.cv_description);
+            itemView.setTag(itemView);
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            if (myItemClickListner != null) myItemClickListner.onClick(view, getAdapterPosition());
 
         }
     }
 
     ArrayList<Breed_mod> breeds;
+    private ItemClickListner myItemClickListner;
 
     RVAdapter (ArrayList<Breed_mod> breeds){
 
@@ -67,4 +77,12 @@ public class RVAdapter extends RecyclerView.Adapter  <RVAdapter.BreedViewHolder>
     public int getItemCount() {
         return breeds.size();
     }
+
+
+    public void setClickListner (ItemClickListner itemClickListner){
+
+        this.myItemClickListner = itemClickListner;
+
+    }
+
 }

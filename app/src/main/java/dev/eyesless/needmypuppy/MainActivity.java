@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements onButtonListner {
+public class MainActivity extends AppCompatActivity implements onButtonListner, ItemClickListner {
 
 
     private String [] titles;
@@ -237,6 +237,20 @@ public class MainActivity extends AppCompatActivity implements onButtonListner {
         Toast myToast = Toast.makeText(getApplicationContext(), helpstring, Toast.LENGTH_SHORT);
         myToast.setGravity(Gravity.BOTTOM, 0, 30);
         myToast.show();
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+
+        ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
+
+        String s = breeds.get(position).getB_title();
+
+
+        Toast myToast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT);
+        myToast.setGravity(Gravity.BOTTOM, 0, 30);
+        myToast.show();
+
     }
 }
 
