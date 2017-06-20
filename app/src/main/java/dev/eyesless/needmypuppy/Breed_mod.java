@@ -1,10 +1,12 @@
 package dev.eyesless.needmypuppy;
 
+import java.io.Serializable;
+
 /**
  * Created by Eyesless on 19.06.2017.
  */
 
-public class Breed_mod {
+public class Breed_mod implements Serializable {
 
     public String getB_title() {
         return b_title;

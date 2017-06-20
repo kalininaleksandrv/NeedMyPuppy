@@ -21,9 +21,10 @@ public class Fragment_description extends Fragment {
 
 
     private int myBreedId;
+    private View parentview;
+    private InitiationActivity inact;
+    ArrayList<Breed_mod> myListOfBreed;
 
-    // получаем лист выбранных пород
-    ArrayList<Breed> myListOfBreed = Main_logic.sortedBreeds;
 
     public Fragment_description() {
         // Required empty public constructor
@@ -34,8 +35,13 @@ public class Fragment_description extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if (savedInstanceState !=null) myBreedId = savedInstanceState.getInt("myBreedId");
+        if (savedInstanceState !=null) {
+            myBreedId = savedInstanceState.getInt("myBreedId");
+            myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable("myListOfBreed");
+        }
 
+
+        inact = ((InitiationActivity) getActivity().getApplicationContext());
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_description, container, false);
 
@@ -44,20 +50,20 @@ public class Fragment_description extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.w("MY_TAG", "Fragment_description_onCreate");
-        View myview = getView();
+        parentview = getView();
+        myListOfBreed = inact.getMyListOfBreed_m();
 
-        if (myview != null){
+        if (parentview != null){
 
             // из листа пород по ID выводим название описание и картинку конкретной породы
-            TextView myBreedTitle = (TextView) myview.findViewById(R.id.breed_title);
-            myBreedTitle.setText(myListOfBreed.get(myBreedId).getBreed_title());
+            TextView myBreedTitle = (TextView) parentview.findViewById(R.id.breed_title);
+            myBreedTitle.setText(myListOfBreed.get(myBreedId).getB_title());
 
-            ImageView myBreedImage = (ImageView) myview.findViewById(R.id.breed_image);
-            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getImageId());
+            ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
+            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_res_id());
 
-            TextView myBreedDescript = (TextView) myview.findViewById(R.id.breed_descript);
-            myBreedDescript.setText(myListOfBreed.get(myBreedId).getBreed_descr());
+            TextView myBreedDescript = (TextView) parentview.findViewById(R.id.breed_descript);
+            myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description());
 
         }
 
@@ -66,6 +72,7 @@ public class Fragment_description extends Fragment {
     public void onSaveInstanceState (Bundle savedState) {
 
         savedState.putInt("myBreedId", myBreedId);
+        savedState.putSerializable("myListOfBreed", myListOfBreed);
 
     }
 
