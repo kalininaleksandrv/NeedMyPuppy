@@ -24,6 +24,8 @@ public class Fragment_description extends Fragment {
     private View parentview;
     private InitiationActivity inact;
     ArrayList<Breed_mod> myListOfBreed;
+    private static String MY_BREED_ID;
+    private static String MY_LIST_OF_BREED;
 
 
     public Fragment_description() {
@@ -36,14 +38,16 @@ public class Fragment_description extends Fragment {
                              Bundle savedInstanceState) {
 
         if (savedInstanceState !=null) {
-            myBreedId = savedInstanceState.getInt("myBreedId");
-            myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable("myListOfBreed");
+            myBreedId = savedInstanceState.getInt(MY_BREED_ID);
+            myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
         }
+
+        View mView = inflater.inflate(R.layout.fragment_description, container, false);
 
 
         inact = ((InitiationActivity) getActivity().getApplicationContext());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_description, container, false);
+        return mView;
 
     }
 
@@ -71,8 +75,8 @@ public class Fragment_description extends Fragment {
 
     public void onSaveInstanceState (Bundle savedState) {
 
-        savedState.putInt("myBreedId", myBreedId);
-        savedState.putSerializable("myListOfBreed", myListOfBreed);
+        savedState.putInt(MY_BREED_ID, myBreedId);
+        savedState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
 
     }
 

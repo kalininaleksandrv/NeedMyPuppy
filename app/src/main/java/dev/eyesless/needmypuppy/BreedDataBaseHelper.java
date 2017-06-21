@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "breeds_base";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     public static final String TABLE_NAME = "breeds";
     public static final String KEY_ID = "_id";
