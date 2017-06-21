@@ -196,11 +196,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
             case R.id.button_gonext:
 
-                Guideline dragview = (Guideline) findViewById(R.id.guideline2);
-                ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
-                lp.guidePercent = (float) 0.1;
-                dragview.setLayoutParams(lp);
-
                 frameRemoover(new Recycle_view_fragment());
 
                 break;
@@ -251,6 +246,18 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         myDescrFragm.setBreedId(position);
 
         frameRemoover(new Fragment_description());
+
+    }
+
+    //set a guidline value to change screen proportions depend on content
+
+    public void gudlinesetter (Float f) {
+
+
+        Guideline dragview = (Guideline) findViewById(R.id.guideline2);
+        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
+        lp.guidePercent = f;
+        dragview.setLayoutParams(lp);
 
     }
 }

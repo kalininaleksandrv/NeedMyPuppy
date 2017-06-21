@@ -36,10 +36,6 @@ public class BreedDataBaseCreator {
                 listOfBreedCreator(mCursor);
                 mybreeddatabase.close();
 
-                Toast myToast = Toast.makeText(myContext, "Database successfully created", Toast.LENGTH_SHORT);
-                myToast.setGravity(Gravity.BOTTOM, 0, 30);
-                myToast.show();
-
             } catch (SQLiteException e) {
                 Toast myToast = Toast.makeText(myContext, "Database Unavailable", Toast.LENGTH_SHORT);
                 myToast.setGravity(Gravity.BOTTOM, 0, 30);

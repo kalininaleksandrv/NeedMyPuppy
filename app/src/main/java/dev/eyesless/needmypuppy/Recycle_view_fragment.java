@@ -53,4 +53,11 @@ public class Recycle_view_fragment extends Fragment {
         return parentview;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        ((MainActivity) getActivity()).gudlinesetter((float) 0.1);
+
+    }
 }

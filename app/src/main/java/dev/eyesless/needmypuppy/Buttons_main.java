@@ -40,6 +40,9 @@ onButtonListner myButtonListner;
     public void onStart() {
         super.onStart();
 
+        ((MainActivity) getActivity()).gudlinesetter((float) 0.35);
+
+
         final View parentview = getView();
 
         ImageButton aboutownerbutton = (ImageButton) parentview.findViewById(R.id.imageButton_aboutowner);
