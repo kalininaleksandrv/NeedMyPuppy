@@ -57,6 +57,8 @@ public class Fragment_description extends Fragment {
         parentview = getView();
         myListOfBreed = inact.getMyListOfBreed_m();
 
+        ((MainActivity) getActivity()).gudlinesetter((float) 0.01);
+
         if (parentview != null){
 
             // из листа пород по ID выводим название описание и картинку конкретной породы
