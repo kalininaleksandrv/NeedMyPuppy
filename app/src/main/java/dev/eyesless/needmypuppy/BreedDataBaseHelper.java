@@ -19,6 +19,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_TITLE = "title";
     public static final String KEY_DECRIPTION = "description";
     public static final String KEY_IMAGE_RES_ID = "image_resource_id";
+    public static final String KEY_IMAGE_RES_ID_BIG = "image_resource_id_big";
     public static final String KEY_SIZE = "size";
     public static final String KEY_FAVOR = "favorite";
     public static final String KEY_COMMENT = "comment";
@@ -35,6 +36,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 + KEY_TITLE + " text,"
                 + KEY_DECRIPTION + " text,"
                 + KEY_IMAGE_RES_ID + " integer,"
+                + KEY_IMAGE_RES_ID_BIG + " integer,"
                 + KEY_SIZE + " integer,"
                 + KEY_FAVOR + " numeric,"
                 + KEY_COMMENT + " text" + ")");
@@ -42,19 +44,19 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
         incertBreedsToDb (db,
                 "Сибирский Хаски",
                 "средняя по размеру, с энергичным характером",
-                R.drawable.b_husky, 3);
+                R.drawable.b_husky, R.drawable.b_husky, 3);
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
                 "средняя по размеру, подвижная, веселая",
-                R.drawable.b_labrador, 3);
+                R.drawable.b_labrador, R.drawable.b_labrador, 3);
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "крупная по размеру служебная собака",
-                R.drawable.b_germshep, 4);
+                R.drawable.b_germshep, R.drawable.b_germshep, 4);
         incertBreedsToDb (db,
                 "Bельш корги Пемброк",
                 "миниатюрная пастушья собака, дружелюбная",
-                R.drawable.b_welsh_pembrok, 2);
+                R.drawable.b_welsh_pembrok, R.drawable.b_welsh_pembrok, 2);
 
     }
 
@@ -66,12 +68,13 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId, int size) {
+    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId, int resourceIdBig, int size) {
 
         ContentValues con_breed = new ContentValues();
         con_breed.put (KEY_TITLE, name);
         con_breed.put (KEY_DECRIPTION, description);
         con_breed.put (KEY_IMAGE_RES_ID, resourceId);
+        con_breed.put (KEY_IMAGE_RES_ID_BIG, resourceIdBig);
         con_breed.put (KEY_SIZE, size);
 
         db.insert(TABLE_NAME, null, con_breed);
