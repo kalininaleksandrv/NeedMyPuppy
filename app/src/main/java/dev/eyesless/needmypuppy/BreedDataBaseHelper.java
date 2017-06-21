@@ -12,12 +12,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "breeds_base";
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 1;
 
     public static final String TABLE_NAME = "breeds";
     public static final String KEY_ID = "_id";
     public static final String KEY_TITLE = "title";
     public static final String KEY_DECRIPTION = "description";
+    public static final String KEY_DECRIPTION_FULL = "description_full";
     public static final String KEY_IMAGE_RES_ID = "image_resource_id";
     public static final String KEY_IMAGE_RES_ID_BIG = "image_resource_id_big";
     public static final String KEY_SIZE = "size";
@@ -35,6 +36,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 + " integer primary key autoincrement,"
                 + KEY_TITLE + " text,"
                 + KEY_DECRIPTION + " text,"
+                + KEY_DECRIPTION_FULL + " text,"
                 + KEY_IMAGE_RES_ID + " integer,"
                 + KEY_IMAGE_RES_ID_BIG + " integer,"
                 + KEY_SIZE + " integer,"
@@ -44,19 +46,23 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
         incertBreedsToDb (db,
                 "Сибирский Хаски",
                 "средняя по размеру, с энергичным характером",
+                "full description here",
                 R.drawable.b_husky, R.drawable.b_husky, 3);
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
                 "средняя по размеру, подвижная, веселая",
+                "full description here",
                 R.drawable.b_labrador, R.drawable.b_labrador, 3);
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "крупная по размеру служебная собака",
+                "full description here",
                 R.drawable.b_germshep, R.drawable.b_germshep, 4);
         incertBreedsToDb (db,
                 "Bельш корги Пемброк",
                 "миниатюрная пастушья собака, дружелюбная",
-                R.drawable.b_welsh_pembrok, R.drawable.b_welsh_pembrok, 2);
+                "full description here",
+                R.drawable.b_welsh_pembrok, R.drawable.fs_welsh_pembrok, 2);
 
     }
 
@@ -68,11 +74,12 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, int resourceId, int resourceIdBig, int size) {
+    public void incertBreedsToDb(SQLiteDatabase db, String name, String description, String description_full, int resourceId, int resourceIdBig, int size) {
 
         ContentValues con_breed = new ContentValues();
         con_breed.put (KEY_TITLE, name);
         con_breed.put (KEY_DECRIPTION, description);
+        con_breed.put (KEY_DECRIPTION_FULL, description_full);
         con_breed.put (KEY_IMAGE_RES_ID, resourceId);
         con_breed.put (KEY_IMAGE_RES_ID_BIG, resourceIdBig);
         con_breed.put (KEY_SIZE, size);

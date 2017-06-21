@@ -48,12 +48,14 @@ public class BreedDataBaseCreator {
 
         String title = BreedDataBaseHelper.KEY_TITLE;
         String description = BreedDataBaseHelper.KEY_DECRIPTION;
+        String description_full = BreedDataBaseHelper.KEY_DECRIPTION_FULL;
         String image_res_id = BreedDataBaseHelper.KEY_IMAGE_RES_ID;
+        String image_fs_res_id = BreedDataBaseHelper.KEY_IMAGE_RES_ID_BIG;
         String size = BreedDataBaseHelper.KEY_SIZE;
 
         String [] selectionArgs = getAsqCondition();
 
-        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, image_res_id, size},
+        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, description_full, image_res_id, image_fs_res_id, size},
                 "size < ?", selectionArgs, null, null, null);
 
         return myCursor;
@@ -75,14 +77,14 @@ public class BreedDataBaseCreator {
 
         if (myCursor.moveToFirst()) {
 
-            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getInt(2), myCursor.getInt(3));
+            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1),myCursor.getString(2), myCursor.getInt(3), myCursor.getInt(4), myCursor.getInt(5));
             myListOfBreed_m.add(myBreedM);
 
         }
 
         while (myCursor.moveToNext()){
 
-            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getInt(2), myCursor.getInt(3));
+            Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getString(2), myCursor.getInt(3), myCursor.getInt(4), myCursor.getInt(5));
             myListOfBreed_m.add(myBreedM);
 
         }
@@ -95,12 +97,14 @@ public class BreedDataBaseCreator {
 
     }
 
-    Breed_mod breed_m_creator (String title, String description, int image_id, int size){
+    Breed_mod breed_m_creator (String title, String description, String description_full, int image_id, int imade_fs_id, int size){
 
         Breed_mod myBreedM = new Breed_mod();
         myBreedM.setB_title(title);
         myBreedM.setB_description(description);
+        myBreedM.setB_description_full(description_full);
         myBreedM.setB_image_res_id(image_id);
+        myBreedM.setB_image_fs_res_id(imade_fs_id);
         myBreedM.setB_size(size);
 
         return myBreedM;

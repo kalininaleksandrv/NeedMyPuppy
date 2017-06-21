@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class Fragment_description extends Fragment {
 
 
-    private int myBreedId;
+    protected int myBreedId;
     private View parentview;
     private InitiationActivity inact;
-    ArrayList<Breed_mod> myListOfBreed;
-    private static String MY_BREED_ID;
-    private static String MY_LIST_OF_BREED;
+    protected ArrayList<Breed_mod> myListOfBreed;
+    protected static String MY_BREED_ID = "myBreedId";
+    protected static String MY_LIST_OF_BREED = "myListOfBreed";
 
 
     public Fragment_description() {
@@ -38,8 +38,8 @@ public class Fragment_description extends Fragment {
                              Bundle savedInstanceState) {
 
         if (savedInstanceState !=null) {
-            myBreedId = savedInstanceState.getInt(MY_BREED_ID);
-            myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
+            this.myBreedId = savedInstanceState.getInt(MY_BREED_ID);
+            this.myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
         }
 
         View mView = inflater.inflate(R.layout.fragment_description, container, false);
@@ -64,19 +64,19 @@ public class Fragment_description extends Fragment {
             myBreedTitle.setText(myListOfBreed.get(myBreedId).getB_title());
 
             ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
-            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_res_id());
+            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_fs_res_id());
 
             TextView myBreedDescript = (TextView) parentview.findViewById(R.id.breed_descript);
-            myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description());
+            myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description_full());
 
         }
 
     }
 
-    public void onSaveInstanceState (Bundle savedState) {
+    public void onSaveInstanceState (Bundle savedInstanceState) {
 
-        savedState.putInt(MY_BREED_ID, myBreedId);
-        savedState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
+        savedInstanceState.putInt(MY_BREED_ID, myBreedId);
+        savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
 
     }
 

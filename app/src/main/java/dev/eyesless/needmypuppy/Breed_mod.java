@@ -28,8 +28,16 @@ public class Breed_mod implements Serializable {
         return b_image_res_id;
     }
 
+    public int getB_image_fs_res_id() {
+        return b_image_fs_res_id;
+    }
+
     public void setB_image_res_id(int b_image_res_id) {
         this.b_image_res_id = b_image_res_id;
+    }
+
+    public void setB_image_fs_res_id(int b_image_res_id) {
+        this.b_image_fs_res_id = b_image_res_id;
     }
 
     public int getB_size() {
@@ -40,12 +48,15 @@ public class Breed_mod implements Serializable {
         this.b_size = b_size;
     }
 
+    public String getB_description_full() {return b_description_full; }
+
+    public void setB_description_full(String b_description_full) {this.b_description_full = b_description_full; }
+
     private String b_title;
     private String b_description;
+    private String b_description_full;
     private int b_image_res_id;
+    private int b_image_fs_res_id;
     private int b_size;
-
-
-
 
 }
