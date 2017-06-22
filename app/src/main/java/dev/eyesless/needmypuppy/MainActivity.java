@@ -4,17 +4,21 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.HeaderViewListAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     private String [] titles;
     private ListView drawerList;
     private DrawerLayout drawer;
+    private NavigationView naview;
+    private Toolbar mytoolbar;
     private ActionBarDrawerToggle drawerToggle;
     private InitiationActivity inact;
     private static int THISLAYOUT = R.layout.activity_main;
@@ -56,12 +62,15 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         titles = inact.getDrawer_titles();//получаем массив стрингов из инакт
 
-        drawerList = (ListView) findViewById(R.id.list_drawer_main);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_main);
-        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles)); //отображаем массив стрингов в инакт
-        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
-                (inact, this, drawer, drawerList);
-        drawerList.setOnItemClickListener(myDrawlerListner);
+        initNavigationView ();
+        inittoolbar();
+
+ //       drawerList = (ListView) findViewById(R.id.list_drawer_main);
+
+  //      drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles)); //отображаем массив стрингов в инакт
+//        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
+//                (inact, this, drawer, naview);
+//        drawerList.setOnItemClickListener(myDrawlerListner);
 
         //код Drawer Togle кнопка выдвижения и задвижения drawer-а
 
@@ -99,7 +108,28 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         }
 
-    };
+    }
+
+    // create navigation view on drawer layout
+
+    private void initNavigationView() {
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_main);
+        naview = (NavigationView) findViewById(R.id.navigation_view);
+        naview.getMenu().clear();
+        naview.inflateMenu(R.menu.menu_navigation);
+        naview.inflateHeaderView(R.layout.navigation_header);
+    }
+
+    //create custom toolbar
+
+    private void inittoolbar() {
+
+        mytoolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mytoolbar);
+    }
+
+    ;
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -234,6 +264,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         myToast.setGravity(Gravity.BOTTOM, 0, 30);
         myToast.show();
     }
+
+    //onClick to get data (position) from RecycleView's CardView and show appropriate breed in Fragment Description
 
     @Override
     public void onClick(View view, int position) {

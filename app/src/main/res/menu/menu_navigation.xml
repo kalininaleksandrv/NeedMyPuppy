@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="1"
+        android:title="@string/find_breed"
+        />
+
+    <item
+        android:icon="@drawable/ic_mail_outline_black_24dp"
+        android:orderInCategory="1"
+        android:title="@string/mesage_to_devs"
+        />
+
+    <item
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:orderInCategory="1"
+        android:title="@string/about"
+        />
+
+</menu>

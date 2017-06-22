@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.view.View;
@@ -21,19 +22,18 @@ import java.util.ArrayList;
 
 public class DrawlerItemClickListner extends MainActivity implements ListView.OnItemClickListener {
 
-    android.support.v7.app.ActionBar myBar;
     DrawerLayout myDrawer;
-    ListView myDrawerList;
+    NavigationView myNaviView;
     MainActivity activity;
     InitiationActivity inact;
     
 
-    public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList) {
+    public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, NavigationView myNaviView) {
         super();
 
 
         this.myDrawer = myDrawer;
-        this.myDrawerList = myDrawerList;
+        this.myNaviView = myNaviView;
         this.activity = activity;
         this.inact = inact;
     }
@@ -41,14 +41,14 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-       selectItem (id);
+       selectItem (position);
 
 
     }
 
-    private void selectItem(long id) {
+    private void selectItem(long position) {
 
-        switch ((int) id){
+        switch ((int) position){
 
             case 0:
                 activity.activitystarter(BreedViewer.class, null);
@@ -66,7 +66,7 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
                 break;
         }
 
-        myDrawer.closeDrawer(myDrawerList);
+        myDrawer.closeDrawer(myNaviView);
     }
 
 }

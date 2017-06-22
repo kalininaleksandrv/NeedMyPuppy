@@ -47,6 +47,7 @@ public class InitiationActivity extends Application {
 
     private String [] drawer_titles = {"сохранить ответы",
             "загрузить ответы", "написать разработчику"};
+    // TODO: 22.06.2017 delete after new drawer relise
 
     public String[] getSpinner_exp_array() { return spinner_exp_array; }
 

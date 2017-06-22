@@ -34,6 +34,10 @@
     <string name="disabled_button_short">Вы уже отвечали на эти вопросы</string>
     <string name="flag_havedog">отметьте, если уже есть собака(и)</string>
     <string name="flag_havechild">отметьте, если есть дети младше 10</string>
+    <string name="find_breed">Найти породу</string>
+    <string name="mesage_to_devs">Написать разработчикам</string>
+    <string name="about">Справка</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
