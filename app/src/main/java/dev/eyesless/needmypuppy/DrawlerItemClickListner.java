@@ -4,11 +4,14 @@ package dev.eyesless.needmypuppy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
  * Created by Eyesless on 22.05.2017.
  */
 
-public class DrawlerItemClickListner extends MainActivity implements ListView.OnItemClickListener {
+public class DrawlerItemClickListner extends MainActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout myDrawer;
     NavigationView myNaviView;
@@ -38,35 +41,59 @@ public class DrawlerItemClickListner extends MainActivity implements ListView.On
         this.inact = inact;
     }
 
+//    @Override
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//       selectItem (position);
+//
+//
+//    }
+//
+//    private void selectItem(long position) {
+//
+//        switch ((int) position){
+//
+//            case 0:
+//                activity.activitystarter(BreedViewer.class, null);
+//                break;
+//
+//            case 1:
+//                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
+//                break;
+//
+//            case 2:
+//                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
+//                break;
+//
+//            default:
+//                break;
+//        }
+//
+//        myDrawer.closeDrawer(myNaviView);
+//    }
+
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-       selectItem (position);
+        int id = item.getItemId();
 
+        switch (id){
 
-    }
-
-    private void selectItem(long position) {
-
-        switch ((int) position){
-
-            case 0:
+            case R.id.menu_navigation_find:
                 activity.activitystarter(BreedViewer.class, null);
                 break;
-
-            case 1:
+            case R.id.menu_navigation_mail:
                 activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
-
-            case 2:
+            case R.id.menu_navigation_about:
                 activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
-
             default:
                 break;
         }
 
-        myDrawer.closeDrawer(myNaviView);
-    }
+        myDrawer.closeDrawer(GravityCompat.START);
 
+        return true;
+    }
 }

@@ -48,14 +48,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         inact = ((InitiationActivity) getApplicationContext());
 
-        //init database if it does not
 
-        if (inact.isDataBaseCreated() == false) {
-
-            BreedDataBaseCreator myDataCreator = new BreedDataBaseCreator(this, inact);
-            myDataCreator.onCreateDb();
-            inact.setListOfTitles();
-        }
 
 
         //код diwider-а
@@ -65,12 +58,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         initNavigationView ();
         inittoolbar();
 
- //       drawerList = (ListView) findViewById(R.id.list_drawer_main);
 
-  //      drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles)); //отображаем массив стрингов в инакт
-//        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
-//                (inact, this, drawer, naview);
-//        drawerList.setOnItemClickListener(myDrawlerListner);
 
         //код Drawer Togle кнопка выдвижения и задвижения drawer-а
 
@@ -110,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
     }
 
-    // create navigation view on drawer layout
+    // create navigation view on drawer layout and set listner
 
     private void initNavigationView() {
 
@@ -119,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         naview.getMenu().clear();
         naview.inflateMenu(R.menu.menu_navigation);
         naview.inflateHeaderView(R.layout.navigation_header);
+
+        DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
+                (inact, this, drawer, naview);
+        naview.setNavigationItemSelectedListener(myDrawlerListner);
     }
 
     //create custom toolbar
@@ -224,6 +216,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
             case R.id.button_gonext:
 
+                databaseinitiator();
+
                 frameRemoover(new Recycle_view_fragment());
 
                 break;
@@ -263,6 +257,18 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         Toast myToast = Toast.makeText(getApplicationContext(), helpstring, Toast.LENGTH_SHORT);
         myToast.setGravity(Gravity.BOTTOM, 0, 30);
         myToast.show();
+    }
+
+    //init database if it does not
+
+    public void databaseinitiator(){
+
+        if (inact.isDataBaseCreated() == false) {
+
+            BreedDataBaseCreator myDataCreator = new BreedDataBaseCreator(this, inact);
+            myDataCreator.onCreateDb();
+            inact.setListOfTitles();
+        }
     }
 
     //onClick to get data (position) from RecycleView's CardView and show appropriate breed in Fragment Description
