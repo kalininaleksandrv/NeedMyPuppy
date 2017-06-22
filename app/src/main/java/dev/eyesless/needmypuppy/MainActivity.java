@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
 
     private String [] titles;
-    private ListView drawerList;
     private DrawerLayout drawer;
     private NavigationView naview;
     private Toolbar mytoolbar;
@@ -48,58 +47,43 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         inact = ((InitiationActivity) getApplicationContext());
 
+        initguidline ();
 
+        //call main fragmett if never call before
+        if (savedInstanceState == null) {
+            frameRemoover(new Buttons_main());
+        }
 
+        //restore guidline value if re-create fragment
+        if (savedInstanceState != null){
+            onRestoreGuidlineValue(savedInstanceState);
+        }
 
         //код diwider-а
-
         titles = inact.getDrawer_titles();//получаем массив стрингов из инакт
-
         initNavigationView ();
         inittoolbar();
 
-
-
-        //код Drawer Togle кнопка выдвижения и задвижения drawer-а
-
+       //код Drawer Togle кнопка выдвижения и задвижения drawer-а
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_closed){
-
             public void onDrawerClosed (View v) {
                 super.onDrawerClosed(v);
             }
-
             public void onDrawerOpened (View v) {
                 super.onDrawerOpened(v);
             }
-
         };
 
         drawer.addDrawerListener(drawerToggle);
 
-        //вызов основного фрагмента
-
-        if (savedInstanceState == null) {
-
-            frameRemoover(new Buttons_main());
-        }
-
-
-        myGuideline = (Guideline) findViewById(R.id.guideline2);
-        lp = (ConstraintLayout.LayoutParams) myGuideline.getLayoutParams();
-
-        if (savedInstanceState != null){
-
-            onRestoreGuidlineValue(savedInstanceState);
-
-        }
-
     }
 
-    // create navigation view on drawer layout and set listner
 
+
+    // create navigation view on drawer layout and set listner
     private void initNavigationView() {
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_main);
@@ -114,15 +98,20 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     }
 
     //create custom toolbar
-
     private void inittoolbar() {
 
         mytoolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mytoolbar);
     }
 
-    ;
+    //init guidline
 
+    private void initguidline() {
+        myGuideline = (Guideline) findViewById(R.id.guideline2);
+        lp = (ConstraintLayout.LayoutParams) myGuideline.getLayoutParams();
+    }
+
+    //save guidline value
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
@@ -141,8 +130,17 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         Log.w("MY_TAG", "restore guideline value");
     }
 
-    //создаем  action-menu
+    //set a guidline value to change screen proportions depend on content
+    public void gudlinesetter (Float f) {
 
+        Guideline dragview = (Guideline) findViewById(R.id.guideline2);
+        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
+        lp.guidePercent = f;
+        dragview.setLayoutParams(lp);
+
+    }
+
+    //create  action-menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_mainactivity, menu);
@@ -150,9 +148,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         return super.onCreateOptionsMenu(menu);
     }
 
-
     //слушатель для меню
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -181,11 +177,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                     default:
                         return super.onOptionsItemSelected(item);
                 }
-
     }
 
     //реакция на нажате кнопок в фрагменте buttons main
-
     @Override
     public void buttonClicked(View v) {
 
@@ -224,20 +218,28 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         }
     }
 
-    // tis method start new activitys, including second optional parameter - arraylist, if null just ignored, if not null - put on intent
+    //onClick to get data (position) from RecycleView's CardView and show appropriate breed in Fragment Description
+    @Override
+    public void onClick(View view, int position) {
 
+        ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
+
+        Fragment_description myDescrFragm = new Fragment_description();
+        myDescrFragm.setBreedId(position);
+
+        frameRemoover(myDescrFragm);
+
+    }
+
+    // tis method start new activitys, including second optional parameter - arraylist, if null just ignored, if not null - put on intent
     public void activitystarter(Object o, ArrayList<?> al) {
 
         Intent intent = new Intent(this, (Class<?>) o);
 
         if (al != null) {
-
             intent.putExtra(List_profile.LIST, al);
-
         }
-
         startActivity(intent);
-
     }
 
     //main method for remoove frames when clicked
@@ -260,7 +262,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     }
 
     //init database if it does not
-
     public void databaseinitiator(){
 
         if (inact.isDataBaseCreated() == false) {
@@ -271,33 +272,4 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         }
     }
 
-    //onClick to get data (position) from RecycleView's CardView and show appropriate breed in Fragment Description
-
-    @Override
-    public void onClick(View view, int position) {
-
-        ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
-
-        Fragment_description myDescrFragm = new Fragment_description();
-        myDescrFragm.setBreedId(position);
-
-        frameRemoover(myDescrFragm);
-
-    }
-
-    //set a guidline value to change screen proportions depend on content
-
-    public void gudlinesetter (Float f) {
-
-
-        Guideline dragview = (Guideline) findViewById(R.id.guideline2);
-        ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) dragview.getLayoutParams();
-        lp.guidePercent = f;
-        dragview.setLayoutParams(lp);
-
-    }
 }
-
-    /*
-
-    */

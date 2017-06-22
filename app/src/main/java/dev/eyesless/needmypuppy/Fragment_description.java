@@ -57,7 +57,7 @@ public class Fragment_description extends Fragment {
         parentview = getView();
         myListOfBreed = inact.getMyListOfBreed_m();
 
-        ((MainActivity) getActivity()).gudlinesetter((float) 0.01);
+        ((MainActivity) getActivity()).gudlinesetter((float) 0.1);
 
         if (parentview != null){
 
