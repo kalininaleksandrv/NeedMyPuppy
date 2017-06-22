@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         //код diwider-а
 
-        titles = inact.getDrawer_titles();
+        titles = inact.getDrawer_titles();//получаем массив стрингов из инакт
 
         drawerList = (ListView) findViewById(R.id.list_drawer_main);
         drawer = (DrawerLayout) findViewById(R.id.drawer_main);
-        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles));
+        drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, titles)); //отображаем массив стрингов в инакт
         DrawlerItemClickListner myDrawlerListner = new DrawlerItemClickListner
-                (inact, this, drawer, drawerList, titles);
+                (inact, this, drawer, drawerList);
         drawerList.setOnItemClickListener(myDrawlerListner);
 
         //код Drawer Togle кнопка выдвижения и задвижения drawer-а
@@ -149,8 +149,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                         //todo реализовать настройки
 
                         activitystarter(List_profile.class, inact.getListOfTitles());
-
-
                         return true;
 
                     case R.id.action_delet:

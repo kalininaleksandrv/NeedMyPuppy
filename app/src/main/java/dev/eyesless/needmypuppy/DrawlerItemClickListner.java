@@ -22,17 +22,16 @@ import java.util.ArrayList;
 public class DrawlerItemClickListner extends MainActivity implements ListView.OnItemClickListener {
 
     android.support.v7.app.ActionBar myBar;
-    String[] titles;
     DrawerLayout myDrawer;
     ListView myDrawerList;
     MainActivity activity;
     InitiationActivity inact;
     
 
-    public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList, String[] titles) {
+    public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, ListView myDrawerList) {
         super();
 
-        this.titles = titles;
+
         this.myDrawer = myDrawer;
         this.myDrawerList = myDrawerList;
         this.activity = activity;
