@@ -4,7 +4,6 @@ package dev.eyesless.needmypuppy;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ public class Fragment_description extends Fragment {
 
     protected int myBreedId;
     private View parentview;
-    private InitiationActivity inact;
+    protected InitiationActivity inact;
     protected ArrayList<Breed_mod> myListOfBreed;
     protected static String MY_BREED_ID = "myBreedId";
     protected static String MY_LIST_OF_BREED = "myListOfBreed";

@@ -16,10 +16,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.HeaderViewListAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -165,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
                     case R.id.action_settings:
                         //todo реализовать настройки
-
+                        databaseinitiator();
                         activitystarter(List_profile.class, inact.getListOfTitles());
                         return true;
 
@@ -224,10 +220,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
 
-        Fragment_description myDescrFragm = new Fragment_description();
-        myDescrFragm.setBreedId(position);
+        Fragment_viewpager myViewPagerFragm = new Fragment_viewpager();
+        myViewPagerFragm.setBreedId(position);
 
-        frameRemoover(myDescrFragm);
+        frameRemoover(myViewPagerFragm);
 
     }
 

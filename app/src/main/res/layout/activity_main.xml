@@ -21,6 +21,8 @@
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                app:theme="@style/ToolBarStyle"
+                app:popupTheme="@style/ToolBarPopStyle"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="0dp"
