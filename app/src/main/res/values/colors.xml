@@ -5,6 +5,6 @@
     <color name="colorAccent">#ffab91</color>
     <color name="colorText">#050200</color>
     <color name="buttonNormal">#fafaf9</color>
-    <color name="backGround">#fff3e0</color>
+    <color name="backGround">#ffffff</color>
     <color name="primary_material_dark">#212121</color>
 </resources>
