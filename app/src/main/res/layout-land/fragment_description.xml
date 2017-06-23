@@ -44,10 +44,10 @@
     <TextView
         android:id="@+id/breed_descript"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_default="wrap"
+        android:layout_height="wrap_content"
         app:layout_constraintWidth_default="spread"
         android:text="@string/no_data"
+        android:textSize="@dimen/text_size_small"
         android:gravity="center"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"

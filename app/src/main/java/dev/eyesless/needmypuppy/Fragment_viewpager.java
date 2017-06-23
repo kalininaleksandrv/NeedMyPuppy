@@ -20,6 +20,10 @@ public class Fragment_viewpager extends Fragment {
     protected InitiationActivity inact;
     protected ArrayList<Breed_mod> myListOfBreed;
     protected View parentview;
+    protected static String MY_BREED_ID = "myBreedId";
+    protected static String MY_LIST_OF_BREED = "myListOfBreed";
+
+
 
 
     @Override
@@ -30,11 +34,18 @@ public class Fragment_viewpager extends Fragment {
 
         myListOfBreed = inact.getMyListOfBreed_m();
 
+        if (savedInstanceState !=null) {
+            this.myBreedId = savedInstanceState.getInt(MY_BREED_ID);
+            this.myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
+        }
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
 
         return   inflater.inflate(R.layout.fragment_viewpager, container, false);
 
@@ -56,11 +67,15 @@ public class Fragment_viewpager extends Fragment {
 
     }
 
+    public void onSaveInstanceState (Bundle savedInstanceState) {
+
+        savedInstanceState.putInt(MY_BREED_ID, myBreedId);
+        savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
+
+    }
+
     public void setBreedId (int id) {
         this.myBreedId = id;
     }
-
-
-
 
 }
