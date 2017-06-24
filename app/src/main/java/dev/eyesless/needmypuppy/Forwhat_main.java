@@ -109,7 +109,7 @@ public class Forwhat_main extends Fragment {
                 }
 
                 if (huntcheck.isChecked()){
-                    // TODO: 05.06.2017 implement
+                    inact.hunt.setValue(0);
                 }
 
                 if (obidencecheck.isChecked()){

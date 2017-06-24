@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         }
 
         //код diwider-а
-        titles = inact.getDrawer_titles();//получаем массив стрингов из инакт
         initNavigationView ();
         inittoolbar();
 

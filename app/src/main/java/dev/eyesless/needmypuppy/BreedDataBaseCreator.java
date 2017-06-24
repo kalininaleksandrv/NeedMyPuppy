@@ -66,14 +66,28 @@ public class BreedDataBaseCreator {
 
         Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, description_full, image_res_id, image_fs_res_id,
                         obidience, guard, agressive, active, hardy, size, care, hunt, weblinc, fciid},
-                "size < ?", selectionArgs, null, null, null);
+               "obidience > ? AND guard < ? AND agressive < ? AND active < ? AND hardy > ? AND size < ? AND care < ? AND hunt < ?",
+                selectionArgs, null, null, null);
 
         return myCursor;
     }
 
     private String[] getAsqCondition() {
 
-        return new String [] {"5"};
+        int obidience_n = 0;
+        int guard_n = 6;
+        int agressive_n = 6;
+        int active_n = 6;
+        int hardy_n = 0;
+        int size_n = 6;
+        int care_n = 6;
+        int hunt_n = 2;
+
+
+        return new String [] {String.valueOf(obidience_n), String.valueOf(guard_n),
+                String.valueOf(agressive_n), String.valueOf(active_n),
+                String.valueOf(hardy_n), String.valueOf(size_n),
+                String.valueOf(care_n), String.valueOf(hunt_n)};
 
         // TODO: 19.06.2017 implement custom conditions of query
     }

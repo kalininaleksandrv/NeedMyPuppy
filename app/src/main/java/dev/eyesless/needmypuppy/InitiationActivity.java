@@ -45,15 +45,10 @@ public class InitiationActivity extends Application {
     private String [] spinner_vet_array = {"оцените доступность ветеринарных услуг:",
             "не доступны", "минимально доступны", "не известно", "хорошо доступны"};
 
-    private String [] drawer_titles = {"сохранить ответы",
-            "загрузить ответы", "написать разработчику"};
-    // TODO: 22.06.2017 delete after new drawer relise
 
     public String[] getSpinner_exp_array() { return spinner_exp_array; }
 
     public String[] getSpinner_time_array() { return spinner_time_array; }
-
-    public String[] getDrawer_titles() { return drawer_titles; }
 
     public String[] getSpinner_age_array() {return spinner_age_array;}
 
@@ -75,6 +70,7 @@ public class InitiationActivity extends Application {
     //выносливость 1-утомляемые собаки 4-хаски 5-риджбэк
     //размер 1-чихуа 2-джекрассел 3-хаски, лабр 4 - малинуа 5-САО
     //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
+    //охота 0 - ПОДХОДИТ для охоты 1 НЕ подходит для охоты (чтобы < 2 давал весь лист а < 1 только охотничьи породы)
 
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
     MyBucket guard = new MyBucket("Охранные качества", 2);
@@ -83,6 +79,7 @@ public class InitiationActivity extends Application {
     MyBucket hardy = new MyBucket("Выносливость", 1);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 5);
+    MyBucket hunt = new MyBucket("Является (0) или нет (1) охотничьей", 1);
 
     // создаем лист объектов корзина для передачи в список List_profile
 
@@ -97,6 +94,7 @@ public class InitiationActivity extends Application {
         mybusketslist.add(hardy);
         mybusketslist.add(size);
         mybusketslist.add(care);
+        mybusketslist.add(hunt);
 
         return mybusketslist;
     }
@@ -116,6 +114,7 @@ public class InitiationActivity extends Application {
         hardy.setValue(1);
         size.setValue(5);
         care.setValue(5);
+        hunt.setValue(1);
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;
@@ -174,6 +173,13 @@ public class InitiationActivity extends Application {
     public void caredecreaser (int i) {
         care.setValue(min(care.getValue(), i));
     }
+
+    //huntsetter
+
+    public void huntdecreaser (int i) {
+        hunt.setValue(min(hunt.getValue(), i));
+    }
+
 
 
 
