@@ -165,7 +165,6 @@ public class About_owner_main extends Fragment {
                 inact.setButtonaboutownerispressed(true);
 
                 inact.obidienceincreaser(obidiencescond());
-                inact.guarddecreaser(guardcon());
                 inact.aggresivedecreaser(min(expvalue+1, min(timevalue+2, agressivecon()))); //минимальное значение из если прямой зависимости от опыта и времени, возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
                 inact.activeincreaser(max(activvalue+1, max(expvalue+1, timevalue+2))); //чем больше времени готовы тратить на собаку, тем более активная порода допускается, чем больше опыть тем более активная порода допускается, чем вы активнее, тем более активная порода допускается
                 inact.sizedecreaser(sizecon());
@@ -215,14 +214,13 @@ public class About_owner_main extends Fragment {
         return i;
     }
 
-    private int guardcon() {
-        if (expvalue < 3 || timevalue < 2) {return 4;}
-        else return 5;//если опыт хотя бы 2 ИЛИ временные затраты хотя бы 1 то допускается охранные качества 5 иначе не более 4
-
-    }
-
     private int agressivecon() {
-     if (agevalue < 2) {return 2;} else return 5; //если возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
+     if (agevalue < 2) {return 2;} //если возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
+         else {
+
+         if (expvalue < 3 || timevalue < 2) {return 3;} //если опыт хотя бы 2 ИЛИ временные затраты хотя бы 1 то допускается агрессивность 3
+     }
+         return 5;
     }
 
     private int sizecon() {

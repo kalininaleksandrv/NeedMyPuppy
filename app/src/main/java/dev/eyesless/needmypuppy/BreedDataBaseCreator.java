@@ -66,7 +66,7 @@ public class BreedDataBaseCreator {
 
         Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, description_full, image_res_id, image_fs_res_id,
                         obidience, guard, agressive, active, hardy, size, care, hunt, weblinc, fciid},
-               "obidience > ? AND guard < ? AND agressive < ? AND active < ? AND hardy > ? AND size < ? AND care < ? AND hunt < ?",
+               "obidience > ? AND guard > ? AND agressive < ? AND active < ? AND hardy > ? AND size < ? AND care < ? AND hunt < ?",
                 selectionArgs, null, null, null);
 
         return myCursor;

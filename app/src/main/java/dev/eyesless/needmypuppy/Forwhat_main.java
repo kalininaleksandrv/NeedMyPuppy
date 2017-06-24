@@ -122,10 +122,8 @@ public class Forwhat_main extends Fragment {
                 }
                 if (guardcheck.isChecked()){
 
-                    inact.obidience.setValue(max(inact.obidience.getValue(),4));
-                    inact.guard.setValue(max(inact.guard.getValue(),5));
-                    inact.active.setValue(max(inact.active.getValue(),3));
-                    inact.size.setValue(max(inact.active.getValue(),4));
+                    inact.guard.setValue(max(inact.guard.getValue(),4));
+
                 }
 
     }

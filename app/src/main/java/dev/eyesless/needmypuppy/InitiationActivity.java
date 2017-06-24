@@ -144,14 +144,6 @@ public class InitiationActivity extends Application {
         obidience.setValue(max(obidience.getValue(), i));
     }
 
-    //guard
-    public void guardincreaser (int i){
-        guard.setValue(max(guard.getValue(), i));
-    }
-    public void guarddecreaser (int i){
-        guard.setValue(min(guard.getValue(), i));
-    }
-
     //aggressive
 
     public void aggresivedecreaser (int i){ agressive.setValue(min(agressive.getValue(), i)); }
