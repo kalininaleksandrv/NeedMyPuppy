@@ -28,7 +28,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_HARDY = "hardy";
     public static final String KEY_SIZE = "size";
     public static final String KEY_CARE = "care";
-    public static final String KEY_HUNT = "hunt"; //IMPOTANT 0 IF HUNT 1 IF NOT
+    public static final String KEY_HUNT = "hunt";
     public static final String KEY_WEBLINC = "weblinc";
     public static final String KEY_FCIID = "fciid";
     public static final String KEY_FAVOR = "favorite";
@@ -55,7 +55,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 + KEY_HARDY + " integer,"
                 + KEY_SIZE + " integer,"
                 + KEY_CARE + " integer,"
-                + KEY_HUNT + " integer,"
+                + KEY_HUNT + " text,"
                 + KEY_WEBLINC + " text,"
                 + KEY_FCIID + " integer,"
                 + KEY_FAVOR + " numeric,"
@@ -66,28 +66,28 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "средняя по размеру, с энергичным характером",
                 "Дружелюбная и энергичная. При нормальном развитии не способна укусить человека ни при каких обстоятельствах. Собака категорически непригодна для использования в качестве охотничьей (охотится, но не приносит добычу), сторожевой (инстинкт охраны территории сведён к минимуму) и охранной (в норме у этих собак начисто отсутствует агрессия к человеку). Собака излишне самостоятельна. Источник: wikipedia.org.",
                 R.drawable.b_husky, R.drawable.fs_husky,
-                2, 1, 1, 4, 5, 3, 1, 1,
+                2, 1, 1, 4, 5, 3, 1, "no",
                 "https://ru.m.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%81%D0%BA%D0%B8", 270);
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
                 "средняя по размеру, подвижная, веселая",
                 "Является одной из самых популярных пород собак. Первоначально эта порода была выведена в качестве рабочей собаки. С хорошим характером, очень подвижный. Легко адаптирующийся, преданный компаньон. Смышлёный, проницательный и послушный, ласковый, настоящий друг. Добрый по натуре, без следа агрессии или чрезмерной робости. Источник: wikipedia.org.",
                 R.drawable.b_labrador, R.drawable.fs_labrador,
-                3, 2, 2, 3, 4, 3, 1, 0,
+                3, 2, 2, 3, 4, 3, 1, "yes",
                 "https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B1%D1%80%D0%B0%D0%B4%D0%BE%D1%80-%D1%80%D0%B5%D1%82%D1%80%D0%B8%D0%B2%D0%B5%D1%80", 122);
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "крупная по размеру служебная собака",
                 "Это служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке. Немецкая овчарка наиболее успешна, если имеет одного хозяина, но при этом её сильной стороной (как служебной собаки) является то, что она очень легко меняет хозяев и заинтересованно работает с новыми. Немецкая овчарка входит в тройку в рейтинге самых умных пород, составленном доктором Стенли Кореном (англ.). Источник: wikipedia.org.",
                 R.drawable.b_germshep, R.drawable.fs_germshep,
-                4, 5, 3, 3, 3, 4, 1, 1,
+                4, 5, 3, 3, 3, 4, 1, "no",
                 "https://ru.m.wikipedia.org/wiki/%D0%9D%D0%B5%D0%BC%D0%B5%D1%86%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B2%D1%87%D0%B0%D1%80%D0%BA%D0%B0", 166);
         incertBreedsToDb (db,
                 "Bельш корги Пемброк",
                 "миниатюрная пастушья собака, дружелюбная",
                 "Вельш-корги отличает огромное жизнелюбие, живость, доброжелательность. Корги — любящие и преданные, трепетно любят семью своего хозяина. Они очень лояльно относятся ко всем людям и другим животным, легко уживаются с кошками. Очень трепетно относятся к детям, особенно маленьким, следят за ними и оберегают. В отличие от пемброка, кардиган спокойнее, рассудительнее и осторожнее, а пемброк более возбудимый, живой и чуткий. Источник: wikipedia.org.",
                 R.drawable.b_welsh_pembrok, R.drawable.fs_welsh_pembrok,
-                4, 2, 2, 4, 2, 2, 1, 1,
+                4, 2, 2, 4, 2, 2, 1, "no",
                 "https://ru.m.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D1%8C%D1%88-%D0%BA%D0%BE%D1%80%D0%B3%D0%B8", 39);
 
     }
@@ -102,7 +102,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     public void incertBreedsToDb(SQLiteDatabase db, String name, String description, String description_full,
                                  int resourceId, int resourceIdBig, int obidience, int guard, int agressive,
-                                 int active, int hardy, int size, int care, int hunt, String weblinc, int fciid) {
+                                 int active, int hardy, int size, int care, String hunt, String weblinc, int fciid) {
 
         ContentValues con_breed = new ContentValues();
         con_breed.put (KEY_TITLE, name);

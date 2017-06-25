@@ -100,11 +100,11 @@ public class Breed_mod implements Serializable {
         this.b_care = b_care;
     }
 
-    public int getB_hunt() {
+    public String getB_hunt() {
         return b_hunt;
     }
 
-    public void setB_hunt(int b_hunt) {
+    public void setB_hunt(String b_hunt) {
         this.b_hunt = b_hunt;
     }
 
@@ -152,12 +152,13 @@ public class Breed_mod implements Serializable {
     private int b_hardy;
     private int b_size;
     private int b_care;
-    private int b_hunt;
+    private String b_hunt;
     private String b_weblinc;
     private boolean b_favor;
     private String b_comment;
-
-
+    private int b_hair;
+    private int blackorwhite;
+    private int noalergy;
 
     private int b_idfci;
 
