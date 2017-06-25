@@ -79,7 +79,7 @@ public class InitiationActivity extends Application {
     MyBucket hardy = new MyBucket("Выносливость", 1);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 5);
-    MyBucket hunt = new MyBucket("Является (0) или нет (1) охотничьей", 1);
+    MyBucket hunt = new MyBucket("Является (1) или нет (0) охотничьей", 0); //если 0 то параметр SQL запроса принимает "yes", иначе "%"
 
     // создаем лист объектов корзина для передачи в список List_profile
 
@@ -114,7 +114,7 @@ public class InitiationActivity extends Application {
         hardy.setValue(1);
         size.setValue(5);
         care.setValue(5);
-        hunt.setValue(1);
+        hunt.setValue(0);
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;
@@ -164,12 +164,6 @@ public class InitiationActivity extends Application {
 
     public void caredecreaser (int i) {
         care.setValue(min(care.getValue(), i));
-    }
-
-    //huntsetter
-
-    public void huntdecreaser (int i) {
-        hunt.setValue(min(hunt.getValue(), i));
     }
 
 

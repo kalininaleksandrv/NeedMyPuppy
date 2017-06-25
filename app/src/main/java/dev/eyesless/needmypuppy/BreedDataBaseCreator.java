@@ -28,20 +28,6 @@ public class BreedDataBaseCreator {
 
     public void onCreateDb (){
 
-//            try {
-//
-//                SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
-//                SQLiteDatabase mybreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-//                Cursor mCursor = cursorCreator(mybreeddatabase);
-//                listOfBreedCreator(mCursor);
-//                mybreeddatabase.close();
-//
-//            } catch (SQLiteException e) {
-//                Toast myToast = Toast.makeText(myContext, "Database Unavailable", Toast.LENGTH_SHORT);
-//                myToast.setGravity(Gravity.BOTTOM, 0, 30);
-//                myToast.show();
-//            }
-
         try {
 
             SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
@@ -49,17 +35,6 @@ public class BreedDataBaseCreator {
             Cursor mRawCursor = rawCursorCreator (mysecondbreeddatabase);
 
             listOfBreedCreator(mRawCursor);
-
-
-//            if (mRawCursor.moveToFirst()){
-//            Toast myToast = Toast.makeText(myContext, mRawCursor.getString(0), Toast.LENGTH_SHORT);
-//            myToast.setGravity(Gravity.BOTTOM, 0, 30);
-//            myToast.show();
-//
-//            Toast mysToast = Toast.makeText(myContext, mRawCursor.getString(1), Toast.LENGTH_SHORT);
-//            mysToast.setGravity(Gravity.BOTTOM, 0, 60);
-//            mysToast.show();
-//            }
 
             mysecondbreeddatabase.close();
 
@@ -90,6 +65,9 @@ public class BreedDataBaseCreator {
         String hunt = BreedDataBaseHelper.KEY_HUNT;
         String weblinc = BreedDataBaseHelper.KEY_WEBLINC;
         String fciid = BreedDataBaseHelper.KEY_FCIID;
+        String hair = BreedDataBaseHelper.KEY_HAIR;
+        String blackorwhite = BreedDataBaseHelper.KEY_BLACKORWHITE;
+        String noalergy = BreedDataBaseHelper.KEY_NOALERGY;
 
         String swosh = ",";
         String like = " LIKE ?";
@@ -102,7 +80,7 @@ public class BreedDataBaseCreator {
 
         Cursor mCursor = db.rawQuery("SELECT "+ title + swosh + description + swosh + description_full + swosh + image_res_id + swosh+ image_fs_res_id + swosh
                 + obidience + swosh + guard + swosh + agressive + swosh + active+ swosh + hardy + swosh + size + swosh
-                + care + swosh + hunt + swosh + weblinc + swosh + fciid +" FROM " + dbname + " WHERE "
+                + care + swosh + hunt + swosh + weblinc + swosh + fciid + swosh + hair + swosh + blackorwhite + swosh + noalergy + " FROM " + dbname + " WHERE "
                 + obidience + more +
                 and + guard + more +
                 and + agressive + less +
@@ -110,7 +88,10 @@ public class BreedDataBaseCreator {
                 and + hardy + more +
                 and + size + less +
                 and + care + less +
-                and + hunt + like
+                and + hunt + like +
+                and + hair + like +
+                and + blackorwhite + like +
+                and + noalergy + like
                 , selectionArgs);
 
 
@@ -128,59 +109,17 @@ public class BreedDataBaseCreator {
         int size_n = 6;
         int care_n = 6;
         String hunt_n = "%";
+        String hair_n = "%";
+        String blackorwhite_n = "%";
+        String noalergy_n = "%";
 
 
         return new String [] {String.valueOf(obidience_n), String.valueOf(guard_n),
                 String.valueOf(agressive_n), String.valueOf(active_n),
                 String.valueOf(hardy_n), String.valueOf(size_n),
-                String.valueOf(care_n), hunt_n};
+                String.valueOf(care_n), hunt_n, hair_n, blackorwhite_n, noalergy_n};
     }
 
-//    private Cursor cursorCreator (SQLiteDatabase db) {
-//
-//
-//        String title = BreedDataBaseHelper.KEY_TITLE;
-//        String description = BreedDataBaseHelper.KEY_DECRIPTION;
-//        String description_full = BreedDataBaseHelper.KEY_DECRIPTION_FULL;
-//        String image_res_id = BreedDataBaseHelper.KEY_IMAGE_RES_ID;
-//        String image_fs_res_id = BreedDataBaseHelper.KEY_IMAGE_RES_ID_BIG;
-//        String obidience = BreedDataBaseHelper.KEY_OBIDIENCE;
-//        String guard = BreedDataBaseHelper.KEY_GUARD;
-//        String agressive = BreedDataBaseHelper.KEY_AGRESSIVE;
-//        String active = BreedDataBaseHelper.KEY_ACTIVE;
-//        String hardy = BreedDataBaseHelper.KEY_HARDY;
-//        String size = BreedDataBaseHelper.KEY_SIZE;
-//        String care = BreedDataBaseHelper.KEY_CARE;
-//        String hunt = BreedDataBaseHelper.KEY_HUNT;
-//        String weblinc = BreedDataBaseHelper.KEY_WEBLINC;
-//        String fciid = BreedDataBaseHelper.KEY_FCIID;
-//
-//        String [] selectionArgs = getAsqCondition();
-//
-//        Cursor myCursor = db.query(BreedDataBaseHelper.TABLE_NAME, new String[] {title, description, description_full, image_res_id, image_fs_res_id,
-//                        obidience, guard, agressive, active, hardy, size, care, hunt, weblinc, fciid},
-//               "obidience > ? AND guard > ? AND agressive < ? AND active < ? AND hardy > ? AND size < ? AND care < ? AND hunt = ?",
-//                selectionArgs, null, null, null);
-//
-//        return myCursor;
-//    }
-//
-//    private String[] getAsqCondition() {
-//
-//        int obidience_n = 0;
-//        int guard_n = 0;
-//        int agressive_n = 6;
-//        int active_n = 6;
-//        int hardy_n = 0;
-//        int size_n = 6;
-//        int care_n = 6;
-//        int hunt_n = 0;
-//
-//        return new String [] {String.valueOf(obidience_n), String.valueOf(guard_n),
-//                String.valueOf(agressive_n), String.valueOf(active_n),
-//                String.valueOf(hardy_n), String.valueOf(size_n),
-//                String.valueOf(care_n), String.valueOf(hunt_n)};
-//    }
 
     private void listOfBreedCreator (Cursor cursor) {
 
@@ -194,7 +133,8 @@ public class BreedDataBaseCreator {
             Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getString(2),
                     myCursor.getInt(3), myCursor.getInt(4),
                     myCursor.getInt(5), myCursor.getInt(6), myCursor.getInt(7), myCursor.getInt(8),
-                    myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14) );
+                    myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14),
+                    myCursor.getString(15), myCursor.getString(16), myCursor.getString(17) );
             myListOfBreed_m.add(myBreedM);
 
         }
@@ -204,7 +144,8 @@ public class BreedDataBaseCreator {
             Breed_mod myBreedM = breed_m_creator(myCursor.getString(0), myCursor.getString(1), myCursor.getString(2),
                     myCursor.getInt(3), myCursor.getInt(4),
                     myCursor.getInt(5), myCursor.getInt(6), myCursor.getInt(7), myCursor.getInt(8),
-                    myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14));
+                    myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14),
+                    myCursor.getString(15), myCursor.getString(16), myCursor.getString(17));
             myListOfBreed_m.add(myBreedM);
 
         }
@@ -219,7 +160,8 @@ public class BreedDataBaseCreator {
 
     Breed_mod breed_m_creator (String name, String description, String description_full,
                                int resourceId, int resourceIdBig, int obidience, int guard, int agressive,
-                               int active, int hardy, int size, int care, String hunt, String weblinc, int fciid){
+                               int active, int hardy, int size, int care, String hunt, String weblinc, int fciid, String hair,
+                               String blackorwhite, String noalergy){
 
         Breed_mod myBreedM = new Breed_mod();
         myBreedM.setB_title(name);
@@ -237,6 +179,9 @@ public class BreedDataBaseCreator {
         myBreedM.setB_hunt(hunt);
         myBreedM.setB_weblinc(weblinc);
         myBreedM.setB_idfci(fciid);
+        myBreedM.setB_hair(hair);
+        myBreedM.setB_blackorwhite(blackorwhite);
+        myBreedM.setB_noalergy(noalergy);
 
 
         return myBreedM;

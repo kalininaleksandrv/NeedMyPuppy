@@ -109,7 +109,7 @@ public class Forwhat_main extends Fragment {
                 }
 
                 if (huntcheck.isChecked()){
-                    inact.hunt.setValue(0);
+                    inact.hunt.setValue(1);
                 }
 
                 if (obidencecheck.isChecked()){

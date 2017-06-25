@@ -140,6 +140,29 @@ public class Breed_mod implements Serializable {
         this.b_idfci = b_idfci;
     }
 
+    public String getB_hair() {
+        return b_hair;
+    }
+
+    public void setB_hair(String b_hair) {
+        this.b_hair = b_hair;
+    }
+
+    public String getB_blackorwhite() {
+        return b_blackorwhite;
+    }
+
+    public void setB_blackorwhite(String b_blackorwhite) {
+        this.b_blackorwhite = b_blackorwhite;
+    }
+
+    public String getB_noalergy() {
+        return b_noalergy;
+    }
+
+    public void setB_noalergy(String b_noalergy) {
+        this.b_noalergy = b_noalergy;
+    }
     private String b_title;
     private String b_description;
     private String b_description_full;
@@ -154,12 +177,10 @@ public class Breed_mod implements Serializable {
     private int b_care;
     private String b_hunt;
     private String b_weblinc;
+    private int b_idfci;
+    private String b_hair;
+    private String b_blackorwhite;
+    private String b_noalergy;
     private boolean b_favor;
     private String b_comment;
-    private int b_hair;
-    private int blackorwhite;
-    private int noalergy;
-
-    private int b_idfci;
-
 }
