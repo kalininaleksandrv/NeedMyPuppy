@@ -23,11 +23,9 @@ import static java.lang.Math.min;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Forwhat_main extends Fragment {
+public class Forwhat_main extends Buttons_Abstract_Fragment {
 
-   onButtonListner myButtonListner;
-   private InitiationActivity inact;
-   private View parentview;
+
    private CheckBox babycheck;
    private CheckBox frendcheck;
    private CheckBox runcheck;
@@ -43,28 +41,12 @@ public class Forwhat_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        inact = ((InitiationActivity) getActivity().getApplicationContext());
-
         return inflater.inflate(R.layout.forwhat_main, container, false);
-    }
-
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        this.myButtonListner = (onButtonListner) context;
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
-        parentview = getView();
-
-        ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
 
         checkbuttonstatussetter ();
 
@@ -153,12 +135,5 @@ public class Forwhat_main extends Fragment {
         }
     }
 
-    // if button was pressed and trying next time, set toast about
-    private void toastmaker() {
-        String helpstring = getString(R.string.disabled_button_short);
-        Toast myToast = Toast.makeText(getContext(), helpstring, Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
-        myToast.show();
-    }
 }
 

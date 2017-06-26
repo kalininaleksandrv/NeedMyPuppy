@@ -1,35 +1,26 @@
 package dev.eyesless.needmypuppy;
 
 
-
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-import static java.lang.StrictMath.abs;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class About_owner_main extends Fragment {
+public class About_owner_main extends Buttons_Abstract_Fragment {
 
-
-    onButtonListner myButtonListner;
-    private InitiationActivity inact;
     private int expvalue;
     private int timevalue;
     private int agevalue;
@@ -41,9 +32,7 @@ public class About_owner_main extends Fragment {
     private Spinner spiner_activ;
     private Spinner spiner_family;
 
-    private View parentview;
-
-    public About_owner_main() {
+     public About_owner_main() {
         // Required empty public constructor
     }
 
@@ -51,25 +40,13 @@ public class About_owner_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        inact = ((InitiationActivity) getActivity().getApplicationContext());
         return inflater.inflate(R.layout.about_owner_main, container, false);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        this.myButtonListner = (onButtonListner) context;
-
-    }
 
     @Override
     public void onStart() {
         super.onStart();
-
-        parentview = getView();
-
-        ImageButton completebutton = (ImageButton) parentview.findViewById(R.id.button_complete);
 
         spinnerstatussetter ();
 
@@ -232,15 +209,6 @@ public class About_owner_main extends Fragment {
             else i = 5;
         }
         return i;
-    }
-
-
-    // if button was pressed and trying next time, set toast about
-    private void toastmaker() {
-        String helpstring = getString(R.string.disabled_button_short);
-        Toast myToast = Toast.makeText(getContext(), helpstring, Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
-        myToast.show();
     }
 
     //utilitarian getters and setters
