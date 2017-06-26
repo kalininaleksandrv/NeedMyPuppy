@@ -105,6 +105,8 @@ public class InitiationActivity extends Application {
     private boolean buttonaboutownerispressed;
     private boolean buttonaboutdogispressed;
 
+    private boolean buttonmorphoispressed;
+
     public void bucketseraser () {
 
         obidience.setValue(1);
@@ -118,7 +120,16 @@ public class InitiationActivity extends Application {
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;
+        buttonmorphoispressed = false;
 
+    }
+
+    public boolean isButtonmorphoispressed() {
+        return buttonmorphoispressed;
+    }
+
+    public void setButtonmorphoispressed(boolean buttonmorphoispressed) {
+        this.buttonmorphoispressed = buttonmorphoispressed;
     }
 
     public void setButtonforwhatispressed(boolean buttonforwhatispressed) {

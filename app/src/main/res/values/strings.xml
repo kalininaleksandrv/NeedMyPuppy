@@ -13,6 +13,7 @@
     <string name="btn_block1">О Вас...</string>
     <string name="btn_block2">О собаке...</string>
     <string name="btn_block3">О радостных минутах...</string>
+    <string name="btn_block4">О внешнем виде...</string>
     <string name="btn_opt2">Дальше</string>
     <string name="btn_complete">Готово!</string>
     <string name="resultText"></string>

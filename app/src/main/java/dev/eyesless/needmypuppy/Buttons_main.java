@@ -3,6 +3,7 @@ package dev.eyesless.needmypuppy;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,6 +49,7 @@ onButtonListner myButtonListner;
         ImageButton aboutownerbutton = (ImageButton) parentview.findViewById(R.id.imageButton_aboutowner);
         ImageButton forwhatbutton = (ImageButton) parentview.findViewById(R.id.imageButton_forwhat);
         ImageButton aboutdogbutton = (ImageButton) parentview.findViewById(R.id.imageButton_aboutdog);
+        ImageButton morpho = (ImageButton) parentview.findViewById(R.id.imageButton_morpho);
         Button gonextbutton = (Button) parentview.findViewById(R.id.button_gonext);
 
         //реализуем онкликлистнер на подключенной кнопке
@@ -55,6 +57,7 @@ onButtonListner myButtonListner;
         aboutownerbutton.setOnClickListener(myOnClickListner);
         aboutdogbutton.setOnClickListener(myOnClickListner);
         forwhatbutton.setOnClickListener(myOnClickListner);
+        morpho.setOnClickListener(myOnClickListner);
         gonextbutton.setOnClickListener(myOnClickListner);
 
     }

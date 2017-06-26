@@ -203,6 +203,12 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 frameRemoover(new About_dog_main());
                 break;
 
+            case R.id.imageButton_morpho:
+                if (inact.isButtonmorphoispressed()){toastmaker();}
+                else
+                frameRemoover(new Fragment_morpho());
+                break;
+
             case R.id.button_gonext:
 
                 databaseinitiator();
