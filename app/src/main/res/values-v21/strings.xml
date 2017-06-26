@@ -21,6 +21,7 @@
     <string name="intro_about_owner_activity">При выборе собаки, очень важно понимать Ваши возможности. Для этого ответьте на вопросы ниже</string>
     <string name="intro_about_for_what_activity">Разные породы собак лучше подходят для разных занятий. Выберите - как Вы хотели бы проводить время с Вашей собакой?</string>
     <string name="intro_about_infrastructure">Для некоторых пород очень важно - какие окружающие условия Вы им обеспечите.</string>
+    <string name="intro_about_morpho">Ваша собака должна приность Вам эстетическое удовольствие</string>
     <string name="action_save">сохранить профиль ответов</string>
     <string name="action_email">получить отчет на e-mail</string>
     <string name="action_settings">настройки</string>
@@ -35,6 +36,7 @@
     <string name="disabled_button_short">Вы уже отвечали на эти вопросы. </string>
     <string name="flag_havedog">отметьте, если уже есть собака(и)</string>
     <string name="flag_havechild">отметьте, если есть дети младше 10</string>
+    <string name="flag_noalergy">только с гипоалергенной шерстью</string>
     <string name="find_breed">Найти породу</string>
     <string name="mesage_to_devs">Написать разработчикам</string>
     <string name="about">Справка</string>
