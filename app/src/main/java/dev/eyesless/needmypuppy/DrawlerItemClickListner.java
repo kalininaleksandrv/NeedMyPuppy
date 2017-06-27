@@ -34,43 +34,11 @@ public class DrawlerItemClickListner extends MainActivity implements NavigationV
     public DrawlerItemClickListner(InitiationActivity inact, MainActivity activity, DrawerLayout myDrawer, NavigationView myNaviView) {
         super();
 
-
         this.myDrawer = myDrawer;
         this.myNaviView = myNaviView;
         this.activity = activity;
         this.inact = inact;
     }
-
-//    @Override
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//       selectItem (position);
-//
-//
-//    }
-//
-//    private void selectItem(long position) {
-//
-//        switch ((int) position){
-//
-//            case 0:
-//                activity.activitystarter(BreedViewer.class, null);
-//                break;
-//
-//            case 1:
-//                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
-//                break;
-//
-//            case 2:
-//                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//        myDrawer.closeDrawer(myNaviView);
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
