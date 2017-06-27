@@ -19,15 +19,27 @@ public class Presenter_morpho {
     }
 
 
-    public void checkboxreader(InitiationActivity inact) {
+    public void inactsetter(InitiationActivity inact) {
+
+        this.inact = inact;
+    }
+
+    public void checkboxreader() {
+
+        inact.setButtonmorphoispressed(true);
+
 
         if (minterface.isboxchecked()){
 
-            inact.setButtonmorphoispressed(true);
 
             inact.noalergy.setValue(1);
 
         }
+
+        int blackorwhite = (minterface.isblackorwhite());
+
+        inact.blackorwhite.setValue(blackorwhite);
+
 
     }
 }

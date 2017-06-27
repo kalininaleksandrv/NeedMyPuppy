@@ -8,4 +8,5 @@ interface MVPInterface {
 
     public boolean isboxchecked ();
 
+    int isblackorwhite();
 }

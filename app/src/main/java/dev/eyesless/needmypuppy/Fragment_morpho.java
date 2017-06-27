@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
@@ -21,6 +22,7 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
     protected CheckBox noalergy;
     protected Spinner spinnerblackorwhite;
+    private int blackorwhiteposition;
 
     Presenter_morpho presenter;
 
@@ -42,6 +44,8 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     public void onStart() {
         super.onStart();
 
+        presenterinactsetter(inact);
+
         spinnerinit ();
 
         statussetter ();
@@ -52,13 +56,19 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
     }
 
+    private void presenterinactsetter(InitiationActivity inact) {
+
+        presenter.inactsetter(inact);
+
+    }
+
     private void spinnerinit() {
 
         spinnerblackorwhite = (Spinner) parentview.findViewById(R.id.spinner_blackorwhite);
 
     }
 
-    //spinner blackorwhite 
+    //spinner blackorwhite
 
     private void blackorwhitespinner() {
 
@@ -66,6 +76,20 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
                 (getContext(), R.layout.list_item, inact.getSpinner_blackorwhite());
 
         this.spinnerblackorwhite.setAdapter(spinnerblackorwhite);
+
+        this.spinnerblackorwhite.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                blackorwhiteposition = position;
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -85,7 +109,7 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
         @Override
         public void onClick(View v) {
 
-            checkboxreader(inact);
+            checkboxreader();
 
             myButtonListner.buttonClicked(v);
 
@@ -100,9 +124,14 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
         else return false;
     }
 
-    public void checkboxreader(InitiationActivity inact) {
+    @Override
+    public int isblackorwhite() {
+        return blackorwhiteposition;
+    }
 
-        presenter.checkboxreader(inact);
+    public void checkboxreader() {
+
+        presenter.checkboxreader();
 
     }
 }

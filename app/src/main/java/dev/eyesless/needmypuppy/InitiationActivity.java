@@ -45,11 +45,10 @@ public class InitiationActivity extends Application {
     private String [] spinner_vet_array = {"оцените доступность ветеринарных услуг:",
             "не доступны", "минимально доступны", "не известно", "хорошо доступны"};
 
-    private String [] spinner_blackorwhite = {"имеется полностью белый или черный окрас",
-            "полностью белый", "полностью черный", "не важно"};
+    private String [] spinner_blackorwhite = {"нужен ли полностью белый или черный окрас",
+            "полностью белый", "полностью черный"};
 
     public String[] getSpinner_blackorwhite() { return spinner_blackorwhite;  }
-
 
     public String[] getSpinner_exp_array() { return spinner_exp_array; }
 
@@ -77,6 +76,7 @@ public class InitiationActivity extends Application {
     //уход 1-не нуждается 5-специфичная длинная шерсть или стандарты грумминга
     //охота 1 - ПОДХОДИТ для охоты 0 НЕ подходит для охоты
     //гипоалергенная алергенная шерсть 1 - требуетя 0 не требуется
+    //чистый черный или белый окрас
 
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
     MyBucket guard = new MyBucket("Охранные качества", 2);
@@ -87,6 +87,7 @@ public class InitiationActivity extends Application {
     MyBucket care = new MyBucket("Сложный / специфичный уход", 5);
     MyBucket hunt = new MyBucket("Является (1) или нет (0) охотничьей", 0); //если 0 то параметр SQL запроса принимает "yes", иначе "%"
     MyBucket noalergy = new MyBucket("Требуется (1) или нет (0) гипоалергенная шерсть", 0); //если 0 то параметр SQL запроса принимает "%", иначе "yes"
+    MyBucket blackorwhite = new MyBucket("Окрас белый (1) черный (2) или не важно (0)", 0); //если 0 то параметр SQL запроса принимает "%", 1 "white", 2 "black"
 
     // создаем лист объектов корзина для передачи в список List_profile
 
@@ -103,6 +104,7 @@ public class InitiationActivity extends Application {
         mybusketslist.add(care);
         mybusketslist.add(hunt);
         mybusketslist.add(noalergy);
+        mybusketslist.add(blackorwhite);
 
         return mybusketslist;
     }
@@ -126,6 +128,7 @@ public class InitiationActivity extends Application {
         care.setValue(5);
         hunt.setValue(0);
         noalergy.setValue(0);
+        blackorwhite.setValue(0);
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;
