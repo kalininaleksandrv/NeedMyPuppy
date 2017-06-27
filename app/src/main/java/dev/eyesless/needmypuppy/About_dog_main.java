@@ -48,9 +48,6 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
         return inflater.inflate(R.layout.about_dog_main, container, false);
     }
 
-
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -101,32 +98,32 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
         });
 
 
-        //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
-
-        View.OnClickListener myOnClickListner = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                inact.setButtonaboutdogispressed(true);
-                checkboxReader();
-
-                inact.obidienceincreaser(4-cynologistvalue);
-
-                guardsetter ();
-                agressivesetter ();
-                activsetter ();
-                sizesetter ();
-                caresetter ();
-
-                myButtonListner.buttonClicked(v);
-
-            }
-        };
-
         //реализуем онкликлистнер на подключенной кнопке
 
         completebutton.setOnClickListener(myOnClickListner);
     }
+
+    //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
+
+    View.OnClickListener myOnClickListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            inact.setButtonaboutdogispressed(true);
+            checkboxReader();
+
+            inact.obidienceincreaser(4-cynologistvalue);
+
+            guardsetter ();
+            agressivesetter ();
+            activsetter ();
+            sizesetter ();
+            caresetter ();
+
+            myButtonListner.buttonClicked(v);
+
+        }
+    };
 
     private void checkboxReader() {
 

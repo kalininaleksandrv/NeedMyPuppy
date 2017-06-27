@@ -50,19 +50,21 @@ public class Forwhat_main extends Buttons_Abstract_Fragment {
 
         checkbuttonstatussetter ();
 
-        //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
 
-        View.OnClickListener myOnClickListner = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                inact.setButtonforwhatispressed(true);
-                checkboxReader();
-                myButtonListner.buttonClicked(v);
-            }
-        };
         completebutton.setOnClickListener(myOnClickListner);
     }
+
+    //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
+
+    View.OnClickListener myOnClickListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            inact.setButtonforwhatispressed(true);
+            checkboxReader();
+            myButtonListner.buttonClicked(v);
+        }
+    };
 
     // подключаем чекбоксы и передаем состояние
 

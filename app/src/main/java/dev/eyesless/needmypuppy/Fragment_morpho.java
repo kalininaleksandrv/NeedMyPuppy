@@ -26,4 +26,26 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment {
         return inflater.inflate(R.layout.fragment_morpho, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        completebutton.setOnClickListener(myOnClickListner);
+
+    }
+
+    View.OnClickListener myOnClickListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            inact.setButtonmorphoispressed(true);
+
+            myButtonListner.buttonClicked(v);
+
+        }
+
+
+    };
+
+
 }

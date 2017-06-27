@@ -132,31 +132,30 @@ public class About_owner_main extends Buttons_Abstract_Fragment {
             }
         });
 
-
-        //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
-
-        View.OnClickListener myOnClickListner = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                inact.setButtonaboutownerispressed(true);
-
-                inact.obidienceincreaser(obidiencescond());
-                inact.aggresivedecreaser(min(expvalue+1, min(timevalue+2, agressivecon()))); //минимальное значение из если прямой зависимости от опыта и времени, возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
-                inact.activeincreaser(max(activvalue+1, max(expvalue+1, timevalue+2))); //чем больше времени готовы тратить на собаку, тем более активная порода допускается, чем больше опыть тем более активная порода допускается, чем вы активнее, тем более активная порода допускается
-                inact.sizedecreaser(sizecon());
-                inact.caredecreaser(min(timevalue+1, expvalue +1));// обратная зависимость от совободного времени и экспертизы
-
-
-                myButtonListner.buttonClicked(v);
-
-            }
-        };
-
         //реализуем онкликлистнер на подключенной кнопке
 
         completebutton.setOnClickListener(myOnClickListner);
     }
+
+    //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
+
+    View.OnClickListener myOnClickListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            inact.setButtonaboutownerispressed(true);
+
+            inact.obidienceincreaser(obidiencescond());
+            inact.aggresivedecreaser(min(expvalue+1, min(timevalue+2, agressivecon()))); //минимальное значение из если прямой зависимости от опыта и времени, возраст менее 16 лет то уменьшить максимально допустимую агрессивность до 2, даже если ранее выставлено больше
+            inact.activeincreaser(max(activvalue+1, max(expvalue+1, timevalue+2))); //чем больше времени готовы тратить на собаку, тем более активная порода допускается, чем больше опыть тем более активная порода допускается, чем вы активнее, тем более активная порода допускается
+            inact.sizedecreaser(sizecon());
+            inact.caredecreaser(min(timevalue+1, expvalue +1));// обратная зависимость от совободного времени и экспертизы
+
+
+            myButtonListner.buttonClicked(v);
+
+        }
+    };
 
     //init spinners and set it disabled if re-entry
 
