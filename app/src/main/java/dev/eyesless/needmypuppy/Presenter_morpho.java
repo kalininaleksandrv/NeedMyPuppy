@@ -1,6 +1,6 @@
 package dev.eyesless.needmypuppy;
 
-import android.util.Log;
+import static java.lang.Math.min;
 
 /**
  * Created by Eyesless on 27.06.2017.
@@ -29,17 +29,10 @@ public class Presenter_morpho {
         inact.setButtonmorphoispressed(true);
 
 
-        if (minterface.isboxchecked()){
-
-
-            inact.noalergy.setValue(1);
-
-        }
-
-        int blackorwhite = (minterface.isblackorwhite());
-
-        inact.blackorwhite.setValue(blackorwhite);
-
+        if (minterface.isboxchecked()){inact.noalergy.setValue(1);}
+        inact.blackorwhite.setValue(minterface.isblackorwhite());
+        inact.hair.setValue(minterface.ishair());
+        inact.size.setValue(min(inact.size.getValue(), minterface.issize()));
 
     }
 }

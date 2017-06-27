@@ -48,6 +48,16 @@ public class InitiationActivity extends Application {
     private String [] spinner_blackorwhite = {"нужен ли полностью белый или черный окрас",
             "полностью белый", "полностью черный"};
 
+    private String [] spinner_hair = {"если нужно, выберите длинну шерсти",
+            "только с короткой шерстью", "только с длинной шерстью"};
+
+    private String [] spinner_size = {"размер собаки не более: ",
+            "очень маленькой", "маленькой", "средней", "крупной", "не имеет значения"};
+
+    public String[] getSpinner_size() { return spinner_size; }
+
+    public String[] getSpinner_hair() {return spinner_hair;}
+
     public String[] getSpinner_blackorwhite() { return spinner_blackorwhite;  }
 
     public String[] getSpinner_exp_array() { return spinner_exp_array; }
@@ -88,6 +98,7 @@ public class InitiationActivity extends Application {
     MyBucket hunt = new MyBucket("Является (1) или нет (0) охотничьей", 0); //если 0 то параметр SQL запроса принимает "yes", иначе "%"
     MyBucket noalergy = new MyBucket("Требуется (1) или нет (0) гипоалергенная шерсть", 0); //если 0 то параметр SQL запроса принимает "%", иначе "yes"
     MyBucket blackorwhite = new MyBucket("Окрас белый (1) черный (2) или не важно (0)", 0); //если 0 то параметр SQL запроса принимает "%", 1 "white", 2 "black"
+    MyBucket hair = new MyBucket("Длинна шерсти короткая (1), длинная (2), любая (0)", 0); //если 0 то параметр SQL запроса принимает "%", 1 "short", 2 "long"
 
     // создаем лист объектов корзина для передачи в список List_profile
 
@@ -105,6 +116,7 @@ public class InitiationActivity extends Application {
         mybusketslist.add(hunt);
         mybusketslist.add(noalergy);
         mybusketslist.add(blackorwhite);
+        mybusketslist.add(hair);
 
         return mybusketslist;
     }
@@ -129,6 +141,7 @@ public class InitiationActivity extends Application {
         hunt.setValue(0);
         noalergy.setValue(0);
         blackorwhite.setValue(0);
+        hair.setValue(0);
         buttonforwhatispressed = false;
         buttonaboutdogispressed = false;
         buttonaboutownerispressed = false;

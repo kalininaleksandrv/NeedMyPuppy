@@ -9,4 +9,8 @@ interface MVPInterface {
     public boolean isboxchecked ();
 
     int isblackorwhite();
+
+    int ishair();
+
+    int issize ();
 }

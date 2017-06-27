@@ -21,8 +21,12 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
 
     protected CheckBox noalergy;
+    protected Spinner spinnerhair;
     protected Spinner spinnerblackorwhite;
+    protected Spinner spinnersize;
     private int blackorwhiteposition;
+    private int hairposition;
+    private int sizeposition;
 
     Presenter_morpho presenter;
 
@@ -50,7 +54,9 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
         statussetter ();
 
-        blackorwhitespinner ();
+        createspinner (spinnerblackorwhite, inact.getSpinner_blackorwhite());
+        createspinner (spinnerhair, inact.getSpinner_hair());
+        createspinner(spinnersize, inact.getSpinner_size());
 
         completebutton.setOnClickListener(myOnClickListner);
 
@@ -64,27 +70,47 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
     private void spinnerinit() {
 
+        spinnerhair = (Spinner) parentview.findViewById(R.id.spinner_hair);
         spinnerblackorwhite = (Spinner) parentview.findViewById(R.id.spinner_blackorwhite);
+        spinnersize = (Spinner) parentview.findViewById(R.id.spinner_size);
+
+        noalergy = (CheckBox) parentview.findViewById(R.id.checkBox_noalergy);
 
     }
 
-    //spinner blackorwhite
+    //spinners creater
 
-    private void blackorwhitespinner() {
+    private void createspinner(Spinner sp, String [] strar) {
 
-        ArrayAdapter<String> spinnerblackorwhite = new ArrayAdapter<String>
-                (getContext(), R.layout.list_item, inact.getSpinner_blackorwhite());
+        final int mSpinner = sp.getId();
 
-        this.spinnerblackorwhite.setAdapter(spinnerblackorwhite);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>
+                (getContext(), R.layout.list_item, strar);
 
-        this.spinnerblackorwhite.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        sp.setAdapter(myAdapter);
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                blackorwhiteposition = position;
+                switch (mSpinner) {
 
+                    case (R.id.spinner_blackorwhite):
+                        blackorwhiteposition = position;
+                        break;
+
+                    case (R.id.spinner_hair):
+                        hairposition = position;
+                        break;
+
+                    case (R.id.spinner_size):
+
+                        if (position == 0 || position == 5 ) sizeposition = 5;
+                        else sizeposition = position;
+                        break;
+
+                }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -95,13 +121,15 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
     private void statussetter() {
 
-        noalergy = (CheckBox) parentview.findViewById(R.id.checkBox_noalergy);
-
         if (inact.isButtonaboutdogispressed()) {
 
             toastmaker();
 
             noalergy.setEnabled(false);
+            spinnerhair.setEnabled(false);
+            spinnerblackorwhite.setEnabled(false);
+            spinnersize.setEnabled(false);
+
         }
     }
 
@@ -117,6 +145,12 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     };
 
 
+    public void checkboxreader() {
+
+        presenter.checkboxreader();
+
+    }
+
     @Override
     public boolean isboxchecked() {
 
@@ -125,13 +159,17 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     }
 
     @Override
-    public int isblackorwhite() {
-        return blackorwhiteposition;
+    public int issize() {
+        return sizeposition;
     }
 
-    public void checkboxreader() {
+    @Override
+    public int ishair() {
+        return hairposition;
+    }
 
-        presenter.checkboxreader();
-
+    @Override
+    public int isblackorwhite() {
+        return blackorwhiteposition;
     }
 }
