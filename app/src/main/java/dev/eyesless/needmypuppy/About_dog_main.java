@@ -22,7 +22,7 @@ import static java.lang.Math.min;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class About_dog_main extends Buttons_Abstract_Fragment {
+public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInterface_aboutdog {
 
 
     private CheckBox havedog;
@@ -36,9 +36,13 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
     private int cynologistvalue;
     private int vetvalue;
 
+    Presenter_aboutdog presenter;
+
 
     public About_dog_main() {
         // Required empty public constructor
+
+        presenter = new Presenter_aboutdog(this);
     }
 
 
@@ -52,6 +56,8 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
     public void onStart() {
         super.onStart();
 
+        presenterinactsetter(inact);
+
         statussetter ();
 
         createspinner(spinner_walking, inact.getSpinner_walk_array());
@@ -60,6 +66,12 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
 
         //реализуем онкликлистнер на подключенной кнопке
         completebutton.setOnClickListener(myOnClickListner);
+    }
+
+    private void presenterinactsetter(InitiationActivity inact) {
+
+        presenter.inactsetter(inact);
+
     }
 
     //spinners creater
@@ -107,32 +119,12 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
         @Override
         public void onClick(View v) {
 
-            inact.setButtonaboutdogispressed(true);
-            checkboxReader();
-
-            inact.obidienceincreaser(4-cynologistvalue);
-
-            guardsetter ();
-            agressivesetter ();
-            activsetter ();
-            sizesetter ();
-            caresetter ();
+            valuereader();
 
             myButtonListner.buttonClicked(v);
 
         }
     };
-
-    private void checkboxReader() {
-
-        if (havedog.isChecked()){
-            inact.agressive.setValue(min(inact.agressive.getValue(),3)); //в случае другой собаки агрессивность не более 3
-        }
-
-        if (havechild.isChecked()){
-            inact.agressive.setValue(min(inact.agressive.getValue(),2)); //в случае наличия детей агрессивность не более 2
-        }
-    }
 
     private void statussetter() {
 
@@ -155,30 +147,38 @@ public class About_dog_main extends Buttons_Abstract_Fragment {
         }
     }
 
-    //main logic - setting different parameters on Initiation Activity
+    @Override
+    public boolean ishavechildboxchecked() {
 
-    private void guardsetter() {
-        inact.guard.setValue(max(inact.guard.getValue(), cynologistvalue)); //чем хуже развиты кинологические услуги, тем менее выраженные охранные качества допускаются
+        if (havechild.isChecked()) return true;
+        else return false;
+
     }
 
-    private void agressivesetter() {
-        inact.agressive.setValue(min(inact.agressive.getValue(), walkvalue+1)); //чем хуже условия выгула, тем менее агрессивная собака допускается
-        inact.agressive.setValue(min(inact.agressive.getValue(), cynologistvalue)); // чем хуже развиты кинологические услуги, тем менее агрессивная собака допускается
+    @Override
+    public boolean ishavedogboxchecked() {
+
+        if (havedog.isChecked()) return true;
+        else return false;
     }
 
-    private void activsetter() {
-        inact.active.setValue(max(inact.active.getValue(), walkvalue)); //чем хуже условия выгула, тем менее активная собака допускается
-        inact.active.setValue(max(inact.active.getValue(), cynologistvalue+1)); // чем хуже развиты кинологические услуги, тем менее активная собака допускается
+    @Override
+    public int iswalk() {
+        return walkvalue;
     }
 
-    private void sizesetter() {
-        inact.size.setValue(min(inact.size.getValue(), walkvalue+1)); //чем хуже условия выгула, тем менее крупная собака допускается
+    @Override
+    public int iscynologist() {
+        return cynologistvalue;
     }
 
-    private void caresetter() {
-        inact.care.setValue(max(inact.care.getValue(), vetvalue+1)); //чем хуже ветеринарная поддержка тем более неприхотливая собака допускается
+    @Override
+    public int isvet() {
+        return vetvalue;
     }
 
+    public void valuereader () {
 
-
+        presenter.valuereader();
+    }
 }
