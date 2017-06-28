@@ -23,7 +23,7 @@ import static java.lang.Math.min;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Forwhat_main extends Buttons_Abstract_Fragment {
+public class Forwhat_main extends Buttons_Abstract_Fragment implements MVPInterface_forwhat{
 
 
    private CheckBox babycheck;
@@ -33,7 +33,11 @@ public class Forwhat_main extends Buttons_Abstract_Fragment {
    private CheckBox obidencecheck;
    private CheckBox guardcheck;
 
+    Presenter_forwhat presenter;
+
     public Forwhat_main() {
+
+        presenter = new Presenter_forwhat(this);
 
     }
 
@@ -50,8 +54,15 @@ public class Forwhat_main extends Buttons_Abstract_Fragment {
 
         checkbuttonstatussetter ();
 
+        presenterinactsetter(inact);
 
         completebutton.setOnClickListener(myOnClickListner);
+    }
+
+    private void presenterinactsetter(InitiationActivity inact) {
+
+        presenter.inactsetter(inact);
+
     }
 
     //создаем онклик листнер для кнопок и передаем в методе онклик значение кнопки в метод buttonclicked интерфейса
@@ -60,57 +71,11 @@ public class Forwhat_main extends Buttons_Abstract_Fragment {
         @Override
         public void onClick(View v) {
 
-            inact.setButtonforwhatispressed(true);
-            checkboxReader();
+            valuereader();
             myButtonListner.buttonClicked(v);
         }
     };
 
-    // подключаем чекбоксы и передаем состояние
-
-    private void checkboxReader () {
-
-
-                if (babycheck.isChecked()){
-                    inact.obidience.setValue(max(inact.obidience.getValue(),2));
-                    inact.agressive.setValue(min(inact.agressive.getValue(),1));
-                    inact.active.setValue(max(inact.active.getValue(),3));
-                }
-
-                if (frendcheck.isChecked()){
-
-                    inact.obidience.setValue(max(inact.obidience.getValue(),2));
-                    inact.agressive.setValue(min(inact.agressive.getValue(),2));
-                    inact.active.setValue(max(inact.active.getValue(),2));
-                }
-
-                if (runcheck.isChecked()){
-
-                    inact.obidience.setValue(max(inact.obidience.getValue(),3));
-                    inact.agressive.setValue(min(inact.agressive.getValue(),2));
-                    inact.active.setValue(max(inact.active.getValue(),3));
-                    inact.hardy.setValue(max(inact.hardy.getValue(),4));
-                }
-
-                if (huntcheck.isChecked()){
-                    inact.hunt.setValue(1);
-                }
-
-                if (obidencecheck.isChecked()){
-
-                    inact.obidience.setValue(max(inact.obidience.getValue(),5));
-                    inact.agressive.setValue(min(inact.agressive.getValue(),2));
-                    inact.active.setValue(max(inact.active.getValue(),3));
-                    inact.size.setValue(max(inact.size.getValue(),3));
-
-                }
-                if (guardcheck.isChecked()){
-
-                    inact.guard.setValue(max(inact.guard.getValue(),4));
-
-                }
-
-    }
 
     //init checkboxes and set it disabled if re-entry
 
@@ -137,5 +102,46 @@ public class Forwhat_main extends Buttons_Abstract_Fragment {
         }
     }
 
+    @Override
+    public boolean isbabychecked() {
+        if (babycheck.isChecked()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean isfrendchecked() {
+        if (frendcheck.isChecked()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean isrunchecked() {
+        if (runcheck.isChecked()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean ishuntchecked() {
+        if (huntcheck.isChecked()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean isobidiencechecked() {
+        if (obidencecheck.isChecked()) return true;
+        else return false;
+    }
+
+    @Override
+    public boolean isguardchecked() {
+        if (guardcheck.isChecked()) return true;
+        else return false;
+    }
+
+    public void valuereader() {
+
+        presenter.valuereader();
+
+    }
 }
 

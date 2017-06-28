@@ -26,13 +26,18 @@ public class BreedDataBaseCreator {
 
     }
 
-    public void onCreateDb (){
+    public void onCreateDb (String[] s){
+
+        String[] myAsq;
+
+        if (s != null) {myAsq = s;} else myAsq = getRawAsq();
+
 
         try {
 
             SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
             SQLiteDatabase mysecondbreeddatabase = newbreeddatabasehelper.getWritableDatabase();
-            Cursor mRawCursor = rawCursorCreator (mysecondbreeddatabase);
+            Cursor mRawCursor = rawCursorCreator (mysecondbreeddatabase, myAsq);
 
             listOfBreedCreator(mRawCursor);
 
@@ -46,7 +51,7 @@ public class BreedDataBaseCreator {
 
     }
 
-    private Cursor rawCursorCreator(SQLiteDatabase db) {
+    private Cursor rawCursorCreator(SQLiteDatabase db, String [] selectionArgs) {
 
 
         String dbname = BreedDataBaseHelper.TABLE_NAME;
@@ -76,12 +81,11 @@ public class BreedDataBaseCreator {
         String eq = " = ?";
         String and = " AND ";
 
-        String [] selectionArgs = getRawAsq ();
-
         Cursor mCursor = db.rawQuery("SELECT "+ title + swosh + description + swosh + description_full + swosh + image_res_id + swosh+ image_fs_res_id + swosh
                 + obidience + swosh + guard + swosh + agressive + swosh + active+ swosh + hardy + swosh + size + swosh
                 + care + swosh + hunt + swosh + weblinc + swosh + fciid + swosh + hair + swosh + blackorwhite + swosh + noalergy + " FROM " + dbname + " WHERE "
-                + obidience + more +
+                + title + like +
+                and + obidience + more +
                 and + guard + more +
                 and + agressive + less +
                 and + active + less +
@@ -101,23 +105,48 @@ public class BreedDataBaseCreator {
 
     private String[] getRawAsq() {
 
-        int obidience_n = 0;
-        int guard_n = 0;
-        int agressive_n = 6;
-        int active_n = 6;
-        int hardy_n = 0;
-        int size_n = 6;
-        int care_n = 6;
-        String hunt_n = "%";
-        String hair_n = "%";
-        String blackorwhite_n = "%";
-        String noalergy_n = "%";
+        String title = "%";
+
+        int obidience_n = inact.obidience.getValue()-1;
+        int guard_n = inact.guard.getValue()-1;
+        int agressive_n = inact.agressive.getValue()+1;
+        int active_n = inact.active.getValue()+1;
+        int hardy_n = inact.hardy.getValue()-1;
+        int size_n = inact.size.getValue()+1;
+        int care_n = inact.care.getValue()+1;
+
+        String hunt_n = getHunt();
+        String hair_n = getHair();
+        String blackorwhite_n = getBlackorwhite();
+        String noalergy_n = getNoalergy();
 
 
-        return new String [] {String.valueOf(obidience_n), String.valueOf(guard_n),
+        return new String [] {title, String.valueOf(obidience_n), String.valueOf(guard_n),
                 String.valueOf(agressive_n), String.valueOf(active_n),
                 String.valueOf(hardy_n), String.valueOf(size_n),
                 String.valueOf(care_n), hunt_n, hair_n, blackorwhite_n, noalergy_n};
+    }
+
+    private String getHunt() {
+
+        if (inact.hunt.getValue() == 0) return "%"; else return "yes";
+    }
+
+    private String getHair() {
+
+        if (inact.hair.getValue() == 0) return "%"; else {
+            if (inact.hair.getValue() == 1) return "short"; else return "long";}
+    }
+
+    private String getBlackorwhite() {
+
+        if (inact.blackorwhite.getValue() == 0) return "%"; else {
+            if (inact.blackorwhite.getValue() == 1) return "white"; else return "black";}
+    }
+
+    private String getNoalergy() {
+
+        if (inact.noalergy.getValue() == 0) return "%"; else return "yes";
     }
 
 
@@ -136,7 +165,6 @@ public class BreedDataBaseCreator {
                     myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14),
                     myCursor.getString(15), myCursor.getString(16), myCursor.getString(17) );
             myListOfBreed_m.add(myBreedM);
-
         }
 
         while (myCursor.moveToNext()){
@@ -147,7 +175,6 @@ public class BreedDataBaseCreator {
                     myCursor.getInt(9), myCursor.getInt(10),myCursor.getInt(11),myCursor.getString(12), myCursor.getString(13), myCursor.getInt(14),
                     myCursor.getString(15), myCursor.getString(16), myCursor.getString(17));
             myListOfBreed_m.add(myBreedM);
-
         }
 
          inact.setMyListOfBreed_m(myListOfBreed_m);

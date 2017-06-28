@@ -36,6 +36,12 @@ public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInte
     private int cynologistvalue;
     private int vetvalue;
 
+    public static final String SPINNER_WALK = "spinnerwalk";
+    public static final String SPINNER_CYNO = "spinnercyno";
+    public static final String SPINNER_VET = "spinnervet";
+
+    private Bundle savedState;
+
     Presenter_aboutdog presenter;
 
 
@@ -49,6 +55,11 @@ public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            savedState = savedInstanceState;
+        }
+
         return inflater.inflate(R.layout.about_dog_main, container, false);
     }
 
@@ -56,7 +67,6 @@ public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInte
     public void onStart() {
         super.onStart();
 
-        presenterinactsetter(inact);
 
         statussetter ();
 
@@ -64,8 +74,24 @@ public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInte
         createspinner(spinner_cynologist, inact.getSpinner_cynologist_array());
         createspinner(spinner_vet, inact.getSpinner_vet_array());
 
+
+        if (savedState != null) {restorespinnersvalue();}
+
+        presenterinactsetter(inact);
+
         //реализуем онкликлистнер на подключенной кнопке
         completebutton.setOnClickListener(myOnClickListner);
+    }
+
+    private void restorespinnersvalue() {
+
+        spinner_walking.setSelection(savedState.getInt(SPINNER_WALK));
+        spinner_cynologist.setSelection(savedState.getInt(SPINNER_CYNO));
+        spinner_vet.setSelection(savedState.getInt(SPINNER_VET));
+
+        walkvalue = savedState.getInt(SPINNER_WALK);
+        cynologistvalue = savedState.getInt(SPINNER_CYNO);
+        vetvalue = savedState.getInt(SPINNER_VET);
     }
 
     private void presenterinactsetter(InitiationActivity inact) {
@@ -148,11 +174,22 @@ public class About_dog_main extends Buttons_Abstract_Fragment implements MVPInte
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putInt(SPINNER_WALK, spinner_walking.getSelectedItemPosition());
+        savedInstanceState.putInt(SPINNER_CYNO, spinner_cynologist.getSelectedItemPosition());
+        savedInstanceState.putInt(SPINNER_VET, spinner_vet.getSelectedItemPosition());
+
+
+        super.onSaveInstanceState(savedInstanceState);
+
+    }
+
+    @Override
     public boolean ishavechildboxchecked() {
 
         if (havechild.isChecked()) return true;
         else return false;
-
     }
 
     @Override

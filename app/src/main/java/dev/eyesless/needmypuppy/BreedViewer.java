@@ -12,4 +12,6 @@ public class BreedViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(THISLAYOUT);
     }
+
+    // TODO: 28.06.2017 поиск по базе пород: создать фразмент поиска вместо класса, запускать onCreateDb с условиями в виде String []
 }

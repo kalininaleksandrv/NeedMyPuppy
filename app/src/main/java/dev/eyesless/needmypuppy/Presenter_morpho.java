@@ -28,7 +28,6 @@ public class Presenter_morpho {
 
         inact.setButtonmorphoispressed(true);
 
-
         if (minterface.isboxchecked()){inact.noalergy.setValue(1);}
         inact.blackorwhite.setValue(minterface.isblackorwhite());
         inact.hair.setValue(minterface.ishair());

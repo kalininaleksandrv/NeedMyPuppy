@@ -48,7 +48,6 @@ public class MyCustomAdapter extends ArrayAdapter<MyBucket> {
             TextView title = (TextView) v.findViewById(R.id.title);
             TextView value = (TextView) v.findViewById(R.id.value);
 
-            // TODO: 31.05.2017 add ViewHolder pattern 
             
             if (title != null) {
                 

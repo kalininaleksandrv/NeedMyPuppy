@@ -28,6 +28,12 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     private int hairposition;
     private int sizeposition;
 
+    public static final String SPINNER_HAIR = "spinnerhair";
+    public static final String SPINNER_BOW = "spinnerbow";
+    public static final String SPINNER_SIZE = "spinnersize";
+
+    private Bundle savedState;
+
     Presenter_morpho presenter;
 
     public Fragment_morpho() {
@@ -40,7 +46,10 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        if (savedInstanceState != null) {
+            savedState = savedInstanceState;
+        }
+
         return inflater.inflate(R.layout.fragment_morpho, container, false);
     }
 
@@ -48,7 +57,6 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     public void onStart() {
         super.onStart();
 
-        presenterinactsetter(inact);
 
         spinnerinit ();
 
@@ -58,8 +66,22 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
         createspinner (spinnerhair, inact.getSpinner_hair());
         createspinner(spinnersize, inact.getSpinner_size());
 
+        if (savedState != null) { restorespinnersvalue(); }
+
+        presenterinactsetter(inact);
         completebutton.setOnClickListener(myOnClickListner);
 
+    }
+
+    private void restorespinnersvalue() {
+
+        spinnerhair.setSelection(savedState.getInt(SPINNER_HAIR));
+        spinnerblackorwhite.setSelection(savedState.getInt(SPINNER_BOW));
+        spinnersize.setSelection(savedState.getInt(SPINNER_SIZE));
+
+        hairposition = savedState.getInt(SPINNER_HAIR);
+        blackorwhiteposition = savedState.getInt(SPINNER_BOW);
+        sizeposition = savedState.getInt(SPINNER_SIZE);
     }
 
     private void presenterinactsetter(InitiationActivity inact) {
@@ -144,10 +166,14 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
         }
     };
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
 
-    public void checkboxreader() {
+        savedInstanceState.putInt(SPINNER_HAIR, spinnerhair.getSelectedItemPosition());
+        savedInstanceState.putInt(SPINNER_BOW, spinnerblackorwhite.getSelectedItemPosition());
+        savedInstanceState.putInt(SPINNER_SIZE, spinnersize.getSelectedItemPosition());
 
-        presenter.checkboxreader();
+        super.onSaveInstanceState(savedInstanceState);
 
     }
 
@@ -171,5 +197,12 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
     @Override
     public int isblackorwhite() {
         return blackorwhiteposition;
+    }
+
+
+    public void checkboxreader() {
+
+        presenter.checkboxreader();
+
     }
 }

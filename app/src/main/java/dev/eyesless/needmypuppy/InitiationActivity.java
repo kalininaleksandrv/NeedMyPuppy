@@ -88,14 +88,14 @@ public class InitiationActivity extends Application {
     //гипоалергенная алергенная шерсть 1 - требуетя 0 не требуется
     //чистый черный или белый окрас
 
-    MyBucket obidience = new MyBucket("Послушание / обучаемость", 1);
-    MyBucket guard = new MyBucket("Охранные качества", 2);
+    MyBucket obidience = new MyBucket("Послушание / обучаемость", 0);
+    MyBucket guard = new MyBucket("Охранные качества", 0);
     MyBucket agressive = new MyBucket("Агрессивность", 5);//в логике показатель снижается по этому выставлен максимальный
-    MyBucket active = new MyBucket("Активность", 3);
-    MyBucket hardy = new MyBucket("Выносливость", 1);
+    MyBucket active = new MyBucket("Активность", 0);
+    MyBucket hardy = new MyBucket("Выносливость", 0);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 5);
-    MyBucket hunt = new MyBucket("Является (1) или нет (0) охотничьей", 0); //если 0 то параметр SQL запроса принимает "yes", иначе "%"
+    MyBucket hunt = new MyBucket("Является (1) или нет (0) охотничьей", 0); //если 0 то параметр SQL запроса принимает "%", иначе "yes"
     MyBucket noalergy = new MyBucket("Требуется (1) или нет (0) гипоалергенная шерсть", 0); //если 0 то параметр SQL запроса принимает "%", иначе "yes"
     MyBucket blackorwhite = new MyBucket("Окрас белый (1) черный (2) или не важно (0)", 0); //если 0 то параметр SQL запроса принимает "%", 1 "white", 2 "black"
     MyBucket hair = new MyBucket("Длинна шерсти короткая (1), длинная (2), любая (0)", 0); //если 0 то параметр SQL запроса принимает "%", 1 "short", 2 "long"
@@ -175,36 +175,6 @@ public class InitiationActivity extends Application {
         this.buttonaboutdogispressed = buttonaboutdogispressed;
     }
 
-    //obidience
-    public void obidienceincreaser (int i) {
-        obidience.setValue(max(obidience.getValue(), i));
-    }
-
-    //aggressive
-
-    public void aggresivedecreaser (int i){ agressive.setValue(min(agressive.getValue(), i)); }
-
-    //activesetter
-
-    public void activeincreaser (int i) {
-        active.setValue(max(active.getValue(), i));
-    }
-
-    //sizesetter
-
-    public void sizedecreaser (int i) {
-        size.setValue(min(size.getValue(), i));
-    }
-
-    //caresetter
-
-    public void caredecreaser (int i) {
-        care.setValue(min(care.getValue(), i));
-    }
-
-
-
-
     //work with db
 
     private boolean isDataBaseCreated = false;
@@ -214,7 +184,6 @@ public class InitiationActivity extends Application {
     public void setDataBaseCreated(boolean dataBaseCreated) {
         isDataBaseCreated = dataBaseCreated;
     }
-
 
     //list of breeds
 
@@ -228,18 +197,11 @@ public class InitiationActivity extends Application {
         this.myListOfBreed_m = myListOfBreed_m;
     }
 
-
-
     //list of titles
-
 
     private ArrayList <String> listOfTitles = new ArrayList<>();
 
     public ArrayList<String> getListOfTitles() {return listOfTitles;}
-
-//    public void setListOfTitles(ArrayList<String> listOfTitles) {
-//        this.listOfTitles = listOfTitles;
-//    }
 
     //возврат только названий пород из финального списка пород
 

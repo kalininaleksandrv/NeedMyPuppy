@@ -58,24 +58,14 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         //код diwider-а
         initNavigationView ();
         inittoolbar();
+        initDrawerTogle ();
 
-       //код Drawer Togle кнопка выдвижения и задвижения drawer-а
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
-        drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_closed){
-            public void onDrawerClosed (View v) {
-                super.onDrawerClosed(v);
-            }
-            public void onDrawerOpened (View v) {
-                super.onDrawerOpened(v);
-            }
-        };
 
         drawer.addDrawerListener(drawerToggle);
 
-    }
+        // TODO: 28.06.2017 реализовать наполнение frame vision 
 
+    }
 
 
     // create navigation view on drawer layout and set listner
@@ -97,6 +87,24 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         mytoolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mytoolbar);
+    }
+
+    //код Drawer Togle кнопка выдвижения и задвижения drawer-а
+    private ActionBarDrawerToggle initDrawerTogle() {
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_closed){
+            public void onDrawerClosed (View v) {
+                super.onDrawerClosed(v);
+            }
+            public void onDrawerOpened (View v) {
+                super.onDrawerOpened(v);
+            }
+        };
+
+        return drawerToggle;
     }
 
     //init guidline
@@ -268,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         if (inact.isDataBaseCreated() == false) {
 
             BreedDataBaseCreator myDataCreator = new BreedDataBaseCreator(this, inact);
-            myDataCreator.onCreateDb();
+            myDataCreator.onCreateDb(null);
             inact.setListOfTitles();
         }
     }

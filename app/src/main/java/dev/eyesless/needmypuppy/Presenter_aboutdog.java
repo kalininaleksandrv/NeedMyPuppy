@@ -1,5 +1,7 @@
 package dev.eyesless.needmypuppy;
 
+import android.util.Log;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -17,6 +19,8 @@ public class Presenter_aboutdog {
     public Presenter_aboutdog(MVPInterface_aboutdog minterface) {
 
         this.minterface = minterface;
+
+
 
     }
 
