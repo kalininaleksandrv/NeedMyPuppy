@@ -22,7 +22,6 @@
             android:name=".MainActivity"
             android:label="Рады Вас видеть!" />
         <activity android:name=".List_profile" />
-        <activity android:name=".BreedViewer"></activity>
     </application>
 
 </manifest>
