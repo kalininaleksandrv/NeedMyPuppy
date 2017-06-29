@@ -18,6 +18,8 @@ public class BreedDataBaseCreator {
 
     private Context myContext;
     private InitiationActivity inact;
+    private SQLiteOpenHelper newbreeddatabasehelper;
+    private SQLiteDatabase mysecondbreeddatabase;
 
     public BreedDataBaseCreator(Context context, InitiationActivity inact) {
 
@@ -35,8 +37,6 @@ public class BreedDataBaseCreator {
 
         try {
 
-            SQLiteOpenHelper newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
-            SQLiteDatabase mysecondbreeddatabase = newbreeddatabasehelper.getWritableDatabase();
             Cursor mRawCursor = rawCursorCreator (mysecondbreeddatabase, myAsq);
 
             listOfBreedCreator(mRawCursor);
@@ -48,6 +48,13 @@ public class BreedDataBaseCreator {
             myToast.setGravity(Gravity.BOTTOM, 0, 30);
             myToast.show();
         }
+
+    }
+
+    public void databasecreator() {
+
+            newbreeddatabasehelper = new BreedDataBaseHelper(myContext);
+            mysecondbreeddatabase = newbreeddatabasehelper.getWritableDatabase();
 
     }
 
@@ -81,6 +88,7 @@ public class BreedDataBaseCreator {
         String eq = " = ?";
         String and = " AND ";
 
+
         Cursor mCursor = db.rawQuery("SELECT "+ title + swosh + description + swosh + description_full + swosh + image_res_id + swosh+ image_fs_res_id + swosh
                 + obidience + swosh + guard + swosh + agressive + swosh + active+ swosh + hardy + swosh + size + swosh
                 + care + swosh + hunt + swosh + weblinc + swosh + fciid + swosh + hair + swosh + blackorwhite + swosh + noalergy + " FROM " + dbname + " WHERE "
@@ -97,7 +105,6 @@ public class BreedDataBaseCreator {
                 and + blackorwhite + like +
                 and + noalergy + like
                 , selectionArgs);
-
 
 
         return mCursor;
@@ -213,6 +220,5 @@ public class BreedDataBaseCreator {
 
         return myBreedM;
     }
-
 
 }

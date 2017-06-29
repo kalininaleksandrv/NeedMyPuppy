@@ -8,5 +8,6 @@ public interface MVPInterface_search {
 
     public String onRecive ();
     public void onSend (String s);
+    public void toastmaker(String s);
 
 }

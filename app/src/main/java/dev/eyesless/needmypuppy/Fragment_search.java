@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +84,6 @@ public class Fragment_search extends Fragment implements MVPInterface_search {
             public void onClick(View v) {
                 searchasq = outcomtext.getText().toString();
                 searchstarter();
-
             }
         });
 
@@ -119,17 +117,12 @@ public class Fragment_search extends Fragment implements MVPInterface_search {
     @Override
     public String onRecive() {
 
-        String asq;
+     return  searchasq;
 
-       if (searchasq !=null) asq = "%"+searchasq+"%"; else asq = "%";
-
-        return asq;
     }
 
     @Override
     public void onSend(String s) {
-
-        toastmaker(s);
 
         incomtext.setText(s);
 
@@ -137,7 +130,7 @@ public class Fragment_search extends Fragment implements MVPInterface_search {
 
     public void toastmaker(String s) {
         Toast myToast = Toast.makeText(getContext(), s, Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
+        myToast.setGravity(Gravity.CENTER, 0, 0);
         myToast.show();
     }
 
