@@ -40,5 +40,9 @@
     <string name="find_breed">Найти породу</string>
     <string name="mesage_to_devs">Написать разработчикам</string>
     <string name="about">Справка</string>
+    <string name="resofsearch">Кто попался?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

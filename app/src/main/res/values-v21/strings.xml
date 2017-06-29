@@ -41,5 +41,6 @@
     <string name="find_breed">Найти породу</string>
     <string name="mesage_to_devs">Написать разработчикам</string>
     <string name="about">Справка</string>
+    <string name="resofsearch">Кто попался?</string>
 
 </resources>
