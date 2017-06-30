@@ -1,4 +1,5 @@
 <resources>
+    <string name="myapp">Я ВЫБИРАЮ ЩЕНКА</string>
     <string name="startscreendecription">Выбор домашнего питомца - ответственный и волнующий момент! Давайте пройдем этот путь вместе и найдем единственного и неповторимого - только Вашего - щенка!</string>
     <string name="startscreenbutton">НАЧАТЬ</string>
     <string name="no">нет</string>
@@ -23,7 +24,7 @@
     <string name="intro_about_infrastructure">Для некоторых пород очень важно - какие окружающие условия Вы им обеспечите.</string>
     <string name="intro_about_morpho">Ваша собака должна приность Вам эстетическое удовольствие</string>
     <string name="action_save">сохранить профиль ответов</string>
-    <string name="action_email">получить отчет на e-mail</string>
+    <string name="action_email">поделиться результатом по e-mail</string>
     <string name="action_settings">настройки</string>
     <string name="action_garbage">Сбросить ответы</string>
     <string name="action_share">Поделиться</string>
@@ -41,6 +42,7 @@
     <string name="mesage_to_devs">Написать разработчикам</string>
     <string name="about">Справка</string>
     <string name="resofsearch">ПОДРОБНО</string>
+    <string name="starttoast">Получите список рекомендованных пород, ответив на вопросы и нажав ГОТОВО, чтобы ответить на вопросы, открывайте каждый из 4х блоков нажимая на картинки</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

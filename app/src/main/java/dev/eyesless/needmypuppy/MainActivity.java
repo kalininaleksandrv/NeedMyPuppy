@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
@@ -16,9 +17,11 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class MainActivity extends AppCompatActivity implements onButtonListner, ItemClickListner {
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         //call main fragmett if never call before
         if (savedInstanceState == null) {
             frameRemoover(new Buttons_main());
+            toastmaker(getString(R.string.starttoast));
         }
 
         //restore guidline value if re-create fragment
@@ -162,8 +166,13 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 switch (item.getItemId()) {
 
                     case R.id.action_email:
-                        //todo реализовать отправку списка порорд по e-mail
-                        activitystarter(List_profile.class, inact.mybuckelisttmaker());
+
+                        if(inact.getMyListOfBreed_m().size()==0) {
+
+                            toastmaker(getString(R.string.starttoast));
+
+                        } else onShared ();
+
                         return true;
 
                     case R.id.action_settings:
@@ -182,6 +191,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 }
     }
 
+
+
     //реакция на нажате кнопок в фрагменте buttons main
     @Override
     public void buttonClicked(View v) {
@@ -193,26 +204,26 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
             case R.id.imageButton_aboutowner:
                 //check if button already been pressed, cant pressed next time
-                if (inact.isButtonaboutownerispressed()){toastmaker();}
+                if (inact.isButtonaboutownerispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
                 frameRemoover(new About_owner_main());
                 break;
 
             case R.id.imageButton_forwhat:
                 //check if button already been pressed, cant pressed next time
-                if (inact.isButtonforwhatispressed()){toastmaker();}
+                if (inact.isButtonforwhatispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
                     frameRemoover(new Forwhat_main());
                 break;
 
             case R.id.imageButton_aboutdog:
-                if (inact.isButtonaboutdogispressed()){toastmaker();}
+                if (inact.isButtonaboutdogispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
                 frameRemoover(new About_dog_main());
                 break;
 
             case R.id.imageButton_morpho:
-                if (inact.isButtonmorphoispressed()){toastmaker();}
+                if (inact.isButtonmorphoispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
                 frameRemoover(new Fragment_morpho());
                 break;
@@ -262,12 +273,50 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
     }
 
+   // method for share created content
+    private void onShared() {
+
+        StringBuilder sb = new StringBuilder();
+
+        ArrayList<Breed_mod> mylistoftitles = inact.getMyListOfBreed_m();
+
+        Iterator<Breed_mod> itr = mylistoftitles.iterator();
+
+
+        while (itr.hasNext()) {
+
+            sb.append(itr.next().getB_title()+ "\n");
+
+        }
+
+        String start = "Вот какие породы собак приложение "+getString(R.string.myapp)+" считает подходящими для меня: \n";
+        String finish = start.concat(sb.toString());
+
+        Intent shareIntent = new Intent();
+//        shareIntent.setAction(Intent.ACTION_SENDTO);
+//
+//        String uriText =
+//                "?subject=" + start + "&body=" + finish;
+//
+
+        shareIntent.setAction(Intent.ACTION_SEND);
+
+ //       Uri uri = Uri.parse(uriText);
+
+        shareIntent.putExtra(Intent.EXTRA_TEXT, finish);
+        shareIntent.setType("text/plain");
+
+        startActivity(shareIntent);
+
+    }
+
     // if button was pressed and trying next time, set toast about
-    public void toastmaker() {
-        String helpstring = getString(R.string.disabled_button);
-        Toast myToast = Toast.makeText(getApplicationContext(), helpstring, Toast.LENGTH_SHORT);
-        myToast.setGravity(Gravity.BOTTOM, 0, 30);
+    public void toastmaker(String s) {
+
+       final Toast myToast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
+        myToast.setGravity(Gravity.CENTER, 0, 30);
         myToast.show();
+
     }
 
     //init database if it does not

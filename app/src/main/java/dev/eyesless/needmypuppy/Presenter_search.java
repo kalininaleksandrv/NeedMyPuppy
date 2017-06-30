@@ -58,11 +58,11 @@ public class Presenter_search {
 
         while (itr.hasNext()) {
 
-            sb.append(itr.next()+ ", ");
+            sb.append(itr.next()+ "\n");
 
         }
 
-        minterface.onSend("По Вашему запросу найдены: " + sb.toString());
+        minterface.onSend("По Вашему запросу найдены: \n" + sb.toString());
 
     }
 
