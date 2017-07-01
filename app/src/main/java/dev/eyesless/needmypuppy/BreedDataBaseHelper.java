@@ -74,7 +74,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Дружелюбная и энергичная. При нормальном развитии не способна укусить человека ни при каких обстоятельствах. Собака категорически непригодна для использования в качестве охотничьей (охотится, но не приносит добычу), сторожевой (инстинкт охраны территории сведён к минимуму) и охранной (в норме у этих собак начисто отсутствует агрессия к человеку). Собака излишне самостоятельна. Источник: wikipedia.org.",
                 R.drawable.b_husky, R.drawable.fs_husky,
                 2, 1, 1, 4, 5, 3, 1, "no",
-                "https://ru.m.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%81%D0%BA%D0%B8",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Siberian_Husky_Ivan.jpg/1912px-Siberian_Husky_Ivan.jpg",
                 270, "long", "white", "yes");
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",

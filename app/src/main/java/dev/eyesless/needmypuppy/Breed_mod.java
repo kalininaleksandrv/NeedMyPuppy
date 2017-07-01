@@ -163,6 +163,16 @@ public class Breed_mod implements Serializable {
     public void setB_noalergy(String b_noalergy) {
         this.b_noalergy = b_noalergy;
     }
+
+    public String getB_weblinc_wiki() {
+        return b_weblinc_wiki;
+    }
+
+    public void setB_weblinc_wiki(String b_weblinc_wiki) {
+        this.b_weblinc_wiki = b_weblinc_wiki;
+    }
+
+
     private String b_title;
     private String b_description;
     private String b_description_full;
@@ -177,6 +187,7 @@ public class Breed_mod implements Serializable {
     private int b_care;
     private String b_hunt;
     private String b_weblinc;
+    private String b_weblinc_wiki;
     private int b_idfci;
     private String b_hair;
     private String b_blackorwhite;

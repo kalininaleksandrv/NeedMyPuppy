@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dev.eyesless.needmypuppy">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".InitiationActivity"
         android:allowBackup="true"

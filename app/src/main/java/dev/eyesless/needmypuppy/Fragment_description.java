@@ -1,15 +1,19 @@
 package dev.eyesless.needmypuppy;
 
 
+import android.graphics.Point;
 import android.os.Bundle;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -71,8 +75,23 @@ public class Fragment_description extends Fragment {
             TextView myBreedTitle = (TextView) parentview.findViewById(R.id.breed_title);
             myBreedTitle.setText(myListOfBreed.get(myBreedId).getB_title());
 
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+
+            String weblinc =  myListOfBreed.get(myBreedId).getB_weblinc();
+
             ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
-            myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_fs_res_id());
+
+            Picasso.with(getActivity().getApplicationContext())
+                    .load(weblinc)
+                    .placeholder(R.drawable.try_to_download)
+                    .error(R.drawable.sad_dog)
+                    .resize(width, width*(int)0.75)
+                    .into(myBreedImage);
+
+ //           myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_fs_res_id());
 
             TextView myBreedDescript = (TextView) parentview.findViewById(R.id.breed_descript);
             myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description_full());
