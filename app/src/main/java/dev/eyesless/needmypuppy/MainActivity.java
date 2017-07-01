@@ -1,14 +1,22 @@
 package dev.eyesless.needmypuppy;
 
+import android.Manifest;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +29,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -67,12 +77,12 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         inittoolbar();
         initDrawerTogle ();
 
-
         drawer.addDrawerListener(drawerToggle);
 
         // TODO: 28.06.2017 реализовать наполнение frame vision 
 
     }
+
 
 
     // create navigation view on drawer layout and set listner
@@ -295,36 +305,18 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         String start = "Вот какие породы собак приложение "+getString(R.string.myapp)+" считает подходящими для меня: \n";
         String finish = sb.toString();
 
-        Intent shareIntent = new Intent();
-//        shareIntent.setAction(Intent.ACTION_SENDTO);
-//
-//        String uriText =
-//               "mailto: eyesless.sch@gmail.com"
-//                       + "?subject=" + Uri.encode(start)
-//                       + "&body=" + Uri.encode(finish);
-//
-//
-//
-//        Uri uri = Uri.parse(uriText);
-//        shareIntent.setData(uri);
-
-        Uri uripics = Uri.parse("android.resource://"+BuildConfig.APPLICATION_ID+"/"+R.drawable.b_germshep);
-
-//        shareIntent.setData(uripics);
-
-        shareIntent.setAction(Intent.ACTION_SEND);
-
-        shareIntent.putExtra(shareIntent.EXTRA_EMAIL, new String[]{"eyesless.sch@gmail.com"});
-        shareIntent.putExtra(shareIntent.EXTRA_SUBJECT, start);
-        shareIntent.putExtra(shareIntent.EXTRA_TEXT, finish);
-
-        shareIntent.setType("application/image");
-
-        shareIntent.putExtra(shareIntent.EXTRA_STREAM, uripics);
+        Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                .setText(finish)
+                .setSubject(start)
+ //               .setStream(uripics)
+                .setType("plain/text")
+                .getIntent();
 
 
+        startActivity(myintent);
 
-        startActivity(Intent.createChooser(shareIntent, "Send email"));
+ //       urideleeter(uripics);
+
 
     }
 
@@ -336,6 +328,35 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         myToast.show();
 
     }
+
+    //make Uri from drawable resource
+
+//    public Uri urimaker (int resource){
+//
+//        Bitmap mybitmap = BitmapFactory.decodeResource(getResources(), resource);
+//
+//        ContentValues myvalues = new ContentValues();
+//
+//        myvalues.put(MediaStore.Images.Media.TITLE, "title");
+//        myvalues.put (MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+//        Uri myUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, myvalues);
+//
+//        OutputStream outputStream;
+//
+//        try{
+//
+//            outputStream = getContentResolver().openOutputStream(myUri);
+//            mybitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+//            outputStream.close();
+//
+//        }catch (Exception e){
+//            System.err.print(e.toString());
+//        }
+//
+//
+//        return myUri;
+//    }
+
 
     //init database if it does not
     public void databaseinitiator(){
