@@ -2,6 +2,7 @@ package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import static java.lang.Math.min;
 
 
 public class MainActivity extends AppCompatActivity implements onButtonListner, ItemClickListner {
@@ -282,31 +285,46 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         Iterator<Breed_mod> itr = mylistoftitles.iterator();
 
+        int mcount = 0;
 
-        while (itr.hasNext()) {
-
-            sb.append(itr.next().getB_title()+ "\n");
-
+        while (itr.hasNext() && mcount < (min (3, mylistoftitles.size()))) {
+            mcount ++;
+            sb.append(itr.next().getB_title() + "\n");
         }
 
         String start = "Вот какие породы собак приложение "+getString(R.string.myapp)+" считает подходящими для меня: \n";
-        String finish = start.concat(sb.toString());
+        String finish = sb.toString();
 
         Intent shareIntent = new Intent();
 //        shareIntent.setAction(Intent.ACTION_SENDTO);
 //
 //        String uriText =
-//                "?subject=" + start + "&body=" + finish;
+//               "mailto: eyesless.sch@gmail.com"
+//                       + "?subject=" + Uri.encode(start)
+//                       + "&body=" + Uri.encode(finish);
 //
+//
+//
+//        Uri uri = Uri.parse(uriText);
+//        shareIntent.setData(uri);
+
+        Uri uripics = Uri.parse("android.resource://"+BuildConfig.APPLICATION_ID+"/"+R.drawable.b_germshep);
+
+//        shareIntent.setData(uripics);
 
         shareIntent.setAction(Intent.ACTION_SEND);
 
- //       Uri uri = Uri.parse(uriText);
+        shareIntent.putExtra(shareIntent.EXTRA_EMAIL, new String[]{"eyesless.sch@gmail.com"});
+        shareIntent.putExtra(shareIntent.EXTRA_SUBJECT, start);
+        shareIntent.putExtra(shareIntent.EXTRA_TEXT, finish);
 
-        shareIntent.putExtra(Intent.EXTRA_TEXT, finish);
-        shareIntent.setType("text/plain");
+        shareIntent.setType("application/image");
 
-        startActivity(shareIntent);
+        shareIntent.putExtra(shareIntent.EXTRA_STREAM, uripics);
+
+
+
+        startActivity(Intent.createChooser(shareIntent, "Send email"));
 
     }
 
