@@ -305,17 +305,21 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         String start = "Вот какие породы собак приложение "+getString(R.string.myapp)+" считает подходящими для меня: \n";
         String finish = sb.toString();
 
+ //       Uri uri = Uri.parse("https://upload.wikimedia.org/wikipedia/commons/1/1e/Labr.jpg");
+
         Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
                 .setText(finish)
                 .setSubject(start)
- //               .setStream(uripics)
-                .setType("plain/text")
+ //               .setStream(uri)
+                .setType("application/image")
                 .getIntent();
 
 
         startActivity(myintent);
 
  //       urideleeter(uripics);
+
+        //eyesless.sch@gmail.com
 
 
     }

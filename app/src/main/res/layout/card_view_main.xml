@@ -12,6 +12,8 @@
         android:id="@+id/cardview_main"
         app:cardElevation="3dp"
         app:cardCornerRadius="8dp"
+        android:elevation="3dp"
+        app:cardUseCompatPadding="true"
         >
 
         <android.support.constraint.ConstraintLayout
