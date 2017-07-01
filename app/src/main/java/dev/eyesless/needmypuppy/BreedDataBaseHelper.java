@@ -31,6 +31,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
     public static final String KEY_CARE = "care";
     public static final String KEY_HUNT = "hunt";
     public static final String KEY_WEBLINC = "weblinc";
+    public static final String KEY_WEBLINC_WIKI = "weblinc_wiki";
     public static final String KEY_FCIID = "fciid";
     public static final String KEY_HAIR = "hair";
     public static final String KEY_BLACKORWHITE = "blackorwhite";
@@ -61,6 +62,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 + KEY_CARE + " integer,"
                 + KEY_HUNT + " text,"
                 + KEY_WEBLINC + " text,"
+                + KEY_WEBLINC_WIKI + " text,"
                 + KEY_FCIID + " integer,"
                 + KEY_HAIR + " text,"
                 + KEY_BLACKORWHITE + " text,"
@@ -75,6 +77,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 R.drawable.b_husky, R.drawable.fs_husky,
                 2, 1, 1, 4, 5, 3, 1, "no",
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Siberian_Husky_Ivan.jpg/1912px-Siberian_Husky_Ivan.jpg",
+                "https://ru.m.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%81%D0%BA%D0%B8",
                 270, "long", "white", "yes");
         incertBreedsToDb (db,
                 "Лабрадор - ретривер",
@@ -82,6 +85,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Является одной из самых популярных пород собак. Первоначально эта порода была выведена в качестве рабочей собаки. С хорошим характером, очень подвижный. Легко адаптирующийся, преданный компаньон. Смышлёный, проницательный и послушный, ласковый, настоящий друг. Добрый по натуре, без следа агрессии или чрезмерной робости. Источник: wikipedia.org.",
                 R.drawable.b_labrador, R.drawable.fs_labrador,
                 3, 2, 2, 3, 4, 3, 1, "yes",
+                "https://upload.wikimedia.org/wikipedia/commons/1/1e/Labr.jpg",
                 "https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B1%D1%80%D0%B0%D0%B4%D0%BE%D1%80-%D1%80%D0%B5%D1%82%D1%80%D0%B8%D0%B2%D0%B5%D1%80",
                 122, "short", "yes", "no");
         incertBreedsToDb (db,
@@ -90,6 +94,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Это служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке. Немецкая овчарка наиболее успешна, если имеет одного хозяина, но при этом её сильной стороной (как служебной собаки) является то, что она очень легко меняет хозяев и заинтересованно работает с новыми. Немецкая овчарка входит в тройку в рейтинге самых умных пород, составленном доктором Стенли Кореном (англ.). Источник: wikipedia.org.",
                 R.drawable.b_germshep, R.drawable.fs_germshep,
                 4, 5, 3, 3, 3, 4, 1, "no",
+                "https://upload.wikimedia.org/wikipedia/commons/8/8e/Exposici%C3%B3_3.jpg",
                 "https://ru.m.wikipedia.org/wiki/%D0%9D%D0%B5%D0%BC%D0%B5%D1%86%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B2%D1%87%D0%B0%D1%80%D0%BA%D0%B0",
                 166, "long", "black", "no");
         incertBreedsToDb (db,
@@ -98,6 +103,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Вельш-корги отличает огромное жизнелюбие, живость, доброжелательность. Корги — любящие и преданные, трепетно любят семью своего хозяина. Они очень лояльно относятся ко всем людям и другим животным, легко уживаются с кошками. Очень трепетно относятся к детям, особенно маленьким, следят за ними и оберегают. В отличие от пемброка, кардиган спокойнее, рассудительнее и осторожнее, а пемброк более возбудимый, живой и чуткий. Источник: wikipedia.org.",
                 R.drawable.b_welsh_pembrok, R.drawable.fs_welsh_pembrok,
                 4, 2, 2, 4, 2, 2, 1, "no",
+                "https://upload.wikimedia.org/wikipedia/commons/d/d2/%D7%95%D7%95%D7%9C%D7%A9_%D7%A7%D7%95%D7%A8%D7%92%D7%99_%D7%A7%D7%A8%D7%93%D7%99%D7%92%D7%9F.jpg",
                 "https://ru.m.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D1%8C%D1%88-%D0%BA%D0%BE%D1%80%D0%B3%D0%B8",
                 39, "long", "no", "no");
 
@@ -113,7 +119,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
 
     public void incertBreedsToDb(SQLiteDatabase db, String name, String description, String description_full,
                                  int resourceId, int resourceIdBig, int obidience, int guard, int agressive,
-                                 int active, int hardy, int size, int care, String hunt, String weblinc,
+                                 int active, int hardy, int size, int care, String hunt, String weblinc,String weblinc_wiki,
                                  int fciid, String hair, String blackorwhite, String noalergy) {
 
         ContentValues con_breed = new ContentValues();
@@ -131,6 +137,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
         con_breed.put (KEY_CARE, care);
         con_breed.put (KEY_HUNT, hunt);
         con_breed.put (KEY_WEBLINC, weblinc);
+        con_breed.put (KEY_WEBLINC_WIKI, weblinc_wiki);
         con_breed.put(KEY_FCIID, fciid);
         con_breed.put(KEY_HAIR, hair);
         con_breed.put(KEY_BLACKORWHITE, blackorwhite);
