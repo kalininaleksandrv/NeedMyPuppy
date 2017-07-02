@@ -40,7 +40,7 @@ public class Fragment_description extends Fragment {
 
 
 
-    protected Uri downloaduri;
+    private Uri mydownloaduri;
 
 
     public Fragment_description() {
@@ -93,31 +93,29 @@ public class Fragment_description extends Fragment {
 
             String weblinc =  myListOfBreed.get(myBreedId).getB_weblinc();
 
+//            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+//
+//            mStorageRef.child("/images/fs_germshep.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                @Override
+//                public void onSuccess(Uri uri) {
+//                    mydownloaduri = uri;
+//                    Log.e("MY_TAG", getmyDownloaduri());
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception exception) {
+//                    Log.e("MY_TAG", exception.toString());
+//                }
+//            });
 
-            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
-
-            mStorageRef.child("gs://needmypuppy.appspot.com/fs_germshep.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    setDownloaduri(uri);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Log.e("MY_TAG", exception.toString());
-                }
-            });
-
-                    ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
+            ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
 
             Picasso.with(getActivity().getApplicationContext())
-                    .load(getDownloaduri())
+                    .load(weblinc)
                     .placeholder(R.drawable.try_to_download)
                     .error(R.drawable.sad_dog)
                     .resize(width, width*(int)0.75)
                     .into(myBreedImage);
-
- //           myBreedImage.setImageResource(myListOfBreed.get(myBreedId).getB_image_fs_res_id());
 
             TextView myBreedDescript = (TextView) parentview.findViewById(R.id.breed_descript);
             myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description_full());
@@ -137,11 +135,12 @@ public class Fragment_description extends Fragment {
         this.myBreedId = id;
     }
 
-    public void setDownloaduri(Uri downloaduri) {this.downloaduri = downloaduri;}
+    public void setmyDownloaduri(Uri downloaduri) {this.mydownloaduri = downloaduri;}
 
+    public String getmyDownloaduri() {
 
-    public Uri getDownloaduri() {
-        return downloaduri;
+        if (mydownloaduri == null) return "my uri is null"; else
+        return mydownloaduri.toString();
     }
 
 

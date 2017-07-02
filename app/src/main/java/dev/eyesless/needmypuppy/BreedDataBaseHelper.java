@@ -76,7 +76,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Дружелюбная и энергичная. При нормальном развитии не способна укусить человека ни при каких обстоятельствах. Собака категорически непригодна для использования в качестве охотничьей (охотится, но не приносит добычу), сторожевой (инстинкт охраны территории сведён к минимуму) и охранной (в норме у этих собак начисто отсутствует агрессия к человеку). Собака излишне самостоятельна. Источник: wikipedia.org.",
                 R.drawable.b_husky, 0,
                 2, 1, 1, 4, 5, 3, 1, "no",
-                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/fs_husky.jpg?alt=media&token=48426f5e-ae23-4635-98d3-fc2d86eefc2e",
+                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/images%2Ffs_husky.jpg?alt=media&token=cca052ef-24c4-4c87-b338-d5c563d9cd84",
                 "https://ru.m.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%81%D0%BA%D0%B8",
                 270, "long", "white", "yes");
         incertBreedsToDb (db,
@@ -85,7 +85,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Является одной из самых популярных пород собак. Первоначально эта порода была выведена в качестве рабочей собаки. С хорошим характером, очень подвижный. Легко адаптирующийся, преданный компаньон. Смышлёный, проницательный и послушный, ласковый, настоящий друг. Добрый по натуре, без следа агрессии или чрезмерной робости. Источник: wikipedia.org.",
                 R.drawable.b_labrador, 0,
                 3, 2, 2, 3, 4, 3, 1, "yes",
-                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/fs_labrador.jpg?alt=media&token=190f5544-81df-4eb8-9b60-be70a37f2f03",
+                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/images%2Ffs_labrador.jpg?alt=media&token=ebabb355-4556-49b6-9173-3dc9fea90f33",
                 "https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B1%D1%80%D0%B0%D0%B4%D0%BE%D1%80-%D1%80%D0%B5%D1%82%D1%80%D0%B8%D0%B2%D0%B5%D1%80",
                 122, "short", "yes", "no");
         incertBreedsToDb (db,
@@ -94,7 +94,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Это служебная собака с уравновешенным, подвижным типом поведения, способная к разнообразной дрессировке. Немецкая овчарка наиболее успешна, если имеет одного хозяина, но при этом её сильной стороной (как служебной собаки) является то, что она очень легко меняет хозяев и заинтересованно работает с новыми. Немецкая овчарка входит в тройку в рейтинге самых умных пород, составленном доктором Стенли Кореном (англ.). Источник: wikipedia.org.",
                 R.drawable.b_germshep, 0,
                 4, 5, 3, 3, 3, 4, 1, "no",
-                "gs://needmypuppy.appspot.com/fs_germshep.jpg",
+                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/images%2Ffs_germshep.jpg?alt=media&token=50e9ec92-919b-47dd-95ec-60304e4d4a46",
                 "https://ru.m.wikipedia.org/wiki/%D0%9D%D0%B5%D0%BC%D0%B5%D1%86%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B2%D1%87%D0%B0%D1%80%D0%BA%D0%B0",
                 166, "long", "black", "no");
         incertBreedsToDb (db,
@@ -103,7 +103,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 "Вельш-корги отличает огромное жизнелюбие, живость, доброжелательность. Корги — любящие и преданные, трепетно любят семью своего хозяина. Они очень лояльно относятся ко всем людям и другим животным, легко уживаются с кошками. Очень трепетно относятся к детям, особенно маленьким, следят за ними и оберегают. В отличие от пемброка, кардиган спокойнее, рассудительнее и осторожнее, а пемброк более возбудимый, живой и чуткий. Источник: wikipedia.org.",
                 R.drawable.b_welsh_pembrok, 0,
                 4, 2, 2, 4, 2, 2, 1, "no",
-                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/fs_welsh_pembrok.jpg?alt=media&token=11a8f253-9106-42f2-a6c7-8f1ae21ed299",
+                "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/images%2Ffs_welsh_pembrok.jpg?alt=media&token=02f832a7-8558-45ab-b464-ecc749d4ae7a",
                 "https://ru.m.wikipedia.org/wiki/%D0%92%D0%B5%D0%BB%D1%8C%D1%88-%D0%BA%D0%BE%D1%80%D0%B3%D0%B8",
                 39, "long", "no", "no");
 
