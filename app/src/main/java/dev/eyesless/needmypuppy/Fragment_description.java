@@ -2,10 +2,13 @@ package dev.eyesless.needmypuppy;
 
 
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,6 +37,10 @@ public class Fragment_description extends Fragment {
     protected ArrayList<Breed_mod> myListOfBreed;
     protected static String MY_BREED_ID = "myBreedId";
     protected static String MY_LIST_OF_BREED = "myListOfBreed";
+
+
+
+    protected Uri downloaduri;
 
 
     public Fragment_description() {
@@ -82,10 +93,25 @@ public class Fragment_description extends Fragment {
 
             String weblinc =  myListOfBreed.get(myBreedId).getB_weblinc();
 
-            ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
+
+            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+
+            mStorageRef.child("gs://needmypuppy.appspot.com/fs_germshep.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    setDownloaduri(uri);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("MY_TAG", exception.toString());
+                }
+            });
+
+                    ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
 
             Picasso.with(getActivity().getApplicationContext())
-                    .load(weblinc)
+                    .load(getDownloaduri())
                     .placeholder(R.drawable.try_to_download)
                     .error(R.drawable.sad_dog)
                     .resize(width, width*(int)0.75)
@@ -110,6 +136,14 @@ public class Fragment_description extends Fragment {
     public void setBreedId (int id) {
         this.myBreedId = id;
     }
+
+    public void setDownloaduri(Uri downloaduri) {this.downloaduri = downloaduri;}
+
+
+    public Uri getDownloaduri() {
+        return downloaduri;
+    }
+
 
 }
 

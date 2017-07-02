@@ -177,17 +177,11 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 switch (item.getItemId()) {
 
                     case R.id.action_email:
-
                         android.support.v4.app.Fragment tempfragment = getSupportFragmentManager().findFragmentByTag("ViewPager");
-
                         if (tempfragment != null && tempfragment.isVisible()) {
-
                             onShared (tempfragment);
-
                         } else
-
                             toastmaker(getString(R.string.sharetoast));
-
                         return true;
 
                     case R.id.action_settings:
@@ -315,9 +309,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 .setType("application/image")
                 .getIntent();
 
-
         startActivity(myintent);
-
     }
 
     // if button was pressed and trying next time, set toast about
@@ -333,7 +325,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
     public Uri urimaker (Drawable drawable){
 
-
         Bitmap mybitmap = ((BitmapDrawable)drawable).getBitmap();
 
         ContentValues myvalues = new ContentValues();
@@ -345,7 +336,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         OutputStream outputStream;
 
         try{
-
             outputStream = getContentResolver().openOutputStream(myUri);
             mybitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             outputStream.close();
@@ -353,7 +343,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         }catch (Exception e){
             System.err.print(e.toString());
         }
-
 
         return myUri;
     }

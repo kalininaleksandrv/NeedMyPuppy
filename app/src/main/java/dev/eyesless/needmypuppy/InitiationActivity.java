@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -185,6 +188,17 @@ public class InitiationActivity extends Application {
         isDataBaseCreated = dataBaseCreated;
     }
 
+    //work with Firebase
+
+    public StorageReference firebasestoragemaker (){
+
+        StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        return mStorageRef;
+    }
+
+
+
     //list of breeds
 
     private ArrayList <Breed_mod> myListOfBreed_m = new ArrayList<>();
@@ -218,9 +232,5 @@ public class InitiationActivity extends Application {
         this.listOfTitles = listOfBreedTitles;
 
     }
-
-
-
-
 
 }
