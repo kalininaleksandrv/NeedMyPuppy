@@ -293,6 +293,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         TextView mytext = (TextView)tempfragment.getView().findViewById(R.id.breed_title);
 
+        TextView mydesctext = (TextView)tempfragment.getView().findViewById(R.id.breed_descript);
+
         ImageView myimage = (ImageView) tempfragment.getView().findViewById(R.id.breed_image);
 
         Drawable mPic = myimage.getDrawable();
@@ -301,9 +303,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(mytext.getText());
+        sb.append(mytext.getText()).append("\n").append(mydesctext.getText()).append("\n").append("____________").append("\n").append(getString(R.string.myapp));
 
-        String start = "Вот какую породу можно выбрать с помощью "+getString(R.string.myapp)+":";
+        String start = getString(R.string.maybithisbreed);
         String finish = sb.toString();
 
         Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
@@ -315,11 +317,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
 
         startActivity(myintent);
-
- //       urideleeter(uripics);
-
-        //eyesless.sch@gmail.com
-
 
     }
 
