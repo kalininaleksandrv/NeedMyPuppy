@@ -44,5 +44,6 @@
     <string name="about">Справка</string>
     <string name="resofsearch">ПОДРОБНО</string>
     <string name="starttoast">Получите список рекомендованных пород, ответив на вопросы и нажав ГОТОВО, чтобы ответить на вопросы, открывайте каждый из 4х блоков нажимая на картинки</string>
+    <string name="sharetoast">Вы сможете поделиться выбрав конкретную породу</string>
 
 </resources>

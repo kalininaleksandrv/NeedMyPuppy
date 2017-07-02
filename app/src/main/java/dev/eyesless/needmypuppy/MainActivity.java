@@ -1,20 +1,11 @@
 package dev.eyesless.needmypuppy;
 
-import android.Manifest;
 import android.app.FragmentTransaction;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,8 +20,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -63,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         //call main fragmett if never call before
         if (savedInstanceState == null) {
-            frameRemoover(new Buttons_main());
+            frameRemoover(new Buttons_main(), "ButtonsMain");
             toastmaker(getString(R.string.starttoast));
         }
 
@@ -180,11 +169,15 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
                     case R.id.action_email:
 
-                        if(inact.getMyListOfBreed_m().size()==0) {
+                        android.support.v4.app.Fragment tempfragment = getSupportFragmentManager().findFragmentByTag("ViewPager");
 
-                            toastmaker(getString(R.string.starttoast));
+                        if (tempfragment != null && tempfragment.isVisible()) {
 
-                        } else onShared ();
+                            onShared (tempfragment);
+
+                        } else
+
+                            toastmaker(getString(R.string.sharetoast));
 
                         return true;
 
@@ -212,40 +205,40 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         switch (v.getId()){
             case R.id.button_complete:
-                frameRemoover(new Buttons_main());
+                frameRemoover(new Buttons_main(), "ButtonsMain");
                 break;
 
             case R.id.imageButton_aboutowner:
                 //check if button already been pressed, cant pressed next time
                 if (inact.isButtonaboutownerispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
-                frameRemoover(new About_owner_main());
+                frameRemoover(new About_owner_main(), "AboutOwner");
                 break;
 
             case R.id.imageButton_forwhat:
                 //check if button already been pressed, cant pressed next time
                 if (inact.isButtonforwhatispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
-                    frameRemoover(new Forwhat_main());
+                    frameRemoover(new Forwhat_main(), "ForWhat");
                 break;
 
             case R.id.imageButton_aboutdog:
                 if (inact.isButtonaboutdogispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
-                frameRemoover(new About_dog_main());
+                frameRemoover(new About_dog_main(), "AboutDog");
                 break;
 
             case R.id.imageButton_morpho:
                 if (inact.isButtonmorphoispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
-                frameRemoover(new Fragment_morpho());
+                frameRemoover(new Fragment_morpho(), "Morpho");
                 break;
 
             case R.id.button_gonext:
 
                 databaseinitiator();
 
-                frameRemoover(new Recycle_view_fragment());
+                frameRemoover(new Recycle_view_fragment(), "RecycleView");
 
                 break;
         }
@@ -260,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         Fragment_viewpager myViewPagerFragm = new Fragment_viewpager();
         myViewPagerFragm.setBreedId(position);
 
-        frameRemoover(myViewPagerFragm);
+        frameRemoover(myViewPagerFragm, "ViewPager");
 
     }
 
@@ -276,10 +269,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     }
 
     //main method for remoove frames when clicked
-    public void frameRemoover (Fragment fragment){
+    public void frameRemoover (Fragment fragment, String mytag){
 
         android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
-        fratramain.replace(R.id.replaced_main, fragment);
+        fratramain.replace(R.id.replaced_main, fragment, mytag);
         fratramain.addToBackStack(null);
         fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fratramain.commit();
@@ -287,22 +280,15 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     }
 
    // method for share created content
-    private void onShared() {
+    private void onShared(Fragment tempfragment) {
+
+        TextView mytext = (TextView)tempfragment.getView().findViewById(R.id.breed_title);
 
         StringBuilder sb = new StringBuilder();
 
-        ArrayList<Breed_mod> mylistoftitles = inact.getMyListOfBreed_m();
+        sb.append(mytext.getText());
 
-        Iterator<Breed_mod> itr = mylistoftitles.iterator();
-
-        int mcount = 0;
-
-        while (itr.hasNext() && mcount < (min (3, mylistoftitles.size()))) {
-            mcount ++;
-            sb.append(itr.next().getB_title() + "\n");
-        }
-
-        String start = "Вот какие породы собак приложение "+getString(R.string.myapp)+" считает подходящими для меня: \n";
+        String start = "Вот какую породу можно выбрать с помощью "+getString(R.string.myapp)+":";
         String finish = sb.toString();
 
  //       Uri uri = Uri.parse("https://upload.wikimedia.org/wikipedia/commons/1/1e/Labr.jpg");

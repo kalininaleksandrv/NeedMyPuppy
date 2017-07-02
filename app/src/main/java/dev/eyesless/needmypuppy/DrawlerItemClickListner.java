@@ -48,7 +48,7 @@ public class DrawlerItemClickListner extends MainActivity implements NavigationV
         switch (id){
 
             case R.id.menu_navigation_find:
-                activity.frameRemoover(new Fragment_search());
+                activity.frameRemoover(new Fragment_search(), "FragmentSearch");
                 break;
             case R.id.menu_navigation_mail:
                 activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
