@@ -38,11 +38,6 @@ public class Fragment_description extends Fragment {
     protected static String MY_BREED_ID = "myBreedId";
     protected static String MY_LIST_OF_BREED = "myListOfBreed";
 
-
-
-    private Uri mydownloaduri;
-
-
     public Fragment_description() {
         // Required empty public constructor
     }
@@ -93,21 +88,6 @@ public class Fragment_description extends Fragment {
 
             String weblinc =  myListOfBreed.get(myBreedId).getB_weblinc();
 
-//            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
-//
-//            mStorageRef.child("/images/fs_germshep.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                @Override
-//                public void onSuccess(Uri uri) {
-//                    mydownloaduri = uri;
-//                    Log.e("MY_TAG", getmyDownloaduri());
-//                }
-//            }).addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception exception) {
-//                    Log.e("MY_TAG", exception.toString());
-//                }
-//            });
-
             ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
 
             Picasso.with(getActivity().getApplicationContext())
@@ -134,15 +114,6 @@ public class Fragment_description extends Fragment {
     public void setBreedId (int id) {
         this.myBreedId = id;
     }
-
-    public void setmyDownloaduri(Uri downloaduri) {this.mydownloaduri = downloaduri;}
-
-    public String getmyDownloaduri() {
-
-        if (mydownloaduri == null) return "my uri is null"; else
-        return mydownloaduri.toString();
-    }
-
 
 }
 
