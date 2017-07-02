@@ -1,8 +1,15 @@
 package dev.eyesless.needmypuppy;
 
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.design.widget.NavigationView;
@@ -17,9 +24,11 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -284,6 +293,12 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         TextView mytext = (TextView)tempfragment.getView().findViewById(R.id.breed_title);
 
+        ImageView myimage = (ImageView) tempfragment.getView().findViewById(R.id.breed_image);
+
+        Drawable mPic = myimage.getDrawable();
+
+        Uri myUri = urimaker(mPic);
+
         StringBuilder sb = new StringBuilder();
 
         sb.append(mytext.getText());
@@ -291,12 +306,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         String start = "Вот какую породу можно выбрать с помощью "+getString(R.string.myapp)+":";
         String finish = sb.toString();
 
- //       Uri uri = Uri.parse("https://upload.wikimedia.org/wikipedia/commons/1/1e/Labr.jpg");
-
         Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
                 .setText(finish)
                 .setSubject(start)
- //               .setStream(uri)
+                .setStream(myUri)
                 .setType("application/image")
                 .getIntent();
 
@@ -321,31 +334,32 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
     //make Uri from drawable resource
 
-//    public Uri urimaker (int resource){
-//
-//        Bitmap mybitmap = BitmapFactory.decodeResource(getResources(), resource);
-//
-//        ContentValues myvalues = new ContentValues();
-//
-//        myvalues.put(MediaStore.Images.Media.TITLE, "title");
-//        myvalues.put (MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-//        Uri myUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, myvalues);
-//
-//        OutputStream outputStream;
-//
-//        try{
-//
-//            outputStream = getContentResolver().openOutputStream(myUri);
-//            mybitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//            outputStream.close();
-//
-//        }catch (Exception e){
-//            System.err.print(e.toString());
-//        }
-//
-//
-//        return myUri;
-//    }
+    public Uri urimaker (Drawable drawable){
+
+
+        Bitmap mybitmap = ((BitmapDrawable)drawable).getBitmap();
+
+        ContentValues myvalues = new ContentValues();
+
+        myvalues.put(MediaStore.Images.Media.TITLE, "title");
+        myvalues.put (MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        Uri myUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, myvalues);
+
+        OutputStream outputStream;
+
+        try{
+
+            outputStream = getContentResolver().openOutputStream(myUri);
+            mybitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.close();
+
+        }catch (Exception e){
+            System.err.print(e.toString());
+        }
+
+
+        return myUri;
+    }
 
 
     //init database if it does not
