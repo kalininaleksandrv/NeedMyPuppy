@@ -1,18 +1,24 @@
 package dev.eyesless.needmypuppy;
 
+import android.*;
+import android.Manifest;
 import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Guideline;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     protected Guideline myGuideline;
     protected ConstraintLayout.LayoutParams lp;
     public static String GUIDLINE_VALUE;
+    private boolean permissions;
 
 
     @Override
@@ -293,7 +300,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         Drawable mPic = myimage.getDrawable();
 
-        Uri myUri = urimaker(mPic);
 
         StringBuilder sb = new StringBuilder();
 
@@ -302,15 +308,91 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         String start = getString(R.string.maybithisbreed);
         String finish = sb.toString();
 
-        Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
-                .setText(finish)
-                .setSubject(start)
-                .setStream(myUri)
-                .setType("application/image")
-                .getIntent();
+        Intent myintent;
+
+       if (isStoragePermissionsGranted() == false) {
+
+           onRequestPermissionsResult(1, new String[]{"WRITE_EXTERNAL_STORAGE"}, new int []{0});
+       };
+
+        if (isPermissions()) {
+
+            Uri myUri = urimaker(mPic);
+
+            myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                    .setText(finish)
+                    .setSubject(start)
+                    .setStream(myUri)
+                    .setType("application/image")
+                    .getIntent();
+
+        } else
+        {
+
+            toastmaker(getString(R.string.nopicaded));
+            myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                    .setText(finish)
+                    .setSubject(start)
+                    .setType("text/plain")
+                    .getIntent();
+        }
+
+
 
         startActivity(myintent);
     }
+
+    //asq permission to enternal storage to share pic od breed with method Urimaker
+
+    private boolean isStoragePermissionsGranted() {
+
+        if (Build.VERSION.SDK_INT >= 23){
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+
+                Log.v ("MY_TAG", "Permissions granted");
+
+                return true;
+
+            }
+
+            else  {
+
+
+               ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                Log.v ("MY_TAG", "Permissions revoked");
+                return false;
+            }
+
+        }
+        else {
+
+            Log.v ("MY_TAG", "Permissions granted automaticly");
+
+            return true;
+
+        }
+    }
+
+    //reqwested result of permission if isStoragePermissionsGranted() return fals
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+            setPermissions(true);
+
+        } else setPermissions(false);
+
+    }
+
+
+    public boolean isPermissions() {return permissions;
+    }
+
+    public void setPermissions(boolean permissions) {this.permissions = permissions;}
 
     // if button was pressed and trying next time, set toast about
     public void toastmaker(String s) {

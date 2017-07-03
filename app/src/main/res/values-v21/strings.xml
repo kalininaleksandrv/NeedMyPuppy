@@ -1,6 +1,7 @@
 <resources>
     <string name="myapp">Создано с помощью приложения Я ВЫБИРАЮ ЩЕНКА</string>
     <string name="maybithisbreed">Может быть, мне завести собаку вот такой породы?</string>
+    <string name="nopicaded">Данные будут отправлены без изображения</string>
     <string name="startscreendecription">Выбор домашнего питомца - ответственный и волнующий момент! Давайте пройдем этот путь вместе и найдем единственного и неповторимого - только Вашего - щенка!</string>
     <string name="startscreenbutton">НАЧАТЬ</string>
     <string name="switch_about">Уже есть собака(и)?</string>
