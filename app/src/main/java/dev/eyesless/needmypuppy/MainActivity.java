@@ -1,13 +1,11 @@
 package dev.eyesless.needmypuppy;
 
-import android.*;
 import android.Manifest;
 import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -36,12 +34,9 @@ import android.widget.Toast;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import static java.lang.Math.min;
 
 
-public class MainActivity extends AppCompatActivity implements onButtonListner, ItemClickListner {
+public class MainActivity extends AppCompatActivity implements onButtonListner, ItemClickListner, ActivityCompat.OnRequestPermissionsResultCallback {
 
 
     private String [] titles;
@@ -54,8 +49,15 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     protected Guideline myGuideline;
     protected ConstraintLayout.LayoutParams lp;
     public static String GUIDLINE_VALUE;
-    private boolean permissions;
 
+    protected Drawable mPic;
+    protected String start;
+    protected String finish;
+
+
+    public Drawable getmPic() {
+        return mPic;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,116 +300,78 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         ImageView myimage = (ImageView) tempfragment.getView().findViewById(R.id.breed_image);
 
-        Drawable mPic = myimage.getDrawable();
-
+        mPic = myimage.getDrawable();
 
         StringBuilder sb = new StringBuilder();
 
         sb.append(mytext.getText()).append("\n").append(mydesctext.getText()).append("\n").append("____________").append("\n").append(getString(R.string.myapp));
 
-        String start = getString(R.string.maybithisbreed);
-        String finish = sb.toString();
+        start = getString(R.string.maybithisbreed);
+        finish = sb.toString();
 
-        Intent myintent;
-
-       if (isStoragePermissionsGranted() == false) {
-
-           onRequestPermissionsResult(1, new String[]{"WRITE_EXTERNAL_STORAGE"}, new int []{0});
-       };
-
-        if (isPermissions()) {
-
-            Uri myUri = urimaker(mPic);
-
-            myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
-                    .setText(finish)
-                    .setSubject(start)
-                    .setStream(myUri)
-                    .setType("application/image")
-                    .getIntent();
-
-        } else
-        {
-
-            toastmaker(getString(R.string.nopicaded));
-            myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
-                    .setText(finish)
-                    .setSubject(start)
-                    .setType("text/plain")
-                    .getIntent();
+        if (isStoragePermissionsGranted()) {
+            shareintentwithpicmaker ();
         }
 
-
-
-        startActivity(myintent);
     }
 
-    //asq permission to enternal storage to share pic od breed with method Urimaker
-
+    //ask permission to external storage to share pic of breed with method Urimaker
     private boolean isStoragePermissionsGranted() {
 
+        //version 23 or higher request permissions manually (if check self permissions not success), versions lower read permissions from Manifest
         if (Build.VERSION.SDK_INT >= 23){
 
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-
-                Log.v ("MY_TAG", "Permissions granted");
-
                 return true;
-
             }
-
             else  {
-
-
                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                Log.v ("MY_TAG", "Permissions revoked");
                 return false;
             }
-
         }
-        else {
-
-            Log.v ("MY_TAG", "Permissions granted automaticly");
-
-            return true;
-
-        }
+        else {return true;}
     }
 
-    //reqwested result of permission if isStoragePermissionsGranted() return fals
-
+    //implemented callback requested result of permission if isStoragePermissionsGranted() return false
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0] == PackageManager.PERMISSION_GRANTED){shareintentwithpicmaker();}
 
-        if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
-            setPermissions(true);
-
-        } else setPermissions(false);
-
+        if(grantResults[0] == PackageManager.PERMISSION_DENIED){shareintentNOpicmaker();}
     }
 
+    private void shareintentwithpicmaker() {
 
-    public boolean isPermissions() {return permissions;
+        Uri myUri = urimaker(); //operation possible only if app have permission WRIRE EXTERNAL STORAGE
+
+        Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                .setText(finish)
+                .setSubject(start)
+                .setStream(myUri)
+                .setType("application/image")
+                .getIntent();
+        startActivity(myintent);
     }
 
-    public void setPermissions(boolean permissions) {this.permissions = permissions;}
+    private void shareintentNOpicmaker() {
 
-    // if button was pressed and trying next time, set toast about
-    public void toastmaker(String s) {
+        toastmaker(getString(R.string.nopicaded));
 
-       final Toast myToast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
-        myToast.setGravity(Gravity.CENTER, 0, 30);
-        myToast.show();
-
+        Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                .setText(finish)
+                .setSubject(start)
+                .setType("text/plain")
+                .getIntent();
+        startActivity(myintent);
     }
 
     //make Uri from drawable resource
+    public Uri urimaker (){
 
-    public Uri urimaker (Drawable drawable){
+        Drawable mDrawable = getmPic();
 
-        Bitmap mybitmap = ((BitmapDrawable)drawable).getBitmap();
+        Bitmap mybitmap = ((BitmapDrawable)mDrawable).getBitmap();
 
         ContentValues myvalues = new ContentValues();
 
@@ -425,10 +389,17 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         }catch (Exception e){
             System.err.print(e.toString());
         }
-
         return myUri;
     }
 
+    // if button was pressed and trying next time, set toast about
+    public void toastmaker(String s) {
+
+       final Toast myToast = Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG);
+        myToast.setGravity(Gravity.CENTER, 0, 30);
+        myToast.show();
+
+    }
 
     //init database if it does not
     public void databaseinitiator(){
