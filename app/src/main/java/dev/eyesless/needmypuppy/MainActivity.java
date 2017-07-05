@@ -294,6 +294,8 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
    // method for share created content
     private void onShared(Fragment tempfragment) {
 
+        // TODO: 05.07.2017 make shared fragmet - actualy viewing on screen (choosing) 
+
         TextView mytext = (TextView)tempfragment.getView().findViewById(R.id.breed_title);
 
         TextView mydesctext = (TextView)tempfragment.getView().findViewById(R.id.breed_descript);
