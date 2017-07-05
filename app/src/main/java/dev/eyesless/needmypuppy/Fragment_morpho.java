@@ -143,7 +143,7 @@ public class Fragment_morpho extends Buttons_Abstract_Fragment implements MVPInt
 
     private void statussetter() {
 
-        if (inact.isButtonaboutdogispressed()) {
+        if (inact.isButtonmorphoispressed()) {
 
             toastmaker();
 
