@@ -35,8 +35,14 @@ public class Fragment_description extends Fragment {
     private View parentview;
     protected InitiationActivity inact;
     protected ArrayList<Breed_mod> myListOfBreed;
-    protected static String MY_BREED_ID = "myBreedId";
     protected static String MY_LIST_OF_BREED = "myListOfBreed";
+
+    protected String titletext;
+    protected String pictureweblinc;
+    protected String descriptiontext;
+    protected static String MY_TITLE = "myTitle";
+    protected static String MY_DESCRIPTION = "myDescription";
+    protected static String MY_PICTURE = "myPicture";
 
     public Fragment_description() {
         // Required empty public constructor
@@ -47,8 +53,12 @@ public class Fragment_description extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState !=null) {
-            this.myBreedId = savedInstanceState.getInt(MY_BREED_ID);
             this.myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
+            this.titletext = savedInstanceState.getString(MY_TITLE);
+            this.descriptiontext = savedInstanceState.getString(MY_DESCRIPTION);
+            this.pictureweblinc = savedInstanceState.getString(MY_PICTURE);
+
+            Log.w("MY_TAG", "Restore" + titletext);
         }
     }
 
@@ -82,26 +92,30 @@ public class Fragment_description extends Fragment {
 
             // из листа пород по ID выводим название описание и картинку конкретной породы
             TextView myBreedTitle = (TextView) parentview.findViewById(R.id.breed_title);
-            myBreedTitle.setText(myListOfBreed.get(myBreedId).getB_title());
+            if (titletext == null){titletext = myListOfBreed.get(myBreedId).getB_title();
+                Log.w("MY_TAG", "FirstCreate" + titletext);
+            }
+            myBreedTitle.setText(titletext);
 
             Display display = getActivity().getWindowManager().getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
             int width = size.x;
 
-            String weblinc =  myListOfBreed.get(myBreedId).getB_weblinc();
+            if (pictureweblinc == null) {pictureweblinc =  myListOfBreed.get(myBreedId).getB_weblinc();}
 
             ImageView myBreedImage = (ImageView) parentview.findViewById(R.id.breed_image);
 
             Picasso.with(getActivity().getApplicationContext())
-                    .load(weblinc)
+                    .load(pictureweblinc)
                     .placeholder(R.drawable.try_to_download)
                     .error(R.drawable.sad_dog)
                     .resize(width, width*(int)0.75)
                     .into(myBreedImage);
 
             TextView myBreedDescript = (TextView) parentview.findViewById(R.id.breed_descript);
-            myBreedDescript.setText(myListOfBreed.get(myBreedId).getB_description_full());
+            if (descriptiontext == null) {descriptiontext = myListOfBreed.get(myBreedId).getB_description_full();}
+            myBreedDescript.setText(descriptiontext);
 
         }
 
@@ -109,19 +123,18 @@ public class Fragment_description extends Fragment {
 
     public void onSaveInstanceState (Bundle savedInstanceState) {
 
-
-
-        savedInstanceState.putInt(MY_BREED_ID, myBreedId);
         savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
+        savedInstanceState.putString(MY_TITLE, titletext);
+        savedInstanceState.putString(MY_DESCRIPTION, descriptiontext);
+        savedInstanceState.putString(MY_PICTURE, pictureweblinc);
+
+        Log.w("MY_TAG", "Save " + titletext);
+
 
     }
 
     public void setBreedId (int id) {
         this.myBreedId = id;
-    }
-
-    public int getMyBreedId() {
-        return myBreedId;
     }
 
 }

@@ -24,9 +24,6 @@ public class Fragment_viewpager extends Fragment {
     protected static String MY_BREED_ID = "myBreedId";
     protected static String MY_LIST_OF_BREED = "myListOfBreed";
 
-
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +34,6 @@ public class Fragment_viewpager extends Fragment {
 
         if (savedInstanceState !=null) {
             this.myBreedId = savedInstanceState.getInt(MY_BREED_ID);
-            this.myListOfBreed = (ArrayList<Breed_mod>) savedInstanceState.getSerializable(MY_LIST_OF_BREED);
         }
 
     }
@@ -70,7 +66,6 @@ public class Fragment_viewpager extends Fragment {
         // TODO: 20.07.2017 does nor work when screen rotate - return to start fragment
 
         savedInstanceState.putInt(MY_BREED_ID, myBreedId);
-        savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
 
     }
 

@@ -24,11 +24,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     protected FragmentManager fragmentManager;
     protected Map <Integer, String> mapOfTags;
 
-    protected int lastPosition;
-
-    protected ViewPager fragment_viewpager;
-
-
 
     public ViewPagerAdapter(FragmentManager fm, ArrayList<Breed_mod> arrayList) {
 
@@ -36,17 +31,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         this.myListOfBreed = arrayList;
         this.fragmentManager = fm;
         mapOfTags = new HashMap<Integer, String>();
-        this.fragment_viewpager = fragment_viewpager;
 
     }
 
         @Override
     public Fragment getItem(int position) {
-            lastPosition = position;
-            Fragment_description myDescrFragm = new Fragment_description();
+
+        Fragment_description myDescrFragm = new Fragment_description();
         myDescrFragm.setBreedId(position);
 
-            return myDescrFragm;
+        return myDescrFragm;
     }
 
     @Override
