@@ -61,9 +61,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             String mTag = myFragment.getTag();
             mapOfTags.put(position, mTag);
 
-            Log.w("MY_TAG", String.valueOf(position));
-            Log.w("MY_TAG", mTag);
-
         }
 
         return obj;

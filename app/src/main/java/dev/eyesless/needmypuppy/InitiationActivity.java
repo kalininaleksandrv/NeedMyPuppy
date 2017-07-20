@@ -3,6 +3,7 @@ package dev.eyesless.needmypuppy;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -231,6 +232,19 @@ public class InitiationActivity extends Application {
 
         this.listOfTitles = listOfBreedTitles;
 
+    }
+
+
+    public int countProgressStatus () {
+
+        int i = 0;
+
+        if (buttonforwhatispressed) i++;
+        if (buttonaboutdogispressed) i++;
+        if (buttonaboutownerispressed) i++;
+        if (buttonmorphoispressed) i++;
+
+        return i*25;
     }
 
 }

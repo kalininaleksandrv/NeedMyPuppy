@@ -87,10 +87,9 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
         drawer.addDrawerListener(drawerToggle);
 
-        // TODO: 28.06.2017 реализовать наполнение frame vision 
+        initFrameVision ();
 
     }
-
 
 
     // create navigation view on drawer layout and set listner
@@ -230,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                 //check if button already been pressed, cant pressed next time
                 if (inact.isButtonforwhatispressed()){toastmaker(getString(R.string.disabled_button));}
                 else
-                    frameRemoover(new Forwhat_main(), "ForWhat");
+                frameRemoover(new Forwhat_main(), "ForWhat");
                 break;
 
             case R.id.imageButton_aboutdog:
@@ -280,6 +279,10 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     //main method for remoove frames when clicked
     public void frameRemoover (Fragment fragment, String mytag){
 
+        if (mytag == "ButtonsMain"){
+        initFrameVision ();
+        }
+
         android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
         fratramain.replace(R.id.replaced_main, fragment, mytag);
         fratramain.addToBackStack(null);
@@ -288,10 +291,19 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
     }
 
+    //method for create Frame Vision (up frame in main screen)
+
+    private void initFrameVision() {
+
+        android.support.v4.app.FragmentTransaction fratramain = getSupportFragmentManager().beginTransaction();
+        fratramain.replace(R.id.frame_vision, new ProgressBarFragment());
+        fratramain.addToBackStack(null);
+        fratramain.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fratramain.commit();
+    }
+
    // method for share created content
     private void onShared() {
-
-        // TODO: 05.07.2017 make shared fragmet - actualy viewing on screen (choosing)
 
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
 
