@@ -46,8 +46,6 @@ public class Fragment_viewpager extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-
         return   inflater.inflate(R.layout.fragment_viewpager, container, false);
 
     }
@@ -69,6 +67,7 @@ public class Fragment_viewpager extends Fragment {
     }
 
     public void onSaveInstanceState (Bundle savedInstanceState) {
+        // TODO: 20.07.2017 does nor work when screen rotate - return to start fragment
 
         savedInstanceState.putInt(MY_BREED_ID, myBreedId);
         savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);

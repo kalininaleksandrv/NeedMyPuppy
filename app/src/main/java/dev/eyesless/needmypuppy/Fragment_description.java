@@ -63,6 +63,7 @@ public class Fragment_description extends Fragment {
 
         inact = ((InitiationActivity) getActivity().getApplicationContext());
         // Inflate the layout for this fragment
+
         return mView;
 
     }
@@ -72,6 +73,8 @@ public class Fragment_description extends Fragment {
         super.onStart();
         parentview = getView();
         myListOfBreed = inact.getMyListOfBreed_m();
+
+
 
         ((MainActivity) getActivity()).gudlinesetter((float) 0.1);
 
@@ -106,6 +109,8 @@ public class Fragment_description extends Fragment {
 
     public void onSaveInstanceState (Bundle savedInstanceState) {
 
+
+
         savedInstanceState.putInt(MY_BREED_ID, myBreedId);
         savedInstanceState.putSerializable(MY_LIST_OF_BREED, myListOfBreed);
 
@@ -113,6 +118,10 @@ public class Fragment_description extends Fragment {
 
     public void setBreedId (int id) {
         this.myBreedId = id;
+    }
+
+    public int getMyBreedId() {
+        return myBreedId;
     }
 
 }

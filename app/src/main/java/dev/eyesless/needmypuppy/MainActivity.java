@@ -19,6 +19,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                     case R.id.action_email:
                         android.support.v4.app.Fragment tempfragment = getSupportFragmentManager().findFragmentByTag("ViewPager");
                         if (tempfragment != null && tempfragment.isVisible()) {
-                            onShared (tempfragment);
+                            onShared ();
                         } else
                             toastmaker(getString(R.string.sharetoast));
                         return true;
@@ -208,8 +209,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                         return super.onOptionsItemSelected(item);
                 }
     }
-
-
 
     //реакция на нажате кнопок в фрагменте buttons main
     @Override
@@ -260,8 +259,6 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     @Override
     public void onClick(View view, int position) {
 
-        ArrayList<Breed_mod> breeds = inact.getMyListOfBreed_m();
-
         Fragment_viewpager myViewPagerFragm = new Fragment_viewpager();
         myViewPagerFragm.setBreedId(position);
 
@@ -292,15 +289,21 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
     }
 
    // method for share created content
-    private void onShared(Fragment tempfragment) {
+    private void onShared() {
 
-        // TODO: 05.07.2017 make shared fragmet - actualy viewing on screen (choosing) 
+        // TODO: 05.07.2017 make shared fragmet - actualy viewing on screen (choosing)
 
-        TextView mytext = (TextView)tempfragment.getView().findViewById(R.id.breed_title);
+        ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
 
-        TextView mydesctext = (TextView)tempfragment.getView().findViewById(R.id.breed_descript);
+        ViewPagerAdapter adapter = (ViewPagerAdapter) pager.getAdapter();
 
-        ImageView myimage = (ImageView) tempfragment.getView().findViewById(R.id.breed_image);
+        Fragment newfragment = adapter.getCurrFragment(pager.getCurrentItem());
+
+        TextView mytext = (TextView)newfragment.getView().findViewById(R.id.breed_title);
+
+        TextView mydesctext = (TextView)newfragment.getView().findViewById(R.id.breed_descript);
+
+        ImageView myimage = (ImageView) newfragment.getView().findViewById(R.id.breed_image);
 
         mPic = myimage.getDrawable();
 
