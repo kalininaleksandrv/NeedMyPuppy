@@ -9,11 +9,19 @@
         />
 
     <item
+        android:id="@+id/menu_navigation_param"
+        android:icon="@drawable/checkbox_marked_outline"
+        android:orderInCategory="1"
+        android:title="@string/params"
+        />
+
+    <item
         android:id="@+id/menu_navigation_mail"
         android:icon="@drawable/ic_mail_outline_black_24dp"
         android:orderInCategory="1"
         android:title="@string/mesage_to_devs"
         />
+
 
     <item
         android:id="@+id/menu_navigation_about"
