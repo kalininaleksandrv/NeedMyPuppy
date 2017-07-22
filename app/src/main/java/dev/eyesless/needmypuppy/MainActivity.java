@@ -387,6 +387,16 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         startActivity(myintent);
     }
 
+    public void shareintentEmail() {
+
+        Intent myintent = ShareCompat.IntentBuilder.from(MainActivity.this)
+                .setEmailTo(new String[]{getString(R.string.email_adress)})
+                .setSubject(getString(R.string.email_subj))
+                .setType("text/plain")
+                .getIntent();
+        startActivity(myintent);
+    }
+
     //make Uri from drawable resource
     public Uri urimaker (){
 

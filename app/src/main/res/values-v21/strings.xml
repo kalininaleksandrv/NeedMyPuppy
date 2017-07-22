@@ -50,6 +50,8 @@
     <string name="status">Точность подбора породы (зависит от количества отвеченных вопросов)</string>
     <string name="no_breed_found">Ни одной породы, соответсвующей условиям, не найдено. Попробуйте ответить на большее количество вопросов.</string>
     <string name="params">Значения подбора</string>
+    <string name="email_adress">eyesless.devtest@gmail.com</string>
+    <string name="email_subj">О программе Я ВЫБИРАЮ ЩЕНКА</string>
 
 
 </resources>

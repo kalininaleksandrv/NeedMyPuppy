@@ -53,11 +53,9 @@ public class DrawlerItemClickListner extends MainActivity implements NavigationV
             case R.id.menu_navigation_param:
                 activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
-            // TODO: 28.06.2017 реализовать отправку сообщения разработчикам
             case R.id.menu_navigation_mail:
-                activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
+                activity.shareintentEmail();
                 break;
-            // TODO: 28.06.2017 реализовать отправку сообщения разработчикам
             case R.id.menu_navigation_about:
                 activity.activitystarter(List_profile.class, inact.mybuckelisttmaker());
                 break;
