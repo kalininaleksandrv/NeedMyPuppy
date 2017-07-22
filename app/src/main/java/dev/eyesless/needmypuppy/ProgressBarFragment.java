@@ -4,7 +4,6 @@ package dev.eyesless.needmypuppy;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.daimajia.numberprogressbar.OnProgressBarListener;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -69,9 +67,11 @@ public class ProgressBarFragment extends Buttons_Abstract_Fragment implements On
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        timer.cancel();
+    public void onDetach() {
+        super.onDetach();
+
+        if (timer != null){
+        timer.cancel();}
     }
 
     private void runStatusBar(final int count) {
