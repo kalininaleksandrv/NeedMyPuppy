@@ -95,7 +95,7 @@ public class InitiationActivity extends Application {
     MyBucket obidience = new MyBucket("Послушание / обучаемость", 0);
     MyBucket guard = new MyBucket("Охранные качества", 0);
     MyBucket agressive = new MyBucket("Агрессивность", 5);//в логике показатель снижается по этому выставлен максимальный
-    MyBucket active = new MyBucket("Активность", 0);
+    MyBucket active = new MyBucket("Активность", 5); //в логике показатель снижается по этому выставлен максимальный
     MyBucket hardy = new MyBucket("Выносливость", 0);
     MyBucket size = new MyBucket("Размер", 5);//в логике показатель снижается по этому выставлен максимальный
     MyBucket care = new MyBucket("Сложный / специфичный уход", 5);

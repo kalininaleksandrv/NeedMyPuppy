@@ -87,7 +87,7 @@ public class BreedDataBaseHelper extends SQLiteOpenHelper {
                 3, 2, 2, 3, 4, 3, 1, "yes",
                 "https://firebasestorage.googleapis.com/v0/b/needmypuppy.appspot.com/o/images%2Ffs_labrador.jpg?alt=media&token=ebabb355-4556-49b6-9173-3dc9fea90f33",
                 "https://ru.m.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B1%D1%80%D0%B0%D0%B4%D0%BE%D1%80-%D1%80%D0%B5%D1%82%D1%80%D0%B8%D0%B2%D0%B5%D1%80",
-                122, "short", "yes", "no");
+                122, "short", "white black", "no");
         incertBreedsToDb (db,
                 "Hемецкая овчарка",
                 "крупная по размеру служебная собака",

@@ -37,19 +37,18 @@ public class Presenter_aboutdog {
 
         if (minterface.ishavechildboxchecked()){inact.agressive.setValue(min(inact.agressive.getValue(),2));} //в случае наличия детей агрессивность не более 2
 
-        inact.obidience.setValue(max(inact.obidience.getValue(), 4-minterface.iscynologist())); //чем лучше кинологические услуги тем хуже может быть послушание
+        inact.obidience.setValue(max(inact.obidience.getValue(), 3-minterface.iscynologist())); //чем лучше кинологические услуги тем хуже может быть послушание
 
         inact.guard.setValue(max(inact.guard.getValue(), minterface.iscynologist())); //чем хуже развиты кинологические услуги, тем менее выраженные охранные качества допускаются
 
-        inact.agressive.setValue(min(inact.agressive.getValue(), minterface.iswalk()+1)); //чем хуже условия выгула, тем менее агрессивная собака допускается
-        inact.agressive.setValue(min(inact.agressive.getValue(), minterface.iscynologist())); // чем хуже развиты кинологические услуги, тем менее агрессивная собака допускается
+        inact.agressive.setValue(min(inact.agressive.getValue(), minterface.iswalk()+2)); //чем хуже условия выгула, тем менее агрессивная собака допускается
+        inact.agressive.setValue(min(inact.agressive.getValue(), minterface.iscynologist()+2)); // чем хуже развиты кинологические услуги, тем менее агрессивная собака допускается
 
-        inact.active.setValue(max(inact.active.getValue(), minterface.iswalk())); //чем хуже условия выгула, тем менее активная собака допускается
-        inact.active.setValue(max(inact.active.getValue(), minterface.iscynologist()+1)); // чем хуже развиты кинологические услуги, тем менее активная собака допускается
+        inact.active.setValue(min(inact.active.getValue(), minterface.iswalk()+1)); //чем хуже условия выгула, тем менее активная собака допускается
 
-        inact.size.setValue(min(inact.size.getValue(), minterface.iswalk()+2)); //чем хуже условия выгула, тем менее крупная собака допускается
+        inact.size.setValue(min(inact.size.getValue(), minterface.iswalk()+1)); //чем хуже условия выгула, тем менее крупная собака допускается
 
-        inact.care.setValue(max(inact.care.getValue(), minterface.isvet()+1)); //чем хуже ветеринарная поддержка тем более неприхотливая собака допускается
+        inact.care.setValue(max(inact.care.getValue(), minterface.isvet()+2)); //чем хуже ветеринарная поддержка тем более неприхотливая собака допускается
 
     }
 

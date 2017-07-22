@@ -248,7 +248,11 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
 
                 databaseinitiator();
 
-                frameRemoover(new Recycle_view_fragment(), "RecycleView");
+                if (inact.getMyListOfBreed_m().size() != 0){
+
+                frameRemoover(new Recycle_view_fragment(), "RecycleView");}
+
+                else toastmaker(getString(R.string.no_breed_found));
 
                 break;
         }

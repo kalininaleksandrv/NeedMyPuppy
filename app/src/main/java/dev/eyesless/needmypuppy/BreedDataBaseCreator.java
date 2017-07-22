@@ -149,7 +149,7 @@ public class BreedDataBaseCreator {
     private String getBlackorwhite() {
 
         if (inact.blackorwhite.getValue() == 0) return "%"; else {
-            if (inact.blackorwhite.getValue() == 1) return "white"; else return "black";}
+            if (inact.blackorwhite.getValue() == 1) return "%hit%"; else return "%lac%";}
     }
 
     private String getNoalergy() {

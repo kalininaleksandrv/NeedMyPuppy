@@ -27,20 +27,20 @@ class Presenter_forwhat {
         inact.setButtonforwhatispressed(true);
 
         if (minterface.isbabychecked()){
-            inact.obidience.setValue(max(inact.obidience.getValue(),2));
-            inact.agressive.setValue(min(inact.agressive.getValue(),1));
-            inact.active.setValue(max(inact.active.getValue(),3));
+            inact.obidience.setValue(max(inact.obidience.getValue(),3));
+            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.active.setValue(min(inact.active.getValue(),4));
         }
 
         if (minterface.isfrendchecked()){
 
-            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.agressive.setValue(min(inact.agressive.getValue(),3));
         }
 
         if (minterface.isrunchecked()){
 
             inact.obidience.setValue(max(inact.obidience.getValue(),2));
-            inact.agressive.setValue(min(inact.agressive.getValue(),2));
+            inact.agressive.setValue(min(inact.agressive.getValue(),3));
             inact.active.setValue(max(inact.active.getValue(),3));
             inact.hardy.setValue(max(inact.hardy.getValue(),4));
         }
