@@ -52,7 +52,7 @@ public class Recycle_view_fragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        ((MainActivity) getActivity()).gudlinesetter((float) 0.01);
+        ((MainActivity) getActivity()).gudlinesetter((float) 0.08);
 
     }
 }

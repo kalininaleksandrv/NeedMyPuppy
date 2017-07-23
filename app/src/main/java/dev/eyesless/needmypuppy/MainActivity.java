@@ -194,9 +194,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
                         return true;
 
                     case R.id.action_settings:
-                        //todo реализовать настройки
-                        databaseinitiator();
-                        activitystarter(List_profile.class, inact.getListOfTitles());
+                        toastmaker(getString(R.string.nofunc));
                         return true;
 
                     case R.id.action_delet:

@@ -35,7 +35,7 @@ public class Fragment_aboutapp extends Buttons_Abstract_Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        
+
         TextView linkedtext = (TextView) parentview.findViewById(R.id.linctogit);
         String mText = getString(R.string.linktogit);
         linkedtext.setText(spanmytext(mText));
@@ -61,7 +61,7 @@ public class Fragment_aboutapp extends Buttons_Abstract_Fragment {
         }
     }
 
-    protected final void openexternalurl () {
+    private final void openexternalurl () {
 
         final Uri address = Uri.parse(getString(R.string.project_adress));
 
