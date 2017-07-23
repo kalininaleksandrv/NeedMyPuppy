@@ -57,9 +57,8 @@ public class DrawlerItemClickListner extends MainActivity implements NavigationV
                 activity.shareintentEmail();
                 break;
             case R.id.menu_navigation_about:
-                activity.openexternalurl();
+                activity.frameRemoover(new Fragment_aboutapp(), "FragmentAboutapp");
                 break;
-            // TODO: 28.06.2017 реализовать описание программы
             default:
                 break;
         }

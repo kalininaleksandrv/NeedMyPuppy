@@ -397,15 +397,7 @@ public class MainActivity extends AppCompatActivity implements onButtonListner, 
         startActivity(myintent);
     }
 
-    protected final void openexternalurl () {
 
-        final Uri address = Uri.parse(getString(R.string.project_adress));
-
-        Intent myintent = new Intent(Intent.ACTION_VIEW, address);
-
-        startActivity(myintent);
-
-    }
 
     //make Uri from drawable resource
     public Uri urimaker (){
